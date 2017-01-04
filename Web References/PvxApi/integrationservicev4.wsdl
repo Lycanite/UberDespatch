@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://www.peoplevox.net/" xmlns:tns="http://www.peoplevox.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.peoplevox.net/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.peoplevox.net/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Authenticate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="clientId" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="username" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="password" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AuthenticateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="AuthenticateResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="IntegrationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ResponseId" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalCount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Detail" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Statuses" type="tns:ArrayOfIntegrationStatusResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfIntegrationStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="IntegrationStatusResponse" nillable="true" type="tns:IntegrationStatusResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="IntegrationStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Status" type="tns:IntegrationResponseStatuses" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="IntegrationResponseStatuses">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error" />
+          <xs:enumeration value="Success" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="GetData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="getRequest" type="tns:GetRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="TemplateName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PageNo" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemsPerPage" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SearchClause" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetDataResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UserSessionCredentials" type="tns:UserSessionCredentials" />
+      <xs:complexType name="UserSessionCredentials">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ClientId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SessionId" type="xs:string" />
+        </xs:sequence>
+        <xs:anyAttribute />
+      </xs:complexType>
+      <xs:element name="GetReportData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="getReportRequest" type="tns:GetReportRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetReportRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:GetRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="FilterClause" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="OrderBy" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Columns" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetReportDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetReportDataResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReportColumns">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="templateName" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReportColumnsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetReportColumnsResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSaveTemplate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="templateName" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSaveTemplateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetSaveTemplateResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="saveRequest" type="tns:SaveRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SaveRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="TemplateName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CsvData" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Action" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaveDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SaveDataResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubscribeEvent">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="eventType" type="tns:SubscriptionEventTypes" />
+            <xs:element minOccurs="0" maxOccurs="1" name="filter" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="callbackUrl" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="SubscriptionEventTypes">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AvailabilityChanges" />
+          <xs:enumeration value="SalesOrderStatusChanges" />
+          <xs:enumeration value="GoodsReceived" />
+          <xs:enumeration value="TrackingNumberReceived" />
+          <xs:enumeration value="IncrementalChanges" />
+          <xs:enumeration value="Returns" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="SubscribeEventResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SubscribeEventResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubscribePostEvent">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="eventType" type="tns:SubscriptionEventTypes" />
+            <xs:element minOccurs="0" maxOccurs="1" name="filter" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="postUrl" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="postParams" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubscribePostEventResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SubscribePostEventResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UnsubscribeEvent">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UnsubscribeEventResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="UnsubscribeEventResult" type="tns:IntegrationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IntegrationResponse" nillable="true" type="tns:IntegrationResponse" />
+    </xs:schema>
+  </types>
+  <message name="AuthenticateSoapIn">
+    <part name="parameters" element="tns:Authenticate" />
+  </message>
+  <message name="AuthenticateSoapOut">
+    <part name="parameters" element="tns:AuthenticateResponse" />
+  </message>
+  <message name="GetDataSoapIn">
+    <part name="parameters" element="tns:GetData" />
+  </message>
+  <message name="GetDataSoapOut">
+    <part name="parameters" element="tns:GetDataResponse" />
+  </message>
+  <message name="GetDataUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="GetReportDataSoapIn">
+    <part name="parameters" element="tns:GetReportData" />
+  </message>
+  <message name="GetReportDataSoapOut">
+    <part name="parameters" element="tns:GetReportDataResponse" />
+  </message>
+  <message name="GetReportDataUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="GetReportColumnsSoapIn">
+    <part name="parameters" element="tns:GetReportColumns" />
+  </message>
+  <message name="GetReportColumnsSoapOut">
+    <part name="parameters" element="tns:GetReportColumnsResponse" />
+  </message>
+  <message name="GetReportColumnsUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="GetSaveTemplateSoapIn">
+    <part name="parameters" element="tns:GetSaveTemplate" />
+  </message>
+  <message name="GetSaveTemplateSoapOut">
+    <part name="parameters" element="tns:GetSaveTemplateResponse" />
+  </message>
+  <message name="GetSaveTemplateUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="SaveDataSoapIn">
+    <part name="parameters" element="tns:SaveData" />
+  </message>
+  <message name="SaveDataSoapOut">
+    <part name="parameters" element="tns:SaveDataResponse" />
+  </message>
+  <message name="SaveDataUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="SubscribeEventSoapIn">
+    <part name="parameters" element="tns:SubscribeEvent" />
+  </message>
+  <message name="SubscribeEventSoapOut">
+    <part name="parameters" element="tns:SubscribeEventResponse" />
+  </message>
+  <message name="SubscribeEventUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="SubscribePostEventSoapIn">
+    <part name="parameters" element="tns:SubscribePostEvent" />
+  </message>
+  <message name="SubscribePostEventSoapOut">
+    <part name="parameters" element="tns:SubscribePostEventResponse" />
+  </message>
+  <message name="SubscribePostEventUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="UnsubscribeEventSoapIn">
+    <part name="parameters" element="tns:UnsubscribeEvent" />
+  </message>
+  <message name="UnsubscribeEventSoapOut">
+    <part name="parameters" element="tns:UnsubscribeEventResponse" />
+  </message>
+  <message name="UnsubscribeEventUserSessionCredentials">
+    <part name="UserSessionCredentials" element="tns:UserSessionCredentials" />
+  </message>
+  <message name="AuthenticateHttpGetIn">
+    <part name="clientId" type="s:string" />
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="AuthenticateHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="GetReportColumnsHttpGetIn">
+    <part name="templateName" type="s:string" />
+  </message>
+  <message name="GetReportColumnsHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="GetSaveTemplateHttpGetIn">
+    <part name="templateName" type="s:string" />
+  </message>
+  <message name="GetSaveTemplateHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="SubscribeEventHttpGetIn">
+    <part name="eventType" type="s:string" />
+    <part name="filter" type="s:string" />
+    <part name="callbackUrl" type="s:string" />
+  </message>
+  <message name="SubscribeEventHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="SubscribePostEventHttpGetIn">
+    <part name="eventType" type="s:string" />
+    <part name="filter" type="s:string" />
+    <part name="postUrl" type="s:string" />
+    <part name="postParams" type="s:string" />
+  </message>
+  <message name="SubscribePostEventHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="UnsubscribeEventHttpGetIn">
+    <part name="subscriptionId" type="s:string" />
+  </message>
+  <message name="UnsubscribeEventHttpGetOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="AuthenticateHttpPostIn">
+    <part name="clientId" type="s:string" />
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="AuthenticateHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="GetReportColumnsHttpPostIn">
+    <part name="templateName" type="s:string" />
+  </message>
+  <message name="GetReportColumnsHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="GetSaveTemplateHttpPostIn">
+    <part name="templateName" type="s:string" />
+  </message>
+  <message name="GetSaveTemplateHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="SubscribeEventHttpPostIn">
+    <part name="eventType" type="s:string" />
+    <part name="filter" type="s:string" />
+    <part name="callbackUrl" type="s:string" />
+  </message>
+  <message name="SubscribeEventHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="SubscribePostEventHttpPostIn">
+    <part name="eventType" type="s:string" />
+    <part name="filter" type="s:string" />
+    <part name="postUrl" type="s:string" />
+    <part name="postParams" type="s:string" />
+  </message>
+  <message name="SubscribePostEventHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <message name="UnsubscribeEventHttpPostIn">
+    <part name="subscriptionId" type="s:string" />
+  </message>
+  <message name="UnsubscribeEventHttpPostOut">
+    <part name="Body" element="tns:IntegrationResponse" />
+  </message>
+  <portType name="IntegrationServiceV4Soap">
+    <operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate user.</wsdl:documentation>
+      <input message="tns:AuthenticateSoapIn" />
+      <output message="tns:AuthenticateSoapOut" />
+    </operation>
+    <operation name="GetData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Export data from the PeopleVox system.</wsdl:documentation>
+      <input message="tns:GetDataSoapIn" />
+      <output message="tns:GetDataSoapOut" />
+    </operation>
+    <operation name="GetReportData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Export reports data from the PeopleVox system.</wsdl:documentation>
+      <input message="tns:GetReportDataSoapIn" />
+      <output message="tns:GetReportDataSoapOut" />
+    </operation>
+    <operation name="GetReportColumns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the list of columns of a report.</wsdl:documentation>
+      <input message="tns:GetReportColumnsSoapIn" />
+      <output message="tns:GetReportColumnsSoapOut" />
+    </operation>
+    <operation name="GetSaveTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the csv template for saving informations.</wsdl:documentation>
+      <input message="tns:GetSaveTemplateSoapIn" />
+      <output message="tns:GetSaveTemplateSoapOut" />
+    </operation>
+    <operation name="SaveData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Import data into PeopleVox system.</wsdl:documentation>
+      <input message="tns:SaveDataSoapIn" />
+      <output message="tns:SaveDataSoapOut" />
+    </operation>
+    <operation name="SubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribeEventSoapIn" />
+      <output message="tns:SubscribeEventSoapOut" />
+    </operation>
+    <operation name="SubscribePostEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribePostEventSoapIn" />
+      <output message="tns:SubscribePostEventSoapOut" />
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unsubscribe to an event that was subscribed.</wsdl:documentation>
+      <input message="tns:UnsubscribeEventSoapIn" />
+      <output message="tns:UnsubscribeEventSoapOut" />
+    </operation>
+  </portType>
+  <portType name="IntegrationServiceV4HttpGet">
+    <operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate user.</wsdl:documentation>
+      <input message="tns:AuthenticateHttpGetIn" />
+      <output message="tns:AuthenticateHttpGetOut" />
+    </operation>
+    <operation name="GetReportColumns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the list of columns of a report.</wsdl:documentation>
+      <input message="tns:GetReportColumnsHttpGetIn" />
+      <output message="tns:GetReportColumnsHttpGetOut" />
+    </operation>
+    <operation name="GetSaveTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the csv template for saving informations.</wsdl:documentation>
+      <input message="tns:GetSaveTemplateHttpGetIn" />
+      <output message="tns:GetSaveTemplateHttpGetOut" />
+    </operation>
+    <operation name="SubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribeEventHttpGetIn" />
+      <output message="tns:SubscribeEventHttpGetOut" />
+    </operation>
+    <operation name="SubscribePostEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribePostEventHttpGetIn" />
+      <output message="tns:SubscribePostEventHttpGetOut" />
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unsubscribe to an event that was subscribed.</wsdl:documentation>
+      <input message="tns:UnsubscribeEventHttpGetIn" />
+      <output message="tns:UnsubscribeEventHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="IntegrationServiceV4HttpPost">
+    <operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate user.</wsdl:documentation>
+      <input message="tns:AuthenticateHttpPostIn" />
+      <output message="tns:AuthenticateHttpPostOut" />
+    </operation>
+    <operation name="GetReportColumns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the list of columns of a report.</wsdl:documentation>
+      <input message="tns:GetReportColumnsHttpPostIn" />
+      <output message="tns:GetReportColumnsHttpPostOut" />
+    </operation>
+    <operation name="GetSaveTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the csv template for saving informations.</wsdl:documentation>
+      <input message="tns:GetSaveTemplateHttpPostIn" />
+      <output message="tns:GetSaveTemplateHttpPostOut" />
+    </operation>
+    <operation name="SubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribeEventHttpPostIn" />
+      <output message="tns:SubscribeEventHttpPostOut" />
+    </operation>
+    <operation name="SubscribePostEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subscribe to PeopleVox system events.</wsdl:documentation>
+      <input message="tns:SubscribePostEventHttpPostIn" />
+      <output message="tns:SubscribePostEventHttpPostOut" />
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unsubscribe to an event that was subscribed.</wsdl:documentation>
+      <input message="tns:UnsubscribeEventHttpPostIn" />
+      <output message="tns:UnsubscribeEventHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="IntegrationServiceV4Soap" type="tns:IntegrationServiceV4Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Authenticate">
+      <soap:operation soapAction="http://www.peoplevox.net/Authenticate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetData">
+      <soap:operation soapAction="http://www.peoplevox.net/GetData" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetReportData">
+      <soap:operation soapAction="http://www.peoplevox.net/GetReportData" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetReportDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetReportColumns">
+      <soap:operation soapAction="http://www.peoplevox.net/GetReportColumns" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetReportColumnsUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSaveTemplate">
+      <soap:operation soapAction="http://www.peoplevox.net/GetSaveTemplate" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSaveTemplateUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SaveData">
+      <soap:operation soapAction="http://www.peoplevox.net/SaveData" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubscribeEvent">
+      <soap:operation soapAction="http://www.peoplevox.net/SubscribeEvent" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubscribeEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubscribePostEvent">
+      <soap:operation soapAction="http://www.peoplevox.net/SubscribePostEvent" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubscribePostEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <soap:operation soapAction="http://www.peoplevox.net/UnsubscribeEvent" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UnsubscribeEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IntegrationServiceV4Soap12" type="tns:IntegrationServiceV4Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Authenticate">
+      <soap12:operation soapAction="http://www.peoplevox.net/Authenticate" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetData">
+      <soap12:operation soapAction="http://www.peoplevox.net/GetData" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetReportData">
+      <soap12:operation soapAction="http://www.peoplevox.net/GetReportData" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetReportDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetReportColumns">
+      <soap12:operation soapAction="http://www.peoplevox.net/GetReportColumns" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetReportColumnsUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSaveTemplate">
+      <soap12:operation soapAction="http://www.peoplevox.net/GetSaveTemplate" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSaveTemplateUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SaveData">
+      <soap12:operation soapAction="http://www.peoplevox.net/SaveData" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveDataUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubscribeEvent">
+      <soap12:operation soapAction="http://www.peoplevox.net/SubscribeEvent" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubscribeEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubscribePostEvent">
+      <soap12:operation soapAction="http://www.peoplevox.net/SubscribePostEvent" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubscribePostEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <soap12:operation soapAction="http://www.peoplevox.net/UnsubscribeEvent" style="document" />
+      <input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UnsubscribeEventUserSessionCredentials" part="UserSessionCredentials" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IntegrationServiceV4HttpGet" type="tns:IntegrationServiceV4HttpGet">
+    <http:binding verb="GET" />
+    <operation name="Authenticate">
+      <http:operation location="/Authenticate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetReportColumns">
+      <http:operation location="/GetReportColumns" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSaveTemplate">
+      <http:operation location="/GetSaveTemplate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubscribeEvent">
+      <http:operation location="/SubscribeEvent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubscribePostEvent">
+      <http:operation location="/SubscribePostEvent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <http:operation location="/UnsubscribeEvent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IntegrationServiceV4HttpPost" type="tns:IntegrationServiceV4HttpPost">
+    <http:binding verb="POST" />
+    <operation name="Authenticate">
+      <http:operation location="/Authenticate" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetReportColumns">
+      <http:operation location="/GetReportColumns" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSaveTemplate">
+      <http:operation location="/GetSaveTemplate" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubscribeEvent">
+      <http:operation location="/SubscribeEvent" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubscribePostEvent">
+      <http:operation location="/SubscribePostEvent" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UnsubscribeEvent">
+      <http:operation location="/UnsubscribeEvent" />
+      <input>
+        <mime:content part="" type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IntegrationServiceV4">
+    <port name="IntegrationServiceV4Soap" binding="tns:IntegrationServiceV4Soap">
+      <soap:address location="http://peoplevox.net/appb/resources/integrationservicev4.asmx" />
+    </port>
+    <port name="IntegrationServiceV4Soap12" binding="tns:IntegrationServiceV4Soap12">
+      <soap12:address location="http://peoplevox.net/appb/resources/integrationservicev4.asmx" />
+    </port>
+    <port name="IntegrationServiceV4HttpGet" binding="tns:IntegrationServiceV4HttpGet">
+      <http:address location="http://peoplevox.net/appb/resources/integrationservicev4.asmx" />
+    </port>
+    <port name="IntegrationServiceV4HttpPost" binding="tns:IntegrationServiceV4HttpPost">
+      <http:address location="http://peoplevox.net/appb/resources/integrationservicev4.asmx" />
+    </port>
+  </service>
+</definitions>
