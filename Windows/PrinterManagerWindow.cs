@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Printing;
+using System.Drawing.Printing;
 using Gtk;
 
 namespace UberDespatch
@@ -67,13 +66,19 @@ namespace UberDespatch
 				this.PrinterProfilePrinterCombo.AppendText(Printer.DefaultPrinterName);
 				int currentPrinterIndex = 0;
 				int index = 0;
-				foreach (PrintQueue printQueue in LocalPrintServer.GetDefaultPrintQueue().HostingPrintServer.GetPrintQueues())
+				foreach (string printerName in PrinterSettings.InstalledPrinters) {
+					index++;
+					this.PrinterProfilePrinterCombo.AppendText(printerName);
+					if (this.SelectedProfile.GetPrinterName() == printerName)
+						currentPrinterIndex = index;
+				}
+				/*foreach (PrintQueue printQueue in LocalPrintServer.GetDefaultPrintQueue().HostingPrintServer.GetPrintQueues())
 				{
 					index++;
 					this.PrinterProfilePrinterCombo.AppendText(printQueue.FullName);
-					if (this.SelectedProfile.GetPrintQueue().FullName == printQueue.FullName)
+					if (this.SelectedProfile.GetPrinterName() == printerName)
 						currentPrinterIndex = index;
-				}
+				}*/
 				TreeIter iter;
 				this.PrinterProfilePrinterCombo.Model.IterNthChild(out iter, currentPrinterIndex);
 				this.PrinterProfilePrinterCombo.SetActiveIter(iter);
@@ -144,7 +149,8 @@ namespace UberDespatch
 				}
 
 				// Update Printer:
-				this.SelectedProfile.SetPrintQueue (this.PrinterProfilePrinterCombo.ActiveText);
+				//this.SelectedProfile.SetPrintQueue (this.PrinterProfilePrinterCombo.ActiveText);
+				this.SelectedProfile.SetPrinterName (this.PrinterProfilePrinterCombo.ActiveText);
 				Program.printer.SaveConfig ();
 			}
 			catch (Exception ex)

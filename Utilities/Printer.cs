@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Printing;
 using Gtk;
 using PdfiumViewer;
 
@@ -57,14 +56,16 @@ namespace UberDespatch
 				if (printerProfileConfig.ProfileName == "Default")
 					hasDefault = true;
 				PrinterProfile printerProfile = new PrinterProfile(printerProfileConfig.ProfileName);
-				printerProfile.SetPrintQueue (printerProfileConfig.PrinterName);
+				//printerProfile.SetPrintQueue (printerProfileConfig.PrinterName);
+				printerProfile.SetPrinterName(printerProfileConfig.PrinterName);
 				this.PrinterProfiles.Add (printerProfile.Name, printerProfile);
 			}
 
 			// Create Default If Missing:
 			if (!hasDefault) {
 				PrinterProfile printerProfile = new PrinterProfile("Default");
-				printerProfile.SetPrintQueue(DefaultPrinterName);
+				//printerProfile.SetPrintQueue(DefaultPrinterName);
+				printerProfile.SetPrinterName(DefaultPrinterName);
 				this.PrinterProfiles.Add(printerProfile.Name, printerProfile);
 			}
 		}
@@ -77,7 +78,7 @@ namespace UberDespatch
 			foreach (PrinterProfile printerProfile in this.PrinterProfiles.Values) {
 				PrinterProfile.ConfigPrinterProfile printerProfileConfig = new PrinterProfile.ConfigPrinterProfile();
 				printerProfileConfig.ProfileName = printerProfile.Name;
-				printerProfileConfig.PrinterName = printerProfile.GetPrintQueue ().FullName;
+				printerProfileConfig.PrinterName = printerProfile.GetPrinterName();
 				printerProfileConfigs.Add (printerProfileConfig);
 			}
 			this.Config.PrinterProfileEntries = printerProfileConfigs.ToArray ();
@@ -113,7 +114,7 @@ namespace UberDespatch
 
 
 		// ========== Print File ==========
-		public void PrintFile(Byte[] data, string printerProfileName = "Default")
+		/*public void PrintFile(Byte[] data, string printerProfileName = "Default")
 		{
 			PrinterProfile printerProfile = this.GetPrinterProfile(printerProfileName);
 			Program.LogAlert("Printer", "Printing label with printer: " + printerProfile.GetPrintQueue().Name + "...");
@@ -125,20 +126,20 @@ namespace UberDespatch
 					stream.Write(data, 0, data.Length);
 				}
 			});
-		}
+		}*/
 
 
 		// ========== Print PDF ==========
 		public void PrintPDF(string filePath, string printerProfileName = "Default")
 		{
 			PrinterProfile printerProfile = this.GetPrinterProfile(printerProfileName);
-			Program.LogAlert("Printer", "Printing PDF label with printer: " + printerProfile.GetPrintQueue().Name + "...");
+			Program.LogAlert("Printer", "Printing PDF label with printer: " + printerProfile.GetPrinterName() + "...");
 			Application.Invoke(delegate
 			{
 				try {
 					PdfDocument pdf = PdfDocument.Load(filePath);
 					PrintDocument printDoc = pdf.CreatePrintDocument();
-					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrintQueue().Name;
+					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
 					printDoc.Print();
 					pdf.Dispose();
 				}
@@ -154,13 +155,13 @@ namespace UberDespatch
 		public void PrintPNG(string filePath, string printerProfileName = "Default")
 		{
 			PrinterProfile printerProfile = this.GetPrinterProfile(printerProfileName);
-			Program.LogAlert("Printer", "Printing PNG label with printer: " + printerProfile.GetPrintQueue().Name + "...");
+			Program.LogAlert("Printer", "Printing PNG label with printer: " + printerProfile.GetPrinterName() + "...");
 			Application.Invoke(delegate
 			{
 				try
 				{
 					PrintDocument printDoc = new PrintDocument();
-					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrintQueue().Name;
+					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
 					printDoc.PrintPage += new PrintPageEventHandler(delegate(object o, PrintPageEventArgs e) {
 						System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
 						Point p = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);

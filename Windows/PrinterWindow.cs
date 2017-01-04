@@ -25,7 +25,8 @@ namespace UberDespatch
 			{
 				index++;
 				this.PrinterSelectionCombo.AppendText(printerName);
-				if (Program.printer.GetPrinterProfile("Default").GetPrintQueue().FullName == printerName)
+				//if (Program.printer.GetPrinterProfile("Default").GetPrintQueue().FullName == printerName)
+				if (Program.printer.GetPrinterProfile("Default").GetPrinterName() == printerName)
 					currentPrinterIndex = index;
 			}
 			TreeIter iter;
@@ -46,7 +47,8 @@ namespace UberDespatch
 		protected void Save()
 		{
 			PrinterProfile printerProfile = Program.printer.GetPrinterProfile("Default");
-			printerProfile.SetPrintQueue (this.PrinterSelectionCombo.ActiveText);
+			//printerProfile.SetPrintQueue (this.PrinterSelectionCombo.ActiveText);
+			printerProfile.SetPrinterName (this.PrinterSelectionCombo.ActiveText);
 			Program.printer.SaveConfig ();
 		}
 

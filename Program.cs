@@ -9,7 +9,7 @@ namespace UberDespatch
 {
 	class Program
 	{
-		public static string version = "1.10.1";
+		public static string version = "1.10.2";
 		public static string versionName = "Rich Inga";
 		public static ConfigGlobal configGlobal;
 		public static string Country = "GB"; // TODO: Localise UberDespatch in the future.

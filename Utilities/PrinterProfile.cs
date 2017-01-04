@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Printing;
 
 namespace UberDespatch
 {
 	public class PrinterProfile
 	{
 		public string Name;
-		public PrintQueue PrintQueue;
+		protected string PrinterName;
+		//public PrintQueue PrintQueue;
 		public int ImageOffsetX = 2;
 		public int ImageOffsetY = 2;
 
@@ -28,7 +28,23 @@ namespace UberDespatch
 		}
 
 
-		// ========== Get Print Queue ==========
+		// ========== Get Printer Name ==========
+		/** Returns the name of the printer used by this profile. **/
+		public string GetPrinterName()
+		{
+			return this.PrinterName;
+		}
+
+
+		// ========== Set Printer Name ==========
+		/** Set the name of the printer to be used by this profile. **/
+		public void SetPrinterName(string name)
+		{
+			this.PrinterName = name;
+		}
+
+
+		/*/ ========== Get Print Queue ==========
 		public PrintQueue GetPrintQueue()
 		{
 			return this.PrintQueue != null ? this.PrintQueue : LocalPrintServer.GetDefaultPrintQueue();
@@ -66,7 +82,7 @@ namespace UberDespatch
 				Program.LogWarning("Printer", this.Name + " Profile printer was not recognised: " + printQueueName + " the system default printer will be used instead which is: " + this.PrintQueue.Name);
 				Program.LogException(e);
 			}
-		}
+		}*/
 	}
 }
 
