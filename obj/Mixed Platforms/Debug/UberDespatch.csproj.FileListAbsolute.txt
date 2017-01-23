@@ -91,3 +91,13 @@ C:\UberDespatch\bin\Debug\PdfiumViewer.xml
 C:\UberDespatch\bin\Debug\nl\PdfiumViewer.resources.dll
 C:\UberDespatch\bin\Debug\wkhtmltopdf.exe
 C:\UberDespatch\bin\Debug\wkhtmltopdf32.exe
+C:\UberDespatch\bin\Debug\System.dll
+C:\UberDespatch\bin\Debug\System.Drawing.dll
+C:\UberDespatch\bin\Debug\System.Net.Http.dll
+C:\UberDespatch\bin\Debug\System.Printing.dll
+C:\UberDespatch\bin\Debug\System.Runtime.Serialization.dll
+C:\UberDespatch\bin\Debug\System.ServiceModel.dll
+C:\UberDespatch\bin\Debug\System.Web.Extensions.dll
+C:\UberDespatch\bin\Debug\System.Web.Services.dll
+C:\UberDespatch\bin\Debug\System.Xml.dll
+C:\UberDespatch\bin\Debug\System.Xml.Linq.dll

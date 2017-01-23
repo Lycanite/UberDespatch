@@ -375,7 +375,7 @@ namespace UberDespatch
 
 
 		// ========== Update Order ==========
-		// Updates the WMS with the provided order changes, this is primarily used for send back tracking numbers.
+		// Updates the WMS with the provided order changes, this is primarily used for sending back tracking information.
 		public override void UpdateOrder(Order order) {
 
 			// Check For Invalid Tracking Numbers:
@@ -389,9 +389,9 @@ namespace UberDespatch
 			}
 
 			// Send Tracking Number
-			Program.Log (this.name, "Sending tracking number...");
+			Program.Log (this.name, "Sending tracking informations...");
 			var saveRequest = new PvxApi.SaveRequest();
-			string input = "SalesOrderNumber,DespatchTrackingNumber\n" + order.OrderNumber + "," + order.TrackingNumber;
+			string input = "SalesOrderNumber,DespatchTrackingNumber,ServiceType\n" + order.OrderNumber + "," + order.TrackingNumber + "," + order.CarrierType;
 			if (this.config.debug) {
 				Program.Log(this.name, "Tracking Input: " + input);
 			}
@@ -405,7 +405,7 @@ namespace UberDespatch
 			if (connected) {
 				var responce = serviceProxy.SaveData(saveRequest);
 				if (responce.ResponseId == 0) {
-					Program.LogSuccess(this.name, "The tracking number sent successfully.");
+					Program.LogSuccess(this.name, "Tracking information was sent successfully.");
 					if (this.config.debug) {
 						try {
 							XmlSerializer x = new XmlSerializer(responce.GetType());
@@ -417,11 +417,11 @@ namespace UberDespatch
 					}
 				}
 				else {
-					Program.LogError (this.name, "Error sending tracking number:\n" + responce.Detail);
-					Program.LogError (this.name, "The tracking number was not sent.");
+					Program.LogError (this.name, "Tracking information failed to send.");
+					Program.LogException(responce.Detail);
 				}
 			} else {
-				Program.LogError (this.name, "Unable to connect, the tracking number was not sent.");
+				Program.LogError (this.name, "Unable to connect, tracking information was not sent.");
 			}
 		}
 	}

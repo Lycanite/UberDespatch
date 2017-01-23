@@ -91,3 +91,13 @@ C:\UberDespatch\bin\Mixed Platforms\Release\wkhtmltopdf.exe
 C:\UberDespatch\bin\Mixed Platforms\Release\wkhtmltopdf32.exe
 C:\UberDespatch\bin\Mixed Platforms\Release\x86\pdfium.dll
 C:\UberDespatch\bin\Mixed Platforms\Release\x64\pdfium.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Drawing.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Net.Http.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Printing.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Runtime.Serialization.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.ServiceModel.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Web.Extensions.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Web.Services.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Xml.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\System.Xml.Linq.dll
