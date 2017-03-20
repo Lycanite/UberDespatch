@@ -43,6 +43,7 @@ public partial class MainWindow: Gtk.Window
 	Gtk.TreeIter OrderCategoryAddress;
 	Gtk.TreeIter OrderCategoryDetails;
 	Gtk.TreeIter OrderCategoryCarrier;
+	Gtk.TreeIter OrderCategoryTranslations;
 
 	public Order CurrentOrder;
 	public bool animationTickActive = false; // Set to true when the animation tick is still processing, set to false when ready for a new animation update.
@@ -568,6 +569,13 @@ public partial class MainWindow: Gtk.Window
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Service", order.Service);
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Enhancement", order.Enhancement);
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Format", order.Format);
+
+			if (order.Translations != null && order.Translations.Count > 0) {
+				this.OrderCategoryTranslations = this.OrderTreeStore.AppendValues("Translations");
+				foreach (KeyValuePair<string, string> translationEntry in order.Translations) {
+					this.OrderTreeStore.AppendValues(this.OrderCategoryTranslations, translationEntry.Key, translationEntry.Value);
+				}
+			}
 
 			this.OrderTableTreeview.ExpandAll ();
 		}

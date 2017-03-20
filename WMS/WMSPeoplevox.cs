@@ -391,7 +391,7 @@ namespace UberDespatch
 			// Send Tracking Number
 			Program.Log (this.name, "Sending tracking informations...");
 			var saveRequest = new PvxApi.SaveRequest();
-			string input = "SalesOrderNumber,DespatchTrackingNumber,ServiceType\n" + order.OrderNumber + "," + order.TrackingNumber + "," + order.CarrierType;
+			string input = "SalesOrderNumber,DespatchTrackingNumber,CarrierName\n" + order.OrderNumber + "," + order.TrackingNumber + "," + order.CarrierType;
 			if (this.config.debug) {
 				Program.Log(this.name, "Tracking Input: " + input);
 			}
