@@ -1,17 +1,15 @@
 ﻿<Properties StartupConfiguration="{C1C1B243-F191-4F6E-8204-8BDD080321B1}|Default">
   <MonoDevelop.Ide.ItemProperties.UberDespatch PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|Mixed Platforms" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Carrier\Carrier.cs">
     <Files>
-      <File FileName="Program.cs" Line="12" Column="41" />
-      <File FileName="WMS\WMSPeoplevox.cs" Line="285" Column="18" />
-      <File FileName="Order.cs" Line="333" Column="21" />
-      <File FileName="Utilities\Translator.cs" Line="109" Column="55" />
-      <File FileName="Windows\MainWindow.cs" Line="578" Column="5" />
+      <File FileName="Program.cs" Line="23" Column="39" />
+      <File FileName="Carrier\CarrierRMDMO.cs" Line="151" Column="49" />
+      <File FileName="Carrier\Carrier.cs" Line="221" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

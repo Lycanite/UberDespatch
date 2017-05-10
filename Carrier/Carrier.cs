@@ -236,7 +236,7 @@ namespace UberDespatch
 			filteredInput = filteredInput.Replace ("ß", "ss");
 			filteredInput = filteredInput.Replace ("ø", "oe");
 			filteredInput = filteredInput.Replace("Ø", "Oe");
-			return Regex.Replace(filteredInput, @"[^\w\s\.\@\\\-º\/]", string.Empty);
+			return Regex.Replace(filteredInput, @"[^\w\s\.\@\\\-\/]", string.Empty);
 		}
 	}
 }
