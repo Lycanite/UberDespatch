@@ -37,10 +37,14 @@ namespace UberDespatch
 
 			// TODO Carriers should be located via plugins.
 
+			// None:
+			Carrier carrierManual = new CarrierManual ();
+			carriers.Add (carrierManual.name, carrierManual);
+			lastCarrierAdded = carrierManual.name;
+
 			// RMDMO:
 			Carrier carrierRMDMO = new CarrierRMDMO ();
 			carriers.Add (carrierRMDMO.name, carrierRMDMO);
-			lastCarrierAdded = carrierRMDMO.name;
 
 			// DPD:
 			Carrier carrierDPD = new CarrierDPD ();

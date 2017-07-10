@@ -369,7 +369,6 @@ namespace UberDespatch
 			}
 			order.Items = orderItems.ToArray ();
 
-			order.Translate();
 			return order;
 		}
 

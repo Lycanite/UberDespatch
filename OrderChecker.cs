@@ -90,6 +90,9 @@ namespace UberDespatch
 						return true;
 					}
 					rule.ApplyToOrder (order);
+
+					// Translate and Display:
+					order.Translate();
 					Program.DisplayOrder (order);
 
 					// Inspection (Manual Order Sending):

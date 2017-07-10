@@ -145,6 +145,7 @@
     <Compile Include="Rules\Alert.cs" />
     <Compile Include="WMS\WMSPeoplevoxWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.WMSPeoplevoxWindow.cs" />
+    <Compile Include="Carrier\CarrierManual.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

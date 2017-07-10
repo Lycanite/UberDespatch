@@ -91,6 +91,7 @@ namespace UberDespatch
 					cleanedUntranslated.Add (untranslatedEntry);
 				}
 				untranslated = cleanedUntranslated.ToArray ();
+				Program.Log ("Translator", "Translating " + untranslated.Length + " entries...");
 
 				// Create Request:
 				TranslationRequest translationRequest = new TranslationRequest ();

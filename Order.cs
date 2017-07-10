@@ -120,9 +120,9 @@ namespace UberDespatch
 		// ========== Has Packing Station ==========
 		/** Returns true if this order uses a packing station. **/
 		public bool HasPackingStation () {
-			if (this.Street.ToLower ().Contains ("packstation") || this.Street.ToLower ().Contains ("pack station"))
+			if (this.Street.ToLower ().Contains ("packstation") || this.Street.ToLower ().Contains ("pack station") || this.Street.ToLower ().Contains ("packing station"))
 				return true;
-			if (this.Locality.ToLower ().Contains ("packstation") || this.Locality.ToLower ().Contains ("pack station"))
+			if (this.Locality.ToLower ().Contains ("packstation") || this.Locality.ToLower ().Contains ("pack station") || this.Locality.ToLower ().Contains ("packing station"))
 				return true;
 			return false;
 		}
