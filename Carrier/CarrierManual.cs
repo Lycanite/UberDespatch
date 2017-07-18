@@ -23,6 +23,9 @@ namespace UberDespatch
 				iconExtension = ".png";
 				this.icon = new Gdk.Pixbuf(iconPath + iconDir + "edit" + iconExtension);
 			}
+
+			// Create Carrier Directory:
+			System.IO.Directory.CreateDirectory(Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + this.name);
 		}
 
 
