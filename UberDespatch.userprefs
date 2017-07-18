@@ -5,15 +5,10 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="WMS\WMSPeoplevox.cs">
     <Files>
-      <File FileName="Program.cs" Line="21" Column="45" />
-      <File FileName="Carrier\Carrier.cs" Line="189" Column="23" />
-      <File FileName="Carrier\CarrierRMDMO.cs" Line="139" Column="47" />
-      <File FileName="Carrier\CarrierManual.cs" Line="27" Column="32" />
-      <File FileName="OrderChecker.cs" Line="229" Column="133" />
-      <File FileName="Rules\Label.cs" Line="224" Column="117" />
-      <File FileName="Order.cs" Line="390" Column="16" />
+      <File FileName="Program.cs" Line="17" Column="39" />
+      <File FileName="WMS\WMSPeoplevox.cs" Line="401" Column="62" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />

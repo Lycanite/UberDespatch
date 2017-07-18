@@ -21,6 +21,7 @@ namespace UberDespatch
 			public string clientID = "";
 			public string username = "";
 			public string password = "";
+			public string updateTemplate = "SalesOrderNumber,DespatchTrackingNumber,Attribute3\n{OrderNumber},{TrackingNumber},{CarrierType}";
 			public bool debug = false;
 
 			public static ConfigWMSPeoplevox LoadFile() {
@@ -54,6 +55,8 @@ namespace UberDespatch
 				this.config.username = value;
 			else if (key == "password")
 				this.config.password = value;
+			else if (key == "updateTemplate")
+				this.config.updateTemplate = value;
 		}
 
 		/** Use to get a config value via key. This should be overriden and handled as neccesar.y **/
@@ -66,6 +69,8 @@ namespace UberDespatch
 				return this.config.username;
 			else if (key == "password")
 				return this.config.password;
+			else if (key == "updateTemplate")
+				return this.config.updateTemplate;
 			return "";
 		}
 
@@ -388,9 +393,12 @@ namespace UberDespatch
 			}
 
 			// Send Tracking Number
-			Program.Log (this.name, "Sending tracking informations...");
+			Program.Log (this.name, "Sending tracking information...");
 			var saveRequest = new PvxApi.SaveRequest();
-			string input = "SalesOrderNumber,DespatchTrackingNumber,CarrierName\n" + order.OrderNumber + "," + order.TrackingNumber + "," + order.CarrierType;
+			string input = this.GetConfigValue ("updateTemplate");
+			input = input.Replace ("{OrderNumber}", order.OrderNumber);
+			input = input.Replace ("{TrackingNumber}", order.TrackingNumber);
+			input = input.Replace ("{CarrierType}", order.Carrier.name);
 			if (this.config.debug) {
 				Program.Log(this.name, "Tracking Input: " + input);
 			}
