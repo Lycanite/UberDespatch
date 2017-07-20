@@ -54,9 +54,14 @@ namespace UberDespatch
 			Carrier carrierInterlink = new CarrierInterlink ();
 			carriers.Add (carrierInterlink.name, carrierInterlink);
 
-			// Hive - Amazon:
-			string amazonDesc = "This is a Hive powered carrier for Amazon Fulfilled/Prime. In the details box below you can add additional POST parameters, but none are required for Hive Amazon. To set the Hive Amazon Store Name use the service entry in the rules json.";
-			Carrier carrierHive = new CarrierHive("Amazon", amazonDesc);
+			// Remote - Amazon:
+			string carrierHiveDesc = "This is a Remote powered carrier for Amazon Fulfilled/Prime. In the details box below you can add additional POST parameters, if required. The service and format entries in the rules can be sent over if additional info is needed.";
+			Carrier carrierHive = new CarrierHive("Amazon", carrierHiveDesc);
+			carriers.Add(carrierHive.name, carrierHive);
+
+			// Remote - DHL:
+			carrierHiveDesc = "This is a Remote powered carrier for DHL. In the details box below you can add additional POST parameters, if required. The service and format entries in the rules can be sent over if additional info is needed.";
+			carrierHive = new CarrierHive("DHL", carrierHiveDesc);
 			carriers.Add(carrierHive.name, carrierHive);
 
 			Program.LogSuccess ("Carriers", carriers.Count + " carriers loaded: " + GetCarrierNames ());
@@ -122,6 +127,7 @@ namespace UberDespatch
 		// ========== Process Order ==========
 		// Sends an Order object to the carrier service for despatch, edits the order (adding a tracking number, etc) and then returns the order for the WMS to finish with.
 		public bool ProcessOrder(Order order) {
+			order.CarrierName = this.name;
 
 			// Send and Wait:
 			this.timedOut = false;
@@ -140,7 +146,7 @@ namespace UberDespatch
 			Program.Log (this.name, "Sending order...");
 			carrierThread.Start ();
 			long waitTime = 0;
-			while (waitTime < this.timeout && !order.Processed && !order.Cancelled && !order.Error) {
+			while ((this.timeout <= 0 || waitTime < this.timeout) && !order.Processed && !order.Cancelled && !order.Error) {
 				this.OnWait(waitTime);
 				waitTime++;
 				Thread.Sleep (1000);

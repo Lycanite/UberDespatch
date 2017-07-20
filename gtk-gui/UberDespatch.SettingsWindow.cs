@@ -58,6 +58,20 @@ namespace UberDespatch
 
 		private global::Gtk.Label WebLoggingLabel;
 
+		private global::Gtk.Frame DespatchFrame;
+
+		private global::Gtk.Alignment DespatchAlignment;
+
+		private global::Gtk.VBox DespatchLayout;
+
+		private global::Gtk.HBox DespatchURLLayout;
+
+		private global::Gtk.Label DespatchURLLabel;
+
+		private global::Gtk.Entry DespatchURLEntry;
+
+		private global::Gtk.Label DespatchLabel;
+
 		private global::Gtk.Frame TranslationFrame;
 
 		private global::Gtk.Alignment TranslationAlignment;
@@ -338,6 +352,62 @@ namespace UberDespatch
 			w24.Expand = false;
 			w24.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
+			this.DespatchFrame = new global::Gtk.Frame();
+			this.DespatchFrame.Name = "DespatchFrame";
+			this.DespatchFrame.ShadowType = ((global::Gtk.ShadowType)(0));
+			this.DespatchFrame.BorderWidth = ((uint)(8));
+			// Container child DespatchFrame.Gtk.Container+ContainerChild
+			this.DespatchAlignment = new global::Gtk.Alignment(0F, 0F, 1F, 1F);
+			this.DespatchAlignment.Name = "DespatchAlignment";
+			this.DespatchAlignment.LeftPadding = ((uint)(12));
+			// Container child DespatchAlignment.Gtk.Container+ContainerChild
+			this.DespatchLayout = new global::Gtk.VBox();
+			this.DespatchLayout.Name = "DespatchLayout";
+			this.DespatchLayout.Spacing = 6;
+			// Container child DespatchLayout.Gtk.Box+BoxChild
+			this.DespatchURLLayout = new global::Gtk.HBox();
+			this.DespatchURLLayout.Name = "DespatchURLLayout";
+			this.DespatchURLLayout.Spacing = 6;
+			// Container child DespatchURLLayout.Gtk.Box+BoxChild
+			this.DespatchURLLabel = new global::Gtk.Label();
+			this.DespatchURLLabel.WidthRequest = 200;
+			this.DespatchURLLabel.Name = "DespatchURLLabel";
+			this.DespatchURLLabel.LabelProp = global::Mono.Unix.Catalog.GetString("URL");
+			this.DespatchURLLabel.Wrap = true;
+			this.DespatchURLLabel.SingleLineMode = true;
+			this.DespatchURLLayout.Add(this.DespatchURLLabel);
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.DespatchURLLayout[this.DespatchURLLabel]));
+			w25.Position = 0;
+			w25.Expand = false;
+			w25.Fill = false;
+			// Container child DespatchURLLayout.Gtk.Box+BoxChild
+			this.DespatchURLEntry = new global::Gtk.Entry();
+			this.DespatchURLEntry.TooltipMarkup = "The URL of the web logging adress, if empty, web logging will be disable.";
+			this.DespatchURLEntry.CanFocus = true;
+			this.DespatchURLEntry.Name = "DespatchURLEntry";
+			this.DespatchURLEntry.IsEditable = true;
+			this.DespatchURLEntry.InvisibleChar = '•';
+			this.DespatchURLLayout.Add(this.DespatchURLEntry);
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.DespatchURLLayout[this.DespatchURLEntry]));
+			w26.Position = 1;
+			this.DespatchLayout.Add(this.DespatchURLLayout);
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.DespatchLayout[this.DespatchURLLayout]));
+			w27.Position = 0;
+			w27.Expand = false;
+			w27.Fill = false;
+			this.DespatchAlignment.Add(this.DespatchLayout);
+			this.DespatchFrame.Add(this.DespatchAlignment);
+			this.DespatchLabel = new global::Gtk.Label();
+			this.DespatchLabel.Name = "DespatchLabel";
+			this.DespatchLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Despatch</b>");
+			this.DespatchLabel.UseMarkup = true;
+			this.DespatchFrame.LabelWidget = this.DespatchLabel;
+			this.MainLayout.Add(this.DespatchFrame);
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.DespatchFrame]));
+			w30.Position = 2;
+			w30.Expand = false;
+			w30.Fill = false;
+			// Container child MainLayout.Gtk.Box+BoxChild
 			this.TranslationFrame = new global::Gtk.Frame();
 			this.TranslationFrame.Name = "TranslationFrame";
 			this.TranslationFrame.ShadowType = ((global::Gtk.ShadowType)(0));
@@ -362,10 +432,10 @@ namespace UberDespatch
 			this.TranslationURLLabel.Wrap = true;
 			this.TranslationURLLabel.SingleLineMode = true;
 			this.TranslationURLLayout.Add(this.TranslationURLLabel);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.TranslationURLLayout[this.TranslationURLLabel]));
-			w25.Position = 0;
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.TranslationURLLayout[this.TranslationURLLabel]));
+			w31.Position = 0;
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child TranslationURLLayout.Gtk.Box+BoxChild
 			this.TranslationURLEntry = new global::Gtk.Entry();
 			this.TranslationURLEntry.TooltipMarkup = "The URL of the web logging adress, if empty, web logging will be disable.";
@@ -374,13 +444,13 @@ namespace UberDespatch
 			this.TranslationURLEntry.IsEditable = true;
 			this.TranslationURLEntry.InvisibleChar = '•';
 			this.TranslationURLLayout.Add(this.TranslationURLEntry);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.TranslationURLLayout[this.TranslationURLEntry]));
-			w26.Position = 1;
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.TranslationURLLayout[this.TranslationURLEntry]));
+			w32.Position = 1;
 			this.TranslationLayout.Add(this.TranslationURLLayout);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationURLLayout]));
-			w27.Position = 0;
-			w27.Expand = false;
-			w27.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationURLLayout]));
+			w33.Position = 0;
+			w33.Expand = false;
+			w33.Fill = false;
 			// Container child TranslationLayout.Gtk.Box+BoxChild
 			this.TranslationKeyLayout = new global::Gtk.HBox();
 			this.TranslationKeyLayout.Name = "TranslationKeyLayout";
@@ -393,10 +463,10 @@ namespace UberDespatch
 			this.TranslationKeyLabel.Wrap = true;
 			this.TranslationKeyLabel.SingleLineMode = true;
 			this.TranslationKeyLayout.Add(this.TranslationKeyLabel);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.TranslationKeyLayout[this.TranslationKeyLabel]));
-			w28.Position = 0;
-			w28.Expand = false;
-			w28.Fill = false;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.TranslationKeyLayout[this.TranslationKeyLabel]));
+			w34.Position = 0;
+			w34.Expand = false;
+			w34.Fill = false;
 			// Container child TranslationKeyLayout.Gtk.Box+BoxChild
 			this.TranslationKeyEntry = new global::Gtk.Entry();
 			this.TranslationKeyEntry.TooltipMarkup = "The URL of the web logging adress, if empty, web logging will be disable.";
@@ -405,13 +475,13 @@ namespace UberDespatch
 			this.TranslationKeyEntry.IsEditable = true;
 			this.TranslationKeyEntry.InvisibleChar = '•';
 			this.TranslationKeyLayout.Add(this.TranslationKeyEntry);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.TranslationKeyLayout[this.TranslationKeyEntry]));
-			w29.Position = 1;
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.TranslationKeyLayout[this.TranslationKeyEntry]));
+			w35.Position = 1;
 			this.TranslationLayout.Add(this.TranslationKeyLayout);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationKeyLayout]));
-			w30.Position = 1;
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationKeyLayout]));
+			w36.Position = 1;
+			w36.Expand = false;
+			w36.Fill = false;
 			// Container child TranslationLayout.Gtk.Box+BoxChild
 			this.TranslationCountriesLayout = new global::Gtk.HBox();
 			this.TranslationCountriesLayout.Name = "TranslationCountriesLayout";
@@ -424,10 +494,10 @@ namespace UberDespatch
 			this.TranslationCountriesLabel.Wrap = true;
 			this.TranslationCountriesLabel.SingleLineMode = true;
 			this.TranslationCountriesLayout.Add(this.TranslationCountriesLabel);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.TranslationCountriesLayout[this.TranslationCountriesLabel]));
-			w31.Position = 0;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.TranslationCountriesLayout[this.TranslationCountriesLabel]));
+			w37.Position = 0;
+			w37.Expand = false;
+			w37.Fill = false;
 			// Container child TranslationCountriesLayout.Gtk.Box+BoxChild
 			this.TranslationCountriesEntry = new global::Gtk.Entry();
 			this.TranslationCountriesEntry.TooltipMarkup = "The URL of the web logging adress, if empty, web logging will be disable.";
@@ -436,13 +506,13 @@ namespace UberDespatch
 			this.TranslationCountriesEntry.IsEditable = true;
 			this.TranslationCountriesEntry.InvisibleChar = '•';
 			this.TranslationCountriesLayout.Add(this.TranslationCountriesEntry);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.TranslationCountriesLayout[this.TranslationCountriesEntry]));
-			w32.Position = 1;
+			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.TranslationCountriesLayout[this.TranslationCountriesEntry]));
+			w38.Position = 1;
 			this.TranslationLayout.Add(this.TranslationCountriesLayout);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationCountriesLayout]));
-			w33.Position = 2;
-			w33.Expand = false;
-			w33.Fill = false;
+			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.TranslationLayout[this.TranslationCountriesLayout]));
+			w39.Position = 2;
+			w39.Expand = false;
+			w39.Fill = false;
 			this.TranslationAlignment.Add(this.TranslationLayout);
 			this.TranslationFrame.Add(this.TranslationAlignment);
 			this.TranslationLabel = new global::Gtk.Label();
@@ -451,10 +521,10 @@ namespace UberDespatch
 			this.TranslationLabel.UseMarkup = true;
 			this.TranslationFrame.LabelWidget = this.TranslationLabel;
 			this.MainLayout.Add(this.TranslationFrame);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.TranslationFrame]));
-			w36.Position = 2;
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.TranslationFrame]));
+			w42.Position = 3;
+			w42.Expand = false;
+			w42.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
 			this.MainControlsLayout = new global::Gtk.HBox();
 			this.MainControlsLayout.Name = "MainControlsLayout";
@@ -463,8 +533,8 @@ namespace UberDespatch
 			this.MainControlsSpacerAlignment = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.MainControlsSpacerAlignment.Name = "MainControlsSpacerAlignment";
 			this.MainControlsLayout.Add(this.MainControlsSpacerAlignment);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.MainControlsSpacerAlignment]));
-			w37.Position = 0;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.MainControlsSpacerAlignment]));
+			w43.Position = 0;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.CancelButton = new global::Gtk.Button();
 			this.CancelButton.WidthRequest = 150;
@@ -473,14 +543,14 @@ namespace UberDespatch
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.UseUnderline = true;
 			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString("Cancel");
-			global::Gtk.Image w38 = new global::Gtk.Image();
-			w38.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
-			this.CancelButton.Image = w38;
+			global::Gtk.Image w44 = new global::Gtk.Image();
+			w44.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
+			this.CancelButton.Image = w44;
 			this.MainControlsLayout.Add(this.CancelButton);
-			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.CancelButton]));
-			w39.Position = 1;
-			w39.Expand = false;
-			w39.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.CancelButton]));
+			w45.Position = 1;
+			w45.Expand = false;
+			w45.Fill = false;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.ConfirmButton = new global::Gtk.Button();
 			this.ConfirmButton.WidthRequest = 150;
@@ -489,19 +559,19 @@ namespace UberDespatch
 			this.ConfirmButton.Name = "ConfirmButton";
 			this.ConfirmButton.UseUnderline = true;
 			this.ConfirmButton.Label = global::Mono.Unix.Catalog.GetString("Ok");
-			global::Gtk.Image w40 = new global::Gtk.Image();
-			w40.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png"));
-			this.ConfirmButton.Image = w40;
+			global::Gtk.Image w46 = new global::Gtk.Image();
+			w46.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png"));
+			this.ConfirmButton.Image = w46;
 			this.MainControlsLayout.Add(this.ConfirmButton);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.ConfirmButton]));
-			w41.Position = 2;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.ConfirmButton]));
+			w47.Position = 2;
+			w47.Expand = false;
+			w47.Fill = false;
 			this.MainLayout.Add(this.MainControlsLayout);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.MainControlsLayout]));
-			w42.Position = 3;
-			w42.Expand = false;
-			w42.Fill = false;
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.MainControlsLayout]));
+			w48.Position = 4;
+			w48.Expand = false;
+			w48.Fill = false;
 			this.Add(this.MainLayout);
 			if ((this.Child != null))
 			{

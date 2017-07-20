@@ -36,6 +36,12 @@ namespace UberDespatch
 
 		private global::Gtk.Entry PasswordEntry;
 
+		private global::Gtk.HBox UpdateTemplateLayout;
+
+		private global::Gtk.Label UpdateTemplateLabel;
+
+		private global::Gtk.Entry UpdateTemplateEntry;
+
 		private global::Gtk.Label APILabel;
 
 		private global::Gtk.HBox MainControlsLayout;
@@ -204,6 +210,37 @@ namespace UberDespatch
 			w12.Position = 3;
 			w12.Expand = false;
 			w12.Fill = false;
+			// Container child APILayout.Gtk.Box+BoxChild
+			this.UpdateTemplateLayout = new global::Gtk.HBox();
+			this.UpdateTemplateLayout.Name = "UpdateTemplateLayout";
+			this.UpdateTemplateLayout.Spacing = 6;
+			// Container child UpdateTemplateLayout.Gtk.Box+BoxChild
+			this.UpdateTemplateLabel = new global::Gtk.Label();
+			this.UpdateTemplateLabel.WidthRequest = 200;
+			this.UpdateTemplateLabel.Name = "UpdateTemplateLabel";
+			this.UpdateTemplateLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Update Template");
+			this.UpdateTemplateLabel.Wrap = true;
+			this.UpdateTemplateLabel.SingleLineMode = true;
+			this.UpdateTemplateLayout.Add(this.UpdateTemplateLabel);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.UpdateTemplateLayout[this.UpdateTemplateLabel]));
+			w13.Position = 0;
+			w13.Expand = false;
+			w13.Fill = false;
+			// Container child UpdateTemplateLayout.Gtk.Box+BoxChild
+			this.UpdateTemplateEntry = new global::Gtk.Entry();
+			this.UpdateTemplateEntry.TooltipMarkup = "The password used to login to the WMS.";
+			this.UpdateTemplateEntry.CanFocus = true;
+			this.UpdateTemplateEntry.Name = "UpdateTemplateEntry";
+			this.UpdateTemplateEntry.IsEditable = true;
+			this.UpdateTemplateEntry.InvisibleChar = '•';
+			this.UpdateTemplateLayout.Add(this.UpdateTemplateEntry);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.UpdateTemplateLayout[this.UpdateTemplateEntry]));
+			w14.Position = 1;
+			this.APILayout.Add(this.UpdateTemplateLayout);
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.APILayout[this.UpdateTemplateLayout]));
+			w15.Position = 4;
+			w15.Expand = false;
+			w15.Fill = false;
 			this.APIAlignment.Add(this.APILayout);
 			this.APIFrame.Add(this.APIAlignment);
 			this.APILabel = new global::Gtk.Label();
@@ -212,10 +249,10 @@ namespace UberDespatch
 			this.APILabel.UseMarkup = true;
 			this.APIFrame.LabelWidget = this.APILabel;
 			this.MainLayout.Add(this.APIFrame);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.APIFrame]));
-			w15.Position = 0;
-			w15.Expand = false;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.APIFrame]));
+			w18.Position = 0;
+			w18.Expand = false;
+			w18.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
 			this.MainControlsLayout = new global::Gtk.HBox();
 			this.MainControlsLayout.Name = "MainControlsLayout";
@@ -233,14 +270,14 @@ namespace UberDespatch
 			this.TestButton.Name = "TestButton";
 			this.TestButton.UseUnderline = true;
 			this.TestButton.Label = global::Mono.Unix.Catalog.GetString("Test Connection");
-			global::Gtk.Image w16 = new global::Gtk.Image();
-			w16.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png"));
-			this.TestButton.Image = w16;
+			global::Gtk.Image w19 = new global::Gtk.Image();
+			w19.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png"));
+			this.TestButton.Image = w19;
 			this.TestLayout.Add(this.TestButton);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.TestLayout[this.TestButton]));
-			w17.Position = 0;
-			w17.Expand = false;
-			w17.Fill = false;
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.TestLayout[this.TestButton]));
+			w20.Position = 0;
+			w20.Expand = false;
+			w20.Fill = false;
 			// Container child TestLayout.Gtk.Box+BoxChild
 			this.TestImage = new global::Gtk.Image();
 			this.TestImage.WidthRequest = 48;
@@ -248,21 +285,21 @@ namespace UberDespatch
 			this.TestImage.Name = "TestImage";
 			this.TestImage.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/question.png"));
 			this.TestLayout.Add(this.TestImage);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.TestLayout[this.TestImage]));
-			w18.Position = 1;
-			w18.Expand = false;
-			w18.Fill = false;
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.TestLayout[this.TestImage]));
+			w21.Position = 1;
+			w21.Expand = false;
+			w21.Fill = false;
 			this.MainControlsLayout.Add(this.TestLayout);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.TestLayout]));
-			w19.Position = 0;
-			w19.Expand = false;
-			w19.Fill = false;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.TestLayout]));
+			w22.Position = 0;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.MainControlsSpacerAlignment = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.MainControlsSpacerAlignment.Name = "MainControlsSpacerAlignment";
 			this.MainControlsLayout.Add(this.MainControlsSpacerAlignment);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.MainControlsSpacerAlignment]));
-			w20.Position = 1;
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.MainControlsSpacerAlignment]));
+			w23.Position = 1;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.CancelButton = new global::Gtk.Button();
 			this.CancelButton.WidthRequest = 150;
@@ -271,14 +308,14 @@ namespace UberDespatch
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.UseUnderline = true;
 			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString("Cancel");
-			global::Gtk.Image w21 = new global::Gtk.Image();
-			w21.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
-			this.CancelButton.Image = w21;
+			global::Gtk.Image w24 = new global::Gtk.Image();
+			w24.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
+			this.CancelButton.Image = w24;
 			this.MainControlsLayout.Add(this.CancelButton);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.CancelButton]));
-			w22.Position = 2;
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.CancelButton]));
+			w25.Position = 2;
+			w25.Expand = false;
+			w25.Fill = false;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.ConfirmButton = new global::Gtk.Button();
 			this.ConfirmButton.WidthRequest = 150;
@@ -287,19 +324,19 @@ namespace UberDespatch
 			this.ConfirmButton.Name = "ConfirmButton";
 			this.ConfirmButton.UseUnderline = true;
 			this.ConfirmButton.Label = global::Mono.Unix.Catalog.GetString("Ok");
-			global::Gtk.Image w23 = new global::Gtk.Image();
-			w23.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png"));
-			this.ConfirmButton.Image = w23;
+			global::Gtk.Image w26 = new global::Gtk.Image();
+			w26.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png"));
+			this.ConfirmButton.Image = w26;
 			this.MainControlsLayout.Add(this.ConfirmButton);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.ConfirmButton]));
-			w24.Position = 3;
-			w24.Expand = false;
-			w24.Fill = false;
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.ConfirmButton]));
+			w27.Position = 3;
+			w27.Expand = false;
+			w27.Fill = false;
 			this.MainLayout.Add(this.MainControlsLayout);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.MainControlsLayout]));
-			w25.Position = 1;
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.MainControlsLayout]));
+			w28.Position = 1;
+			w28.Expand = false;
+			w28.Fill = false;
 			this.Add(this.MainLayout);
 			if ((this.Child != null))
 			{

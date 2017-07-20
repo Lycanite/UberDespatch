@@ -19,7 +19,8 @@ namespace UberDespatch
 			this.URLEntry.Text = Program.wms.GetConfigValue("url");
 			this.ClientIDEntry.Text = Program.wms.GetConfigValue("clientID");
 			this.UsernameEntry.Text = Program.wms.GetConfigValue("username");
-			this.PasswordEntry.Text = Program.wms.GetConfigValue("password");
+           	this.PasswordEntry.Text = Program.wms.GetConfigValue("password");
+			this.UpdateTemplateEntry.Text = Program.wms.GetConfigValue("updateTemplate");
 		}
 
 
@@ -38,6 +39,7 @@ namespace UberDespatch
 			Program.wms.SetConfigValue("clientID", this.ClientIDEntry.Text);
 			Program.wms.SetConfigValue("username", this.UsernameEntry.Text);
 			Program.wms.SetConfigValue("password", this.PasswordEntry.Text);
+			Program.wms.SetConfigValue("updateTemplate", this.UpdateTemplateEntry.Text);
 			Program.wms.SaveConfig();
 
 			Thread wmsThread = new Thread(new ThreadStart(delegate

@@ -95,9 +95,10 @@ namespace UberDespatch
 					order.Translate();
 					Program.DisplayOrder (order);
 
+					// Pre Process:
+					order.OnPreProcess();
+
 					// Inspection (Manual Order Sending):
-					if(order.CarrierType == "Manual")
-						order.Edit = true;
 					if(!this.autoSend || order.Edit) {
 						if (order.Edit)
 							Program.LogAlert ("Order", "This order has been flagged for inspection. The order needs to be checked over and then manually sent.");
@@ -196,7 +197,6 @@ namespace UberDespatch
 		public void ProcessOrder (Order order) {
 			
 			// Process:
-			order.OnPreProcess();
 			if (this.TestLabels) {
 				this.ArchiveOrder(order);
 				return;

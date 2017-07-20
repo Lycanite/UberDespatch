@@ -54,8 +54,9 @@ namespace UberDespatch
 			this.PrinterSelectionLayout.Spacing = 6;
 			// Container child PrinterSelectionLayout.Gtk.Box+BoxChild
 			this.PrinterSelectionLabel = new global::Gtk.Label();
-			this.PrinterSelectionLabel.WidthRequest = 200;
+			this.PrinterSelectionLabel.WidthRequest = 100;
 			this.PrinterSelectionLabel.Name = "PrinterSelectionLabel";
+			this.PrinterSelectionLabel.Xalign = 0F;
 			this.PrinterSelectionLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Printer");
 			this.PrinterSelectionLayout.Add(this.PrinterSelectionLabel);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.PrinterSelectionLayout[this.PrinterSelectionLabel]));

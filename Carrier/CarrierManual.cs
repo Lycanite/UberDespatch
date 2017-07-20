@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+
 namespace UberDespatch
 {
 	public class CarrierManual : Carrier
@@ -8,6 +10,7 @@ namespace UberDespatch
 		public CarrierManual()
 		{
 			this.name = "Manual";
+			this.timeout = 0; // Infinite
 
 			// Icon:
 			string iconPath = Program.ExecutableFolder + System.IO.Path.DirectorySeparatorChar + "Icons" + System.IO.Path.DirectorySeparatorChar;
@@ -41,8 +44,14 @@ namespace UberDespatch
 		// Sends an Order object to the carrier service. This is invoked on a new thread while the main thread waits until WaitForCarrier() returns true.
 		public override void SendToCarrier(Order order)
 		{
-			Program.Log (this.name, "This order must be completed manually.");
-			order.Processed = true;
+			Program.Log (this.name, "This order must be completed manually, waiting for details...");
+			Gtk.Application.Invoke(delegate {
+				ManualWindow manualWindow = new ManualWindow(order);
+				manualWindow.Show();
+			});
+			while (!order.Cancelled && !order.Processed && !order.Error) {
+				Thread.Sleep (1000);
+			}
 		}
 	}
 }

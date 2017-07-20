@@ -567,7 +567,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="UberDespatch.SettingsWindow" design-size="633 501">
+  <widget class="Gtk.Window" id="UberDespatch.SettingsWindow" design-size="633 596">
     <property name="MemberName" />
     <property name="Title" translatable="yes">General Settings</property>
     <property name="Icon">file:./Icons/png/settings.png</property>
@@ -892,6 +892,83 @@
           </packing>
         </child>
         <child>
+          <widget class="Gtk.Frame" id="DespatchFrame">
+            <property name="MemberName" />
+            <property name="ShadowType">None</property>
+            <property name="BorderWidth">8</property>
+            <child>
+              <widget class="Gtk.Alignment" id="DespatchAlignment">
+                <property name="MemberName" />
+                <property name="Xalign">0</property>
+                <property name="Yalign">0</property>
+                <property name="LeftPadding">12</property>
+                <child>
+                  <widget class="Gtk.VBox" id="DespatchLayout">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.HBox" id="DespatchURLLayout">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="DespatchURLLabel">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">200</property>
+                            <property name="LabelProp" translatable="yes">URL</property>
+                            <property name="Wrap">True</property>
+                            <property name="SingleLineMode">True</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Entry" id="DespatchURLEntry">
+                            <property name="MemberName" />
+                            <property name="Tooltip" translatable="yes">The URL of the web logging adress, if empty, web logging will be disable.</property>
+                            <property name="CanFocus">True</property>
+                            <property name="IsEditable">True</property>
+                            <property name="InvisibleChar">•</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="DespatchLabel">
+                <property name="MemberName" />
+                <property name="LabelProp" translatable="yes">&lt;b&gt;Despatch&lt;/b&gt;</property>
+                <property name="UseMarkup">True</property>
+              </widget>
+              <packing>
+                <property name="type">label_item</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
           <widget class="Gtk.Frame" id="TranslationFrame">
             <property name="MemberName" />
             <property name="ShadowType">None</property>
@@ -1042,7 +1119,7 @@
             </child>
           </widget>
           <packing>
-            <property name="Position">2</property>
+            <property name="Position">3</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -1104,7 +1181,7 @@
             </child>
           </widget>
           <packing>
-            <property name="Position">3</property>
+            <property name="Position">4</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -2990,7 +3067,8 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                     <child>
                       <widget class="Gtk.Label" id="PrinterSelectionLabel">
                         <property name="MemberName" />
-                        <property name="WidthRequest">200</property>
+                        <property name="WidthRequest">100</property>
+                        <property name="Xalign">0</property>
                         <property name="LabelProp" translatable="yes">Printer</property>
                       </widget>
                       <packing>
@@ -3448,7 +3526,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="UberDespatch.WMSPeoplevoxWindow" design-size="705 270">
+  <widget class="Gtk.Window" id="UberDespatch.WMSPeoplevoxWindow" design-size="705 298">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Peoplevox</property>
     <property name="Icon">stock:gtk-preferences Menu</property>
@@ -3635,6 +3713,46 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                         <property name="Fill">False</property>
                       </packing>
                     </child>
+                    <child>
+                      <widget class="Gtk.HBox" id="UpdateTemplateLayout">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="UpdateTemplateLabel">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">200</property>
+                            <property name="LabelProp" translatable="yes">Update Template</property>
+                            <property name="Wrap">True</property>
+                            <property name="SingleLineMode">True</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Entry" id="UpdateTemplateEntry">
+                            <property name="MemberName" />
+                            <property name="Tooltip" translatable="yes">The password used to login to the WMS.</property>
+                            <property name="CanFocus">True</property>
+                            <property name="IsEditable">True</property>
+                            <property name="InvisibleChar">•</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">4</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
                   </widget>
                 </child>
               </widget>
@@ -3760,6 +3878,161 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
           </widget>
           <packing>
             <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="UberDespatch.ManualWindow" design-size="513 189">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Manual Despatch</property>
+    <property name="Icon">stock:gtk-edit Menu</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <property name="BorderWidth">8</property>
+    <property name="DefaultWidth">400</property>
+    <child>
+      <widget class="Gtk.VBox" id="MainLayout">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.Label" id="DescriptionLabel">
+            <property name="MemberName" />
+            <property name="Xalign">0</property>
+            <property name="LabelProp" translatable="yes">This order must be completed manually, please enter the despatch details below when complete.</property>
+            <property name="Wrap">True</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HBox" id="hbox2">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Label" id="CarrierNameLabel">
+                <property name="MemberName" />
+                <property name="WidthRequest">100</property>
+                <property name="Xalign">0</property>
+                <property name="LabelProp" translatable="yes">Carrier Name</property>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Entry" id="CarrierNameEntry">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="IsEditable">True</property>
+                <property name="InvisibleChar">●</property>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HBox" id="hbox3">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Label" id="TrackingNumberLabel">
+                <property name="MemberName" />
+                <property name="WidthRequest">100</property>
+                <property name="Xalign">0</property>
+                <property name="LabelProp" translatable="yes">Tracking Number</property>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Entry" id="TrackingNumberEntry">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="IsEditable">True</property>
+                <property name="InvisibleChar">●</property>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HBox" id="hbox1">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="CancelButton">
+                <property name="MemberName" />
+                <property name="WidthRequest">150</property>
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-cancel Menu</property>
+                <property name="Label" translatable="yes">Cancel</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Released" handler="OnCancelButtonReleased" />
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="ConfirmButton">
+                <property name="MemberName" />
+                <property name="WidthRequest">150</property>
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-apply Menu</property>
+                <property name="Label" translatable="yes">Complete</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Released" handler="OnConfirmButtonReleased" />
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">3</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>

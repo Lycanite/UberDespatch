@@ -1,14 +1,13 @@
 ﻿<Properties StartupConfiguration="{C1C1B243-F191-4F6E-8204-8BDD080321B1}|Default">
   <MonoDevelop.Ide.ItemProperties.UberDespatch PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|Mixed Platforms" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="WMS\WMSPeoplevox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="17" Column="39" />
-      <File FileName="WMS\WMSPeoplevox.cs" Line="401" Column="62" />
+      <File FileName="Program.cs" Line="81" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />

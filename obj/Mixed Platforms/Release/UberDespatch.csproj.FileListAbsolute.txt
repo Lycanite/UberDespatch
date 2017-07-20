@@ -101,3 +101,5 @@ C:\UberDespatch\bin\Mixed Platforms\Release\System.Web.Extensions.dll
 C:\UberDespatch\bin\Mixed Platforms\Release\System.Web.Services.dll
 C:\UberDespatch\bin\Mixed Platforms\Release\System.Xml.dll
 C:\UberDespatch\bin\Mixed Platforms\Release\System.Xml.Linq.dll
+C:\UberDespatch\bin\Mixed Platforms\Release\Icons\png\DHL.png
+C:\UberDespatch\bin\Mixed Platforms\Release\Icons\svg\DHL.svg

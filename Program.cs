@@ -9,8 +9,8 @@ namespace UberDespatch
 {
 	class Program
 	{
-		public static string version = "1.10.8";
-		public static string versionName = "Rich Inga";
+		public static string version = "1.11.0";
+		public static string versionName = "Solemn Hawthorn";
 		public static ConfigGlobal configGlobal;
 		public static string Country = "GB"; // TODO: Localise UberDespatch in the future.
 
@@ -67,6 +67,8 @@ namespace UberDespatch
 			public string logURL = "";
 			public string logUsername = "";
 			public string logPassword = "";
+
+			public string despatchURL = "";
 
 			public bool ignoreReferences = false;
 

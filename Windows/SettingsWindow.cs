@@ -25,6 +25,8 @@ namespace UberDespatch
 			this.WebLoggingUsernameEntry.Text = Program.configGlobal.logUsername;
 			this.WebLoggingPasswordEntry.Text = Program.configGlobal.logPassword;
 
+			this.DespatchURLEntry.Text = Program.configGlobal.despatchURL;
+
 			if (Program.Translator != null) {
 				this.TranslationURLEntry.Text = Program.Translator.Config.URL;
 				this.TranslationKeyEntry.Text = Program.Translator.Config.Key;
@@ -58,6 +60,8 @@ namespace UberDespatch
 			Program.configGlobal.logURL = this.WebLoggingURLEntry.Text;
 			Program.configGlobal.logUsername = this.WebLoggingUsernameEntry.Text;
 			Program.configGlobal.logPassword = this.WebLoggingPasswordEntry.Text;
+
+			Program.configGlobal.despatchURL = this.DespatchURLEntry.Text;
 
 			Program.configGlobal.SaveFile ();
 

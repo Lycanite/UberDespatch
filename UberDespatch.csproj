@@ -146,6 +146,8 @@
     <Compile Include="WMS\WMSPeoplevoxWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.WMSPeoplevoxWindow.cs" />
     <Compile Include="Carrier\CarrierManual.cs" />
+    <Compile Include="Windows\ManualWindow.cs" />
+    <Compile Include="gtk-gui\UberDespatch.ManualWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -403,6 +405,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Icons\png\DHL.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Icons\svg\DHL.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

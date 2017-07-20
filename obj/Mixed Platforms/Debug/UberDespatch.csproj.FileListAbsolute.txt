@@ -101,3 +101,5 @@ C:\UberDespatch\bin\Debug\System.Web.Extensions.dll
 C:\UberDespatch\bin\Debug\System.Web.Services.dll
 C:\UberDespatch\bin\Debug\System.Xml.dll
 C:\UberDespatch\bin\Debug\System.Xml.Linq.dll
+C:\UberDespatch\bin\Debug\Icons\png\DHL.png
+C:\UberDespatch\bin\Debug\Icons\svg\DHL.svg

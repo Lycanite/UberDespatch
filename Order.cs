@@ -5,6 +5,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using System.Threading;
+using System.Net;
+using System.Text;
 
 namespace UberDespatch
 {
@@ -26,6 +28,7 @@ namespace UberDespatch
 
 		// Order:
 		public string CarrierType = ""; // Set via WMS, this field is used to affect the behaviour of rules, for instance an order can be set to manual edit.
+		public string CarrierName = ""; // Set by the carrier when processed as a name to report back to a despatch server for logging and reports.
 		public string OrderStatus = "";
 		public string OrderNumber = "";
 		public string OrderDate = "";
@@ -210,6 +213,15 @@ namespace UberDespatch
 		}
 
 
+		// ========== Despatch Info ==========
+		public class DespatchInfo
+		{
+			public string OrderNumber;
+			public string TrackingNumber;
+			public string CarrierName;
+		}
+
+
 		// ========== Get JSON ==========
 		/** Returns this order in JSON format. **/
 		public string GetJSON () {
@@ -367,7 +379,32 @@ namespace UberDespatch
 		/** Called after this order has been successfully processed, additional labels are printed here as well as alerts such as for Gift Wrapping. **/
 		public void OnPostProcess()
 		{
-			
+			string despatchURL = Program.configGlobal.despatchURL;
+			if (despatchURL == "")
+				return;
+
+			Program.Log ("Order", "Sending despatch information to server (" + despatchURL + ")...");
+			WebClient web = new WebClient();
+			web.Encoding = Encoding.UTF8;
+			try
+			{
+				DespatchInfo despatchInfo = new DespatchInfo();
+				despatchInfo.OrderNumber = this.OrderNumber;
+				despatchInfo.TrackingNumber = this.TrackingNumber;
+				despatchInfo.CarrierName = this.CarrierName;
+
+				JavaScriptSerializer serializer = new JavaScriptSerializer();
+				string despatchInfoJSON = serializer.Serialize(despatchInfo);
+				web.Headers[HttpRequestHeader.ContentType] = "application/json";
+				web.Headers.Add("Accept-Charset", "utf-8");
+				string output = web.UploadString(new Uri(despatchURL), "POST", despatchInfoJSON);
+			}
+			catch (Exception e)
+			{
+				Program.LogWarning("Order", "There was a problem sending despatch information via: " + despatchURL);
+				Program.LogException(e);
+			}
+
 		}
 
 
