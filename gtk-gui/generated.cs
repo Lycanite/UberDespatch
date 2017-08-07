@@ -6,68 +6,58 @@ namespace Stetic
 	{
 		private static bool initialized;
 
-		internal static void Initialize(Gtk.Widget iconRenderer)
+		internal static void Initialize (Gtk.Widget iconRenderer)
 		{
-			if ((Stetic.Gui.initialized == false))
-			{
+			if ((Stetic.Gui.initialized == false)) {
 				Stetic.Gui.initialized = true;
-				global::Gtk.IconFactory w1 = new global::Gtk.IconFactory();
-				global::Gtk.IconSet w2 = new global::Gtk.IconSet(new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png")));
-				w1.Add("refresh", w2);
-				global::Gtk.IconSet w3 = new global::Gtk.IconSet(new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/quit-small.png")));
-				w1.Add("quit", w3);
-				global::Gtk.IconSet w4 = new global::Gtk.IconSet(new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/settings.png")));
-				w1.Add("settings", w4);
-				global::Gtk.IconSet w5 = new global::Gtk.IconSet(new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/plugin.png")));
-				w1.Add("plugin", w5);
-				global::Gtk.IconSet w6 = new global::Gtk.IconSet(new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png")));
-				w1.Add("apply", w6);
-				w1.AddDefault();
+				global::Gtk.IconFactory w1 = new global::Gtk.IconFactory ();
+				global::Gtk.IconSet w2 = new global::Gtk.IconSet (new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png")));
+				w1.Add ("refresh", w2);
+				global::Gtk.IconSet w3 = new global::Gtk.IconSet (new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/quit-small.png")));
+				w1.Add ("quit", w3);
+				global::Gtk.IconSet w4 = new global::Gtk.IconSet (new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/settings.png")));
+				w1.Add ("settings", w4);
+				global::Gtk.IconSet w5 = new global::Gtk.IconSet (new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/plugin.png")));
+				w1.Add ("plugin", w5);
+				global::Gtk.IconSet w6 = new global::Gtk.IconSet (new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/apply-small.png")));
+				w1.Add ("apply", w6);
+				w1.AddDefault ();
 			}
 		}
 	}
 
 	internal class IconLoader
 	{
-		public static Gdk.Pixbuf LoadIcon(Gtk.Widget widget, string name, Gtk.IconSize size)
+		public static Gdk.Pixbuf LoadIcon (Gtk.Widget widget, string name, Gtk.IconSize size)
 		{
-			Gdk.Pixbuf res = widget.RenderIcon(name, size, null);
-			if ((res != null))
-			{
+			Gdk.Pixbuf res = widget.RenderIcon (name, size, null);
+			if ((res != null)) {
 				return res;
-			}
-			else
-			{
+			} else {
 				int sz;
 				int sy;
-				global::Gtk.Icon.SizeLookup(size, out sz, out sy);
-				try
-				{
-					return Gtk.IconTheme.Default.LoadIcon(name, sz, 0);
-				}
-				catch (System.Exception)
-				{
-					if ((name != "gtk-missing-image"))
-					{
-						return Stetic.IconLoader.LoadIcon(widget, "gtk-missing-image", size);
-					}
-					else
-					{
-						Gdk.Pixmap pmap = new Gdk.Pixmap(Gdk.Screen.Default.RootWindow, sz, sz);
-						Gdk.GC gc = new Gdk.GC(pmap);
-						gc.RgbFgColor = new Gdk.Color(255, 255, 255);
-						pmap.DrawRectangle(gc, true, 0, 0, sz, sz);
-						gc.RgbFgColor = new Gdk.Color(0, 0, 0);
-						pmap.DrawRectangle(gc, false, 0, 0, (sz - 1), (sz - 1));
-						gc.SetLineAttributes(3, Gdk.LineStyle.Solid, Gdk.CapStyle.Round, Gdk.JoinStyle.Round);
-						gc.RgbFgColor = new Gdk.Color(255, 0, 0);
-						pmap.DrawLine(gc, (sz / 4), (sz / 4), ((sz - 1)
-										- (sz / 4)), ((sz - 1)
-										- (sz / 4)));
-						pmap.DrawLine(gc, ((sz - 1)
-										- (sz / 4)), (sz / 4), (sz / 4), ((sz - 1)
-										- (sz / 4)));
-						return Gdk.Pixbuf.FromDrawable(pmap, pmap.Colormap, 0, 0, 0, 0, sz, sz);
+				global::Gtk.Icon.SizeLookup (size, out sz, out sy);
+				try {
+					return Gtk.IconTheme.Default.LoadIcon (name, sz, 0);
+				} catch (System.Exception) {
+					if ((name != "gtk-missing-image")) {
+						return Stetic.IconLoader.LoadIcon (widget, "gtk-missing-image", size);
+					} else {
+						Gdk.Pixmap pmap = new Gdk.Pixmap (Gdk.Screen.Default.RootWindow, sz, sz);
+						Gdk.GC gc = new Gdk.GC (pmap);
+						gc.RgbFgColor = new Gdk.Color (255, 255, 255);
+						pmap.DrawRectangle (gc, true, 0, 0, sz, sz);
+						gc.RgbFgColor = new Gdk.Color (0, 0, 0);
+						pmap.DrawRectangle (gc, false, 0, 0, (sz - 1), (sz - 1));
+						gc.SetLineAttributes (3, Gdk.LineStyle.Solid, Gdk.CapStyle.Round, Gdk.JoinStyle.Round);
+						gc.RgbFgColor = new Gdk.Color (255, 0, 0);
+						pmap.DrawLine (gc, (sz / 4), (sz / 4), ((sz - 1)
+						- (sz / 4)), ((sz - 1)
+						- (sz / 4)));
+						pmap.DrawLine (gc, ((sz - 1)
+						- (sz / 4)), (sz / 4), (sz / 4), ((sz - 1)
+						- (sz / 4)));
+						return Gdk.Pixbuf.FromDrawable (pmap, pmap.Colormap, 0, 0, 0, 0, sz, sz);
 					}
 				}
 			}
@@ -76,12 +66,12 @@ namespace Stetic
 
 	internal class ActionGroups
 	{
-		public static Gtk.ActionGroup GetActionGroup(System.Type type)
+		public static Gtk.ActionGroup GetActionGroup (System.Type type)
 		{
-			return Stetic.ActionGroups.GetActionGroup(type.FullName);
+			return Stetic.ActionGroups.GetActionGroup (type.FullName);
 		}
 
-		public static Gtk.ActionGroup GetActionGroup(string name)
+		public static Gtk.ActionGroup GetActionGroup (string name)
 		{
 			return null;
 		}

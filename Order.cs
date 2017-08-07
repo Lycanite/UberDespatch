@@ -333,7 +333,7 @@ namespace UberDespatch
 		/** Translates any translatable fields (address fields) if a translation service is set. **/
 		public void Translate()
 		{
-			if (!Program.CanTranslate(this.Country) || this.Country.ToUpper () == Program.Country)
+			if (!Program.CanTranslate(this.Country) || this.Country.ToUpper () == Program.Language)
 				return;
 			List<string> untranslated = new List<string> ();
 			untranslated.Add (this.CountryName);

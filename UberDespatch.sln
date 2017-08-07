@@ -1,24 +1,20 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberDespatch", "UberDespatch.csproj", "{C1C1B243-F191-4F6E-8204-8BDD080321B1}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberDespatch", "UberDespatch.csproj", "{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Mixed Platforms = Debug|Mixed Platforms
-		Release|Mixed Platforms = Release|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C1C1B243-F191-4F6E-8204-8BDD080321B1}.Debug|Mixed Platforms.ActiveCfg = Debug|Mixed Platforms
-		{C1C1B243-F191-4F6E-8204-8BDD080321B1}.Debug|Mixed Platforms.Build.0 = Debug|Mixed Platforms
-		{C1C1B243-F191-4F6E-8204-8BDD080321B1}.Release|Mixed Platforms.ActiveCfg = Release|Mixed Platforms
-		{C1C1B243-F191-4F6E-8204-8BDD080321B1}.Release|Mixed Platforms.Build.0 = Release|Mixed Platforms
+		{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}.Debug|x86.ActiveCfg = Debug|x86
+		{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}.Debug|x86.Build.0 = Debug|x86
+		{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}.Release|x86.ActiveCfg = Release|x86
+		{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = UberDespatch.csproj
-		Policies = $0
-		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = None
-		$1.ResourceNamePolicy = FileFormatDefault
+		version = 1.11.1
 	EndGlobalSection
 EndGlobal

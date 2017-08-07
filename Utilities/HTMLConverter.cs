@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Codaxy.WkHtmlToPdf;
+using System.Collections.Generic;
 
 namespace UberDespatch
 {
@@ -36,7 +37,15 @@ namespace UberDespatch
 					Html = html,
 					HeaderLeft = "",
 					HeaderRight = "",
-					FooterCenter = ""
+					FooterCenter = "",
+					ExtraParams = new Dictionary<string, string> () {
+						{"quiet", ""},
+						{"disable-javascript", ""},
+						{"disable-smart-shrinking", ""},
+						{"images", ""},
+						{"zoom", "1.33"},
+						{"encoding", "'utf-8'"}
+					}
 				}, new PdfConvertEnvironment
 				{
 					TempFolderPath = Path.GetTempPath(),

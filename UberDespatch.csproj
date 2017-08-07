@@ -2,20 +2,15 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">Mixed Platforms</Platform>
-    <ProjectGuid>{C1C1B243-F191-4F6E-8204-8BDD080321B1}</ProjectGuid>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{8BF05F11-7C2F-4D85-937F-2CE718D48D4D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>UberDespatch</RootNamespace>
     <AssemblyName>UberDespatch</AssemblyName>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
-    <StartupObject>UberDespatch.Program</StartupObject>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ReleaseVersion>1.1.0</ReleaseVersion>
-    <SynchReleaseVersion>false</SynchReleaseVersion>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ReleaseVersion>1.11.1</ReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Mixed Platforms' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,68 +19,52 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Mixed Platforms' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Mixed Platforms\Release</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Services">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
     </Reference>
-    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
-      <Private>True</Private>
+    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glade-sharp-2.0</Package>
     </Reference>
     <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
-    <Reference Include="System.Printing">
-      <Private>True</Private>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="PdfiumViewer">
-      <HintPath>packages\PdfiumViewer.2.11.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+      <HintPath>packages\PdfiumViewer.2.12.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -95,331 +74,297 @@
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web References\PvxApi\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="OrderChecker.cs" />
     <Compile Include="ConfigBase.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderChecker.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Carrier\Carrier.cs" />
+    <Compile Include="Carrier\CarrierDPD.cs" />
+    <Compile Include="Carrier\CarrierDPDWindow.cs" />
+    <Compile Include="Carrier\CarrierHive.cs" />
+    <Compile Include="Carrier\CarrierHiveWindow.cs" />
+    <Compile Include="Carrier\CarrierInterlink.cs" />
+    <Compile Include="Carrier\CarrierInterlinkWindow.cs" />
+    <Compile Include="Carrier\CarrierManual.cs" />
+    <Compile Include="Carrier\CarrierRMDMO.cs" />
+    <Compile Include="Carrier\CarrierRMDMOWindow.cs" />
+    <Compile Include="Rules\Alert.cs" />
+    <Compile Include="Rules\Label.cs" />
     <Compile Include="Rules\Rule.cs" />
     <Compile Include="Rules\Zone.cs" />
-    <Compile Include="Carrier\CarrierRMDMO.cs" />
-    <Compile Include="Carrier\Carrier.cs" />
+    <Compile Include="Utilities\Decoder.cs" />
+    <Compile Include="Utilities\HTMLConverter.cs" />
+    <Compile Include="Utilities\Printer.cs" />
+    <Compile Include="Utilities\PrinterProfile.cs" />
+    <Compile Include="Utilities\Translator.cs" />
     <Compile Include="WMS\WMS.cs" />
     <Compile Include="WMS\WMSPeoplevox.cs" />
+    <Compile Include="WMS\WMSPeoplevoxWindow.cs" />
+    <Compile Include="Web References\PvxApi\Reference.cs" />
+    <Compile Include="Windows\AlertDialog.cs" />
     <Compile Include="Windows\CarriersWindow.cs" />
+    <Compile Include="Windows\MainWindow.cs" />
+    <Compile Include="Windows\ManualWindow.cs" />
     <Compile Include="Windows\NoCarriersDialog.cs" />
-    <Compile Include="Carrier\CarrierDPD.cs" />
-    <Compile Include="Carrier\CarrierInterlink.cs" />
-    <Compile Include="Carrier\CarrierRMDMOWindow.cs" />
-    <Compile Include="Carrier\CarrierDPDWindow.cs" />
+    <Compile Include="Windows\PrinterManagerWindow.cs" />
+    <Compile Include="Windows\PrinterWindow.cs" />
+    <Compile Include="Windows\RulesWindow.cs" />
+    <Compile Include="Windows\SettingsWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.SettingsWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.RulesWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.NoCarriersDialog.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierRMDMOWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarriersWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierDPDWindow.cs" />
-    <Compile Include="Windows\MainWindow.cs" />
-    <Compile Include="Windows\RulesWindow.cs" />
-    <Compile Include="Windows\SettingsWindow.cs" />
-    <Compile Include="Carrier\CarrierInterlinkWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierInterlinkWindow.cs" />
-    <Compile Include="Carrier\CarrierHive.cs" />
-    <Compile Include="Carrier\CarrierHiveWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierHiveWindow.cs" />
-    <Compile Include="Utilities\Decoder.cs" />
-    <Compile Include="Utilities\Printer.cs" />
-    <Compile Include="Windows\PrinterWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.PrinterWindow.cs" />
-    <Compile Include="Rules\Label.cs" />
-    <Compile Include="Windows\PrinterManagerWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.PrinterManagerWindow.cs" />
-    <Compile Include="Utilities\PrinterProfile.cs" />
-    <Compile Include="Windows\AlertDialog.cs" />
     <Compile Include="gtk-gui\UberDespatch.AlertDialog.cs" />
-    <Compile Include="Utilities\HTMLConverter.cs" />
-    <Compile Include="Utilities\PdfConvert.cs" />
-    <Compile Include="Utilities\Translator.cs" />
-    <Compile Include="Rules\Alert.cs" />
-    <Compile Include="WMS\WMSPeoplevoxWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.WMSPeoplevoxWindow.cs" />
-    <Compile Include="Carrier\CarrierManual.cs" />
-    <Compile Include="Windows\ManualWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.ManualWindow.cs" />
+    <Compile Include="PdfConvert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Content Include="icon.png">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <DeployService-Deploy>True</DeployService-Deploy>
+    <None Include="app-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wkhtmltopdf.exe" />
+    <None Include="wkhtmltopdf32.exe" />
+    <None Include="Web References\PvxApi\IntegrationResponse1.datasource" />
+    <None Include="Web References\PvxApi\Reference.map" />
+    <None Include="Web References\PvxApi\integrationservicev4.disco" />
+    <None Include="Web References\PvxApi\integrationservicev4.wsdl" />
+    <None Include="packages.config" />
+    <None Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://peoplevox.net/appb/resources/integrationservicev4.asmx?disco">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PvxApi</RelPath>
+      <UpdateFromURL>http://peoplevox.net/appb/resources/integrationservicev4.asmx?disco</UpdateFromURL>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\svg\Amazon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\DHL.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\DPD.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\Interlink.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\RoyalMail.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\apply-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\apply.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\edit-alt.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\edit-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\edit.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\execute.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\find-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Icons\svg\no.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Icons\svg\find.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\info.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\internet.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\login.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\no-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\no.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\pause.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\play-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\play.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\plugin.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\print.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\question.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\quit-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Icons\svg\refresh.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Icons\svg\quit.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\refresh-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\refresh.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\settings.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\svg\skip-small.svg">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Icons\png\refresh-small.png">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Icons\svg\skip.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\text.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\warning.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\svg\yes.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\png\Amazon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\png\DHL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\png\DPD.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\png\Interlink.png">
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://peoplevox.net/appb/resources/integrationservicev4.asmx?wsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\PvxApi</RelPath>
-      <UpdateFromURL>http://peoplevox.net/appb/resources/integrationservicev4.asmx?wsdl</UpdateFromURL>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\PvxApi\integrationservicev4.wsdl" />
-    <None Include="Web References\PvxApi\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="app-icon.png">
-      <DeployService-Deploy>True</DeployService-Deploy>
+    <Content Include="Icons\png\RoyalMail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\apply.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\DPD.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\edit.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\edit-alt.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\find.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\info.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\Interlink.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\internet.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\login.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\pause.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\play.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\print.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\quit.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\RoyalMail.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\skip.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\text.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\warning.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\yes.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\apply.png">
+    </Content>
+    <Content Include="Icons\png\apply-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\apply-small.png">
+    </Content>
+    <Content Include="Icons\png\apply.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\edit.png">
+    </Content>
+    <Content Include="Icons\png\edit-alt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\edit-alt.png">
+    </Content>
+    <Content Include="Icons\png\edit-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\edit-small.png">
+    </Content>
+    <Content Include="Icons\png\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\execute.png">
+    </Content>
+    <Content Include="Icons\png\execute.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\find.png">
+    </Content>
+    <Content Include="Icons\png\find-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\find-small.png">
+    </Content>
+    <Content Include="Icons\png\find.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\info.png">
+    </Content>
+    <Content Include="Icons\png\info.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\internet.png">
+    </Content>
+    <Content Include="Icons\png\internet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\login.png">
+    </Content>
+    <Content Include="Icons\png\login.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\no.png">
+    </Content>
+    <Content Include="Icons\png\no-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\no-small.png">
+    </Content>
+    <Content Include="Icons\png\no.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\pause.png">
+    </Content>
+    <Content Include="Icons\png\pause.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\play.png">
+    </Content>
+    <Content Include="Icons\png\play-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\play-small.png">
+    </Content>
+    <Content Include="Icons\png\play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\plugin.png">
+    </Content>
+    <Content Include="Icons\png\plugin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\print.png">
+    </Content>
+    <Content Include="Icons\png\print.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\question.png">
+    </Content>
+    <Content Include="Icons\png\question.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\quit.png">
+    </Content>
+    <Content Include="Icons\png\quit-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\quit-small.png">
+    </Content>
+    <Content Include="Icons\png\quit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\refresh.png">
+    </Content>
+    <Content Include="Icons\png\refresh-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\RoyalMail.png">
+    </Content>
+    <Content Include="Icons\png\refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\settings.png">
+    </Content>
+    <Content Include="Icons\png\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\skip.png">
+    </Content>
+    <Content Include="Icons\png\skip-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\skip-small.png">
+    </Content>
+    <Content Include="Icons\png\skip.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\text.png">
+    </Content>
+    <Content Include="Icons\png\text.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\warning.png">
+    </Content>
+    <Content Include="Icons\png\warning.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\yes.png">
+    </Content>
+    <Content Include="Icons\png\yes.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="icon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\Amazon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\Amazon.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-    <None Include="wkhtmltopdf.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="wkhtmltopdf32.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="x86\pdfium.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="x64\pdfium.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\png\DHL.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Icons\svg\DHL.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Carrier\" />
-    <Folder Include="WMS\" />
-    <Folder Include="Windows\" />
-    <Folder Include="Icons\png\" />
-    <Folder Include="Icons\svg\" />
-    <Folder Include="Utilities\" />
+    </Content>
   </ItemGroup>
 </Project>

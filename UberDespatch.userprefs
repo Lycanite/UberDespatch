@@ -1,14 +1,15 @@
-﻿<Properties StartupConfiguration="{C1C1B243-F191-4F6E-8204-8BDD080321B1}|Default">
-  <MonoDevelop.Ide.ItemProperties.UberDespatch PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+﻿<Properties StartupItem="UberDespatch.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Utilities/Printer.cs">
+    <Files>
+      <File FileName="Program.cs" Line="19" Column="25" />
+      <File FileName="PdfConvert.cs" Line="130" Column="13" />
+      <File FileName="Utilities/HTMLConverter.cs" Line="33" Column="9" />
+      <File FileName="Utilities/Printer.cs" Line="140" Column="11" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
-    <Files>
-      <File FileName="Program.cs" Line="81" Column="5" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

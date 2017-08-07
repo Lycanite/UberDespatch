@@ -9,10 +9,10 @@ namespace UberDespatch
 {
 	class Program
 	{
-		public static string version = "1.11.0";
+		public static string version = "1.11.1";
 		public static string versionName = "Solemn Hawthorn";
 		public static ConfigGlobal configGlobal;
-		public static string Country = "GB"; // TODO: Localise UberDespatch in the future.
+		public static string Language = "EN-GB"; // TODO: Localise UberDespatch in the future.
 
 		public static MainWindow mainWindow;
 		public static OrderChecker orderChecker;

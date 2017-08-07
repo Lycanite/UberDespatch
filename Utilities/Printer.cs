@@ -5,6 +5,7 @@ using System.Drawing.Printing;
 using System.IO;
 using Gtk;
 using PdfiumViewer;
+using System.Diagnostics;
 
 namespace UberDespatch
 {
@@ -134,14 +135,30 @@ namespace UberDespatch
 		{
 			PrinterProfile printerProfile = this.GetPrinterProfile(printerProfileName);
 			Program.LogAlert("Printer", "Printing PDF label with printer: " + printerProfile.GetPrinterName() + "...");
-			Application.Invoke(delegate
-			{
+			Application.Invoke(delegate {
 				try {
-					PdfDocument pdf = PdfDocument.Load(filePath);
-					PrintDocument printDoc = pdf.CreatePrintDocument();
-					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
-					printDoc.Print();
-					pdf.Dispose();
+					if (System.Environment.OSVersion.ToString().ToLower().Contains("windows")) {
+						PdfDocument pdf = PdfDocument.Load(filePath);
+						PrintDocument printDoc = pdf.CreatePrintDocument();
+						printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
+						printDoc.Print();
+						pdf.Dispose();
+					}
+					else {
+						Process process = new Process();
+						process.StartInfo.FileName = "lp";
+						if(printerProfile.GetPrinterName() == "System Default")
+							process.StartInfo.Arguments = filePath;
+						else
+							process.StartInfo.Arguments = "-d \"" + printerProfile.GetPrinterName() + "\" " + filePath;
+						process.StartInfo.UseShellExecute = false;
+						process.StartInfo.RedirectStandardOutput = true;
+						process.StartInfo.RedirectStandardError = true;
+						process.StartInfo.RedirectStandardInput = true;
+						Program.LogAlert("Printer", "Starting Linux Print: " + process.StartInfo.FileName + " " + process.StartInfo.Arguments);
+						process.Start();
+						process.WaitForExit();
+					}
 				}
 				catch (Exception e) {
 					Program.LogError ("Printer", "An error occured when attempting to print.");
