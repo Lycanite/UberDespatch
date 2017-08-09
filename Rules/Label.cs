@@ -221,7 +221,7 @@ namespace UberDespatch
 
 				// Get Label Filepath:
 				if (!this.Shared) {
-					filepath = Program.configGlobal.archivePath + Path.DirectorySeparatorChar + order.Carrier.name + Path.DirectorySeparatorChar + order.OrderNumber + "-" + this.Name + ".pdf";
+					filepath = Program.configGlobal.archivePath + Path.DirectorySeparatorChar + order.Carrier.Name + Path.DirectorySeparatorChar + order.OrderNumber + "-" + this.Name + ".pdf";
 					Program.LogAlert("Labels", "Generating " + this.Name + " label, please wait...");
 				}
 				else {

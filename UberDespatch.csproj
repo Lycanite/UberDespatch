@@ -7,8 +7,9 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UberDespatch</RootNamespace>
     <AssemblyName>UberDespatch</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ReleaseVersion>1.11.1</ReleaseVersion>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,8 +83,6 @@
     <Compile Include="Carrier\Carrier.cs" />
     <Compile Include="Carrier\CarrierDPD.cs" />
     <Compile Include="Carrier\CarrierDPDWindow.cs" />
-    <Compile Include="Carrier\CarrierHive.cs" />
-    <Compile Include="Carrier\CarrierHiveWindow.cs" />
     <Compile Include="Carrier\CarrierInterlink.cs" />
     <Compile Include="Carrier\CarrierInterlinkWindow.cs" />
     <Compile Include="Carrier\CarrierManual.cs" />
@@ -118,13 +117,17 @@
     <Compile Include="gtk-gui\UberDespatch.CarriersWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierDPDWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.CarrierInterlinkWindow.cs" />
-    <Compile Include="gtk-gui\UberDespatch.CarrierHiveWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.PrinterWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.PrinterManagerWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.AlertDialog.cs" />
     <Compile Include="gtk-gui\UberDespatch.WMSPeoplevoxWindow.cs" />
     <Compile Include="gtk-gui\UberDespatch.ManualWindow.cs" />
     <Compile Include="PdfConvert.cs" />
+    <Compile Include="Carrier\CarrierGroup.cs" />
+    <Compile Include="Carrier\CarrierPOST.cs" />
+    <Compile Include="Carrier\CarrierPOSTGroup.cs" />
+    <Compile Include="Carrier\CarrierPOSTWindow.cs" />
+    <Compile Include="gtk-gui\UberDespatch.CarrierPOSTWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

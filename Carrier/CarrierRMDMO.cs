@@ -32,18 +32,18 @@ namespace UberDespatch {
 
 		// ========== Constructor ==========
 		public CarrierRMDMO () {
-			this.name = "RoyalMail";
+			this.Name = "RoyalMail";
 
 			// Icon:
 			string iconPath = Program.ExecutableFolder + System.IO.Path.DirectorySeparatorChar + "Icons" + System.IO.Path.DirectorySeparatorChar;
 			string iconDir = "svg" + System.IO.Path.DirectorySeparatorChar;
 			string iconExtension = ".svg";
 			try {
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
 			} catch (Exception e) {
 				iconDir = "png" + System.IO.Path.DirectorySeparatorChar;
 				iconExtension = ".png";
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
 			}
 
 			// Config:
@@ -106,14 +106,14 @@ namespace UberDespatch {
 				return false;
 			if (order.OrderWeight <= 0) {
 				order.OrderWeight = 1;
-				Program.LogWarning (this.name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
+				Program.LogWarning (this.Name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
 			}
 			if (Regex.IsMatch(order.CustomerPhone, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerPhone = Regex.Replace (order.CustomerPhone, "[^0-9]", "");
 			if (Regex.IsMatch(order.CustomerMobile, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerMobile = Regex.Replace (order.CustomerMobile, "[^0-9]", "");
 			return true;
@@ -133,7 +133,7 @@ namespace UberDespatch {
 				File.Delete (outputPath);
 
 			// Send:
-			Program.Log (this.name, "Sending input to RMDMO...");
+			Program.Log (this.Name, "Sending input to RMDMO...");
 			string input = this.GetConfigValue ("template");
 			input = input.Replace ("{ServiceType}",  CleanInput (order, order.Service));
 			input = input.Replace("{ServiceFormat}", CleanInput(order, order.Format));
@@ -167,9 +167,9 @@ namespace UberDespatch {
 			File.WriteAllText (lockPath, "");
 
 			// Wait For Responce:
-			Program.Log (this.name, "Waiting for RMDMO output...");
+			Program.Log (this.Name, "Waiting for RMDMO output...");
 			while (!this.CheckFile (outputPath) || File.Exists (lockPath)) {
-				if (order.Cancelled || order.Error || this.timedOut) {
+				if (order.Cancelled || order.Error || this.TimedOut) {
 					File.Delete (inputPath);
 					return;
 				}
@@ -182,7 +182,7 @@ namespace UberDespatch {
 			for (int attempt = 0; attempt < 3; attempt++) {
 				if (attempt > 0) {
 					Thread.Sleep (3000);
-					Program.Log (this.name, "Reading output attempt " + (attempt + 1) + "...");
+					Program.Log (this.Name, "Reading output attempt " + (attempt + 1) + "...");
 				}
 				if (this.ReadOutput (order, outputPath)) {
 					outputValid = true;
@@ -194,9 +194,9 @@ namespace UberDespatch {
 
 			// Tracking Number Validation:
 			if (string.IsNullOrEmpty (order.TrackingNumber))
-				Program.LogWarning (this.name, "No tracking number was returned.");
+				Program.LogWarning (this.Name, "No tracking number was returned.");
 			else
-				Program.LogSuccess (this.name, "Tracking number received: " + order.TrackingNumber);
+				Program.LogSuccess (this.Name, "Tracking number received: " + order.TrackingNumber);
 
 			// Update Order:
 			if (outputValid) {
@@ -224,13 +224,13 @@ namespace UberDespatch {
 				// 1 Success - No Printer:
 				else if (outputDetails [0] == "1") {
 					order.TrackingNumber = outputDetails [1];
-					Program.LogWarning (this.name, "Warning: RMDMO was unable to print the label, check the RMDMO printer settings and then reprint via RMDMO.");
+					Program.LogWarning (this.Name, "Warning: RMDMO was unable to print the label, check the RMDMO printer settings and then reprint via RMDMO.");
 					return true;
 				}
 
 				// Error:
 				else {
-					Program.LogError (this.name, "RMDMO has returned an error:");
+					Program.LogError (this.Name, "RMDMO has returned an error:");
 					Program.LogException (string.Join ("\n", outputDetails));
 					order.Error = true;
 					return true;
@@ -238,7 +238,7 @@ namespace UberDespatch {
 			}
 
 			// Invalid:
-			Program.LogError (this.name, "Invalid result file received from RMDMO.");
+			Program.LogError (this.Name, "Invalid result file received from RMDMO.");
 			return false;
 		}
 
@@ -248,7 +248,7 @@ namespace UberDespatch {
 		public override void OnWait(long waitTime)
 		{
 			if (waitTime == 12) {
-				Program.LogAlert(this.name, this.name + " is taking a while to respond, please make sure that it is open and running and that the internet connection is not slow.");
+				Program.LogAlert(this.Name, this.Name + " is taking a while to respond, please make sure that it is open and running and that the internet connection is not slow.");
 			}
 		}
 
@@ -256,7 +256,7 @@ namespace UberDespatch {
 		// ========== Get Icon ==========
 		// Returns an image to display in the main interface when sending an order to this carrier, if null, the default sending image is used instead.
 		public override Gdk.Pixbuf GetIcon() {
-			return this.icon;
+			return this.Icon;
 		}
 	}
 }

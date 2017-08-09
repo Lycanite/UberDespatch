@@ -2777,7 +2777,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="UberDespatch.CarrierHiveWindow" design-size="560 353">
+  <widget class="Gtk.Window" id="UberDespatch.CarrierPOSTWindow" design-size="560 532">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Hive Settings</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -2802,8 +2802,12 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.Image" id="CarrierImage">
+                      <widget class="Gtk.Label" id="CarrierDescriptionLabel">
                         <property name="MemberName" />
+                        <property name="WidthRequest">512</property>
+                        <property name="LabelProp" translatable="yes">Hive carriers can/will support various shipping services such as Amazon Fullfilled orders (Amazon Prime).</property>
+                        <property name="UseMarkup">True</property>
+                        <property name="Wrap">True</property>
                       </widget>
                       <packing>
                         <property name="Position">0</property>
@@ -2813,12 +2817,21 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Label" id="CarrierDescriptionLabel">
+                      <widget class="Gtk.HBox" id="CarrierSelectionLayout">
                         <property name="MemberName" />
-                        <property name="WidthRequest">512</property>
-                        <property name="LabelProp" translatable="yes">Hive carriers can/will support various shipping services such as Amazon Fullfilled orders (Amazon Prime).</property>
-                        <property name="UseMarkup">True</property>
-                        <property name="Wrap">True</property>
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.ComboBox" id="CarrierSelectionCombo">
+                            <property name="MemberName" />
+                            <property name="IsTextCombo">True</property>
+                            <property name="Items" translatable="yes" />
+                            <signal name="Changed" handler="OnCarrierComboChanged" />
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">False</property>
+                          </packing>
+                        </child>
                       </widget>
                       <packing>
                         <property name="Position">1</property>
@@ -2828,14 +2841,76 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.HBox" id="HiveURLLayout">
+                      <widget class="Gtk.HBox" id="PrinterProfileControlsLayout">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.Label" id="HiveURLLabel">
+                          <placeholder />
+                        </child>
+                        <child>
+                          <widget class="Gtk.Button" id="CarrierRemoveButton">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">150</property>
+                            <property name="HeightRequest">40</property>
+                            <property name="CanFocus">True</property>
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">Remove Carrier</property>
+                            <property name="UseUnderline">True</property>
+                            <signal name="Released" handler="OnRemoveCarrierButtonReleased" />
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Button" id="CarrierAddButton">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">150</property>
+                            <property name="HeightRequest">40</property>
+                            <property name="CanFocus">True</property>
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">Add Carrier</property>
+                            <property name="UseUnderline">True</property>
+                            <signal name="Released" handler="OnAddCarrierButtonReleased" />
+                          </widget>
+                          <packing>
+                            <property name="Position">2</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Image" id="CarrierImage">
+                        <property name="MemberName" />
+                        <property name="WidthRequest">150</property>
+                        <property name="HeightRequest">50</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">3</property>
+                        <property name="AutoSize">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.HBox" id="CarrierNameLayout">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="CarrierNameLabel">
                             <property name="MemberName" />
                             <property name="WidthRequest">200</property>
-                            <property name="LabelProp" translatable="yes">Hive URL</property>
+                            <property name="LabelProp" translatable="yes">Name</property>
                             <property name="Wrap">True</property>
                             <property name="MnemonicWidget">(None)</property>
                             <property name="SingleLineMode">True</property>
@@ -2848,7 +2923,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="InputHiveURLEntry">
+                          <widget class="Gtk.Entry" id="CarrierNameEntry">
                             <property name="MemberName" />
                             <property name="Tooltip" translatable="yes">The filename for the Hive input file. This should match the setting on Hive. </property>
                             <property name="CanFocus">True</property>
@@ -2862,14 +2937,55 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">4</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.HBox" id="HiveURLLayout1">
+                      <widget class="Gtk.HBox" id="URLLayout">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="URLLabel">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">200</property>
+                            <property name="LabelProp" translatable="yes">URL</property>
+                            <property name="Wrap">True</property>
+                            <property name="MnemonicWidget">(None)</property>
+                            <property name="SingleLineMode">True</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Entry" id="URLEntry">
+                            <property name="MemberName" />
+                            <property name="Tooltip" translatable="yes">The filename for the Hive input file. This should match the setting on Hive. </property>
+                            <property name="CanFocus">True</property>
+                            <property name="IsEditable">True</property>
+                            <property name="InvisibleChar">•</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">5</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.HBox" id="PrinterProfileLayout">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
@@ -2901,14 +3017,11 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">3</property>
+                        <property name="Position">6</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
                       </packing>
-                    </child>
-                    <child>
-                      <placeholder />
                     </child>
                   </widget>
                 </child>
@@ -2917,7 +3030,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
             <child>
               <widget class="Gtk.Label" id="CarrierLabel">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">&lt;b&gt;Hive Carrier Settings&lt;/b&gt;</property>
+                <property name="LabelProp" translatable="yes">&lt;b&gt;POST Carriers&lt;/b&gt;</property>
                 <property name="UseMarkup">True</property>
               </widget>
               <packing>
@@ -2928,6 +3041,8 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
           <packing>
             <property name="Position">0</property>
             <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
           </packing>
         </child>
         <child>
@@ -2945,8 +3060,9 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                     <property name="MemberName" />
                     <property name="ShadowType">In</property>
                     <child>
-                      <widget class="Gtk.TextView" id="HiveDetailsTextView">
+                      <widget class="Gtk.TextView" id="AdditionalPOSTTextView">
                         <property name="MemberName" />
+                        <property name="HeightRequest">60</property>
                         <property name="Tooltip" translatable="yes">Enter the template used by Hive here. {Tags} will be replaced with order data.</property>
                         <property name="CanFocus">True</property>
                         <property name="ShowScrollbars">True</property>
@@ -2974,6 +3090,24 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
           <packing>
             <property name="Position">1</property>
             <property name="AutoSize">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="CarrierSaveButton">
+            <property name="MemberName" />
+            <property name="WidthRequest">150</property>
+            <property name="HeightRequest">40</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Save Carrier</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Released" handler="OnSaveCarrierButtonReleased" />
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
           </packing>
         </child>
         <child>
@@ -3030,7 +3164,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
             </child>
           </widget>
           <packing>
-            <property name="Position">2</property>
+            <property name="Position">3</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>

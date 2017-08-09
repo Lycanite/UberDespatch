@@ -295,7 +295,7 @@ namespace UberDespatch
 			if(alertNames.Count > 0)
 				orderJSON.Alerts = alertNames.ToArray();
 
-			orderJSON.Carrier = this.Carrier != null ? this.Carrier.name : "";
+			orderJSON.Carrier = this.Carrier != null ? this.Carrier.Name : "";
 			orderJSON.Service = this.Service;
 			orderJSON.Enhancement = this.Enhancement;
 			orderJSON.Format = this.Format;
@@ -324,7 +324,7 @@ namespace UberDespatch
 		public override string ToString()
 		{
 			if(this.Carrier != null)
-				return "Order " + this.OrderNumber + " for " + this.CustomerName + " using " + this.Carrier.name + ".";
+				return "Order " + this.OrderNumber + " for " + this.CustomerName + " using " + this.Carrier.Name + ".";
 			return "Order " + this.OrderNumber + " for " + this.CustomerName + " with no carrier set yet.";
 		}
 

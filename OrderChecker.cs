@@ -141,23 +141,23 @@ namespace UberDespatch
 						return true;
 					}
 
-					Program.Log ("Order", "Using " + carrier.name + " to process this order...");
+					Program.Log ("Order", "Using " + carrier.Name + " to process this order...");
 
 					// Validate Order:
 					this.waitingForUser = true;
-					Program.Log (carrier.name, "Validating order...");
+					Program.Log (carrier.Name, "Validating order...");
 					bool orderValid = carrier.ValidateOrder (order);
 					if (!orderValid) {
-						Program.LogAlert (carrier.name, "The order is invalid please correct it using the fields below and click Send Order or skip the order.");
+						Program.LogAlert (carrier.Name, "The order is invalid please correct it using the fields below and click Send Order or skip the order.");
 						Program.UpdateState ("order-edit");
 					}
 					while (!orderValid && !order.Cancelled && !order.Error) {
 						if (!this.waitingForUser) {
-							Program.Log (carrier.name, "Updated, re-validating...");
+							Program.Log (carrier.Name, "Updated, re-validating...");
 							Program.UpdateState ("order-read");
 							orderValid = carrier.ValidateOrder (order);
 							if (!orderValid) {
-								Program.LogAlert (carrier.name, "The order is still invalid, please re-check the order details using the fields below.");
+								Program.LogAlert (carrier.Name, "The order is still invalid, please re-check the order details using the fields below.");
 								Program.UpdateState ("order-edit");
 								this.waitingForUser = true;
 							}
@@ -226,8 +226,8 @@ namespace UberDespatch
 				return;
 			}
 
-			System.IO.Directory.CreateDirectory(Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + order.Carrier.name);
-			string savePath = Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + order.Carrier.name + System.IO.Path.DirectorySeparatorChar + order.FileInfo.Name;
+			System.IO.Directory.CreateDirectory(Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + order.Carrier.Name);
+			string savePath = Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + order.Carrier.Name + System.IO.Path.DirectorySeparatorChar + order.FileInfo.Name;
 			if (System.IO.File.Exists (savePath))
 				System.IO.File.Delete (savePath);
 			System.IO.File.Move (order.FileInfo.FullName, savePath);

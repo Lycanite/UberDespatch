@@ -9,8 +9,8 @@ namespace UberDespatch
 		// ========== Constructor ==========
 		public CarrierManual()
 		{
-			this.name = "Manual";
-			this.timeout = 0; // Infinite
+			this.Name = "Manual";
+			this.Timeout = 0; // Infinite
 
 			// Icon:
 			string iconPath = Program.ExecutableFolder + System.IO.Path.DirectorySeparatorChar + "Icons" + System.IO.Path.DirectorySeparatorChar;
@@ -18,17 +18,17 @@ namespace UberDespatch
 			string iconExtension = ".svg";
 			try
 			{
-				this.icon = new Gdk.Pixbuf(iconPath + iconDir + "edit" + iconExtension);
+				this.Icon = new Gdk.Pixbuf(iconPath + iconDir + "edit" + iconExtension);
 			}
 			catch (Exception e)
 			{
 				iconDir = "png" + System.IO.Path.DirectorySeparatorChar;
 				iconExtension = ".png";
-				this.icon = new Gdk.Pixbuf(iconPath + iconDir + "edit" + iconExtension);
+				this.Icon = new Gdk.Pixbuf(iconPath + iconDir + "edit" + iconExtension);
 			}
 
 			// Create Carrier Directory:
-			System.IO.Directory.CreateDirectory(Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + this.name);
+			System.IO.Directory.CreateDirectory(Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + this.Name);
 		}
 
 
@@ -44,7 +44,7 @@ namespace UberDespatch
 		// Sends an Order object to the carrier service. This is invoked on a new thread while the main thread waits until WaitForCarrier() returns true.
 		public override void SendToCarrier(Order order)
 		{
-			Program.Log (this.name, "This order must be completed manually, waiting for details...");
+			Program.Log (this.Name, "This order must be completed manually, waiting for details...");
 			Gtk.Application.Invoke(delegate {
 				ManualWindow manualWindow = new ManualWindow(order);
 				manualWindow.Show();

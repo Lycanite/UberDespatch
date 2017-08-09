@@ -9,31 +9,17 @@ using System.Net;
 using System.Web.Script.Serialization;
 using System.IO.Compression;
 using Gtk;
+using System.Collections.Generic;
 
 namespace UberDespatch
 {
-	public class CarrierHive : Carrier
+	public class CarrierPOST : Carrier
 	{
-		public ConfigCarrierHive config;
-		public bool orderSent = false;
-		public string carrierResult = "";
-		public Exception carrierError = null;
-
-		// ========== Config Class ==========
-		public class ConfigCarrierHive : ConfigBase<ConfigCarrierHive>
-		{
-			public string hiveURL = "http://hive.domain/api/servicename/shipping";
-			public string printerProfile = "Default";
-			public string hiveDetails = ""; // Additional post parameters.
-
-			public static ConfigCarrierHive LoadFile(string filename) {
-				return Load ("config" + Path.DirectorySeparatorChar + "carrier" + filename + ".json");
-			}
-
-			public void SaveFile(string filename) {
-				Save ("config" + Path.DirectorySeparatorChar + "carrier" + filename + ".json");
-			}
-		}
+		public CarrierGroup Group;
+		public CarrierPOSTGroup.CarrierEntry CarrierEntry;
+		public bool OrderSent = false;
+		public string CarrierResult = "";
+		public Exception CarrierError = null;
 
 
 		// ========== Response JSON Class ==========
@@ -48,61 +34,68 @@ namespace UberDespatch
 
 
 		// ========== Constructor ==========
-		public CarrierHive (string name, string description)
+		public CarrierPOST (string name, string description)
 		{
-			this.name = name;
-			this.description = description;
-			this.timeout = 180;
+			this.Name = name;
+			this.Description = description;
+			this.Timeout = 180;
 
 			// Icon:
 			string iconPath = Program.ExecutableFolder + System.IO.Path.DirectorySeparatorChar + "Icons" + System.IO.Path.DirectorySeparatorChar;
 			string iconDir = "svg" + System.IO.Path.DirectorySeparatorChar;
 			string iconExtension = ".svg";
 			try {
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
 			} catch (Exception e) {
 				iconDir = "png" + System.IO.Path.DirectorySeparatorChar;
 				iconExtension = ".png";
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				try {
+					this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
+				} catch (Exception e2) {
+					Program.LogWarning (this.Name, "Unable to load an icon for this carrier. (" + iconPath + iconDir + this.Name + iconExtension + ")");
+				}
 			}
-
-			// Config:
-			this.config = ConfigCarrierHive.LoadFile(this.name);
 		}
 
 
 		// ========== Config ==========
 		/** Use to set a config value via key. This should be overriden and handled as neccesary. **/
 		public override void SetConfigValue(string key, string value) {
-			if (key == "hiveURL")
-				this.config.hiveURL = value;
+			if (key == "name") {
+				this.CarrierEntry.Name = value;
+				this.Group.RenameCarrier (this.Name, value);
+			}
+			else if (key == "url")
+				this.CarrierEntry.URL = value;
 			else if (key == "printerProfile")
-				this.config.printerProfile = value;
-			else if (key == "hiveDetails")
-				this.config.hiveDetails = value;
+				this.CarrierEntry.PrinterProfile = value;
+			else if (key == "additionalPOST")
+				this.CarrierEntry.AdditionalPOST = value;
 		}
 
 		/** Use to get a config value via key. This should be overriden and handled as neccesary. **/
 		public override string GetConfigValue(string key) {
-			if (key == "hiveURL")
-				return this.config.hiveURL;
+			if (key == "name")
+				return this.CarrierEntry.Name;
+			else if (key == "url")
+				return this.CarrierEntry.URL;
 			else if (key == "printerProfile")
-				return this.config.printerProfile;
-			else if (key == "hiveDetails")
-				return this.config.hiveDetails;
+				return this.CarrierEntry.PrinterProfile;
+			else if (key == "additionalPOST")
+				return this.CarrierEntry.AdditionalPOST;
 			return "";
 		}
 
 		/** Saves the config. **/
 		public override void SaveConfig() {
-			this.config.SaveFile (this.name);
+			this.Group.SaveCarriers ();
 		}
 
 
 		// ========== Menu Action Activated ==========
 		// This is called by the UI to open up a specific settings window.
 		public override void OpenSettingsWindow () {
-			CarrierHiveWindow settingsWindow = new CarrierHiveWindow (this);
+			CarrierPOSTWindow settingsWindow = new CarrierPOSTWindow (this.Group);
 			settingsWindow.Show ();
 		}
 
@@ -112,14 +105,14 @@ namespace UberDespatch
 		public override bool ValidateOrder (Order order) {
 			if (order.OrderWeight <= 0) {
 				order.OrderWeight = 1;
-				Program.LogWarning (this.name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
+				Program.LogWarning (this.Name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
 			}
 			if (Regex.IsMatch(order.CustomerPhone, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerPhone = Regex.Replace (order.CustomerPhone, "[^0-9]", "");
 			if (Regex.IsMatch(order.CustomerMobile, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerMobile = Regex.Replace (order.CustomerMobile, "[^0-9]", "");
 			return true;
@@ -129,8 +122,8 @@ namespace UberDespatch
 		// ========== Send To Carrier ==========
 		// Sends an Order object to the carrier service. This is invoked on a new thread while the main thread waits until WaitForCarrier() returns true.
 		public override void SendToCarrier(Order order) {
-			this.carrierResult = "";
-			this.carrierError = null;
+			this.CarrierResult = "";
+			this.CarrierError = null;
 
 			// Send via POST:
 			WebClient web = new WebClient();
@@ -142,16 +135,16 @@ namespace UberDespatch
 			}
 			catch (Exception e)
 			{
-				Program.LogWarning(this.name, "Unable to connect to " + this.GetConfigValue("hiveURL") + "/create");
+				Program.LogWarning(this.Name, "Unable to connect to " + this.GetConfigValue("hiveURL") + "/create");
 				Program.LogException(e);
 				order.Error = true;
 				return;
 			}
 
 			// Wait For Responce:
-			Program.Log (this.name, "Waiting for " + this.name + " output...");
-			while (this.carrierResult == "" && this.carrierError == null) { // While no responce
-				if (order.Cancelled || this.timedOut) {
+			Program.Log (this.Name, "Waiting for " + this.Name + " output...");
+			while (this.CarrierResult == "" && this.CarrierError == null) { // While no responce
+				if (order.Cancelled || this.TimedOut) {
 					web.CancelAsync ();
 					return;
 				}
@@ -159,15 +152,15 @@ namespace UberDespatch
 			}
 
 			// Success Responce:
-			if (this.carrierResult != "") {
+			if (this.CarrierResult != "") {
 				// Parse JSON:
 				JavaScriptSerializer serializer = new JavaScriptSerializer();
 				ResponseJSON responseJSON;
 				try {
-					responseJSON = serializer.Deserialize<ResponseJSON>(this.carrierResult);
+					responseJSON = serializer.Deserialize<ResponseJSON>(this.CarrierResult);
 				}
 				catch (Exception e) {
-					Program.LogError(this.name, "Invalid response JSON format:");
+					Program.LogError(this.Name, "Invalid response JSON format:");
 					Program.LogException(e);
 					order.Error = true;
 					return;
@@ -175,7 +168,7 @@ namespace UberDespatch
 
 				// Error Check:
 				if (responseJSON.Error != null) {
-					Program.LogError(this.name, "Hive has returned an error: " + responseJSON.Error, true, responseJSON.ErrorObject);
+					Program.LogError(this.Name, "Hive has returned an error: " + responseJSON.Error, true, responseJSON.ErrorObject);
 					order.Error = true;
 					return;
 				}
@@ -191,14 +184,14 @@ namespace UberDespatch
 					fileType = responseJSON.LabelDataType.Split('/')[1];
 				}
 				catch (Exception e) {
-					Program.LogError (this.name, "An error occured when trying to decompress the label.");
+					Program.LogError (this.Name, "An error occured when trying to decompress the label.");
 					Program.LogException (e);
 				}
 
 				if (label != null)
 				{
 					// Save Label:
-					string saveDir = Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + this.name;
+					string saveDir = Program.configGlobal.archivePath + System.IO.Path.DirectorySeparatorChar + this.Name;
 					string savePath = saveDir + System.IO.Path.DirectorySeparatorChar + order.FileInfo.Name + "." + fileType;
 					try
 					{
@@ -207,7 +200,7 @@ namespace UberDespatch
 					}
 					catch (Exception e)
 					{
-						Program.LogError(this.name, "An error occured when trying to save the label or printing.");
+						Program.LogError(this.Name, "An error occured when trying to save the label or printing.");
 						Program.LogException(e);
 					}
 
@@ -217,33 +210,33 @@ namespace UberDespatch
 					else if (fileType == "png")
 						Program.printer.PrintPNG(savePath, this.GetConfigValue("printerProfile"));
 					else
-						Program.LogError(this.name, "Unable to print the filetype: " + responseJSON.LabelDataType);
+						Program.LogError(this.Name, "Unable to print the filetype: " + responseJSON.LabelDataType);
 				}
 				else {
-					Program.LogError(this.name, "No carrier label was printed.");
+					Program.LogError(this.Name, "No carrier label was printed.");
 				}
 			}
 
 			// Error Response:
-			else if (this.carrierError != null) {
-				Program.LogError (this.name, "Error received from " + this.name + ":");
-				Program.LogException (this.carrierError);
+			else if (this.CarrierError != null) {
+				Program.LogError (this.Name, "Error received from " + this.Name + ":");
+				Program.LogException (this.CarrierError);
 				order.Error = true;
 				return;
 			}
 
 			// No Response:
 			else {
-				Program.LogError (this.name, "No response was received from " + this.name + ".");
+				Program.LogError (this.Name, "No response was received from " + this.Name + ".");
 				order.Error = true;
 				return;
 			}
 
 			// Tracking Number Validation:
 			if (string.IsNullOrEmpty (order.TrackingNumber))
-				Program.LogWarning (this.name, "No tracking number was returned.");
+				Program.LogWarning (this.Name, "No tracking number was returned.");
 			else
-				Program.LogSuccess (this.name, "Tracking number received: " + order.TrackingNumber);
+				Program.LogSuccess (this.Name, "Tracking number received: " + order.TrackingNumber);
 			order.Processed = true;
 		}
 
@@ -253,7 +246,7 @@ namespace UberDespatch
 		public override void OnWait(long waitTime)
 		{
 			if (waitTime == 12) {
-				Program.LogAlert(this.name, this.name + " is taking a while to respond, it is likely being throttled due to too many requests, this may take a minute to complete...");
+				Program.LogAlert(this.Name, this.Name + " is taking a while to respond, it is likely being throttled due to too many requests, this may take a minute to complete...");
 			}
 		}
 
@@ -264,11 +257,11 @@ namespace UberDespatch
 		{
 			try
 			{
-				this.carrierResult = output.Result;
+				this.CarrierResult = output.Result;
 			}
 			catch (Exception e)
 			{
-				this.carrierError = e;
+				this.CarrierError = e;
 			}
 		}
 
@@ -284,6 +277,20 @@ namespace UberDespatch
 			postData += "&orderCost=" + order.OrderCost;
 			postData += "&storeName=" + order.Service;
 			postData += "&shippingService=" + order.Format;
+
+			postData += "&customerName=" + order.CustomerName;
+			postData += "&customerPhone=" + order.CustomerPhone;
+			postData += "&companyName=" + order.Company;
+
+			postData += "&countryCode=" + order.Country;
+			postData += "&countryName=" + order.CountryName;
+			postData += "&street=" + order.Street;
+			postData += "&locality=" + order.Locality;
+			postData += "&city=" + order.City;
+			postData += "&region=" + order.Region;
+			postData += "&shippingService=" + order.Format;
+
+			postData += "&itemAmount=" + order.ItemAmount;
 			return postData;
 		}
 
@@ -291,7 +298,7 @@ namespace UberDespatch
 		// ========== Get Icon ==========
 		// Returns an image to display in the main interface when sending an order to this carrier, if null, the default sending image is used instead.
 		public override Gdk.Pixbuf GetIcon() {
-			return this.icon;
+			return this.Icon;
 		}
 	}
 }

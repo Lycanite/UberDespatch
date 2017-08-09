@@ -76,3 +76,6 @@
 /home/richard/Projects/UberDespatch/obj/x86/Debug/UberDespatch.exe
 /home/richard/Projects/UberDespatch/obj/x86/Debug/UberDespatch.pdb
 /home/richard/Projects/UberDespatch/bin/Debug/PdfiumViewer.dll
+/home/richard/Projects/UberDespatch/bin/Debug/x64/pdfium.dll
+/home/richard/Projects/UberDespatch/bin/Debug/x86/pdfium.dll
+/home/richard/Projects/UberDespatch/bin/Debug/pdfium.dll

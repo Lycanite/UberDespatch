@@ -125,7 +125,13 @@ namespace UberDespatch
 					Rule rule = new Rule();
 					rule.name = ruleJSON.name;
 
-					rule.carrier = Carrier.GetCarrier (ruleJSON.carrier);
+					string[] carrierData = ruleJSON.carrier.Split (':');
+					if (carrierData.Length == 1)
+						rule.carrier = Carrier.GetCarrier (ruleJSON.carrier);
+					else if (carrierData.Length > 0) {
+						CarrierGroup carrierGroup = Carrier.GetCarrierGroup (carrierData[0]);
+						rule.carrier = carrierGroup.GetCarrier (carrierData[1]);
+					}
 					rule.service = ruleJSON.service;
 					rule.enhancement = ruleJSON.enhancement;
 					rule.format = ruleJSON.format;

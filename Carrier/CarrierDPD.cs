@@ -35,18 +35,18 @@ namespace UberDespatch
 		// ========== Constructor ==========
 		public CarrierDPD ()
 		{
-			this.name = "DPD";
+			this.Name = "DPD";
 
 			// Icon:
 			string iconPath = Program.ExecutableFolder + System.IO.Path.DirectorySeparatorChar + "Icons" + System.IO.Path.DirectorySeparatorChar;
 			string iconDir = "svg" + System.IO.Path.DirectorySeparatorChar;
 			string iconExtension = ".svg";
 			try {
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
 			} catch (Exception e) {
 				iconDir = "png" + System.IO.Path.DirectorySeparatorChar;
 				iconExtension = ".png";
-				this.icon = new Gdk.Pixbuf (iconPath + iconDir + this.name + iconExtension);
+				this.Icon = new Gdk.Pixbuf (iconPath + iconDir + this.Name + iconExtension);
 			}
 
 			// Config:
@@ -107,14 +107,14 @@ namespace UberDespatch
 		public override bool ValidateOrder (Order order) {
 			if (order.OrderWeight <= 0) {
 				order.OrderWeight = 1;
-				Program.LogWarning (this.name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
+				Program.LogWarning (this.Name, "Warning, the order had a weight of 0 or below, this has been changed to 1.");
 			}
 			if (Regex.IsMatch(order.CustomerPhone, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order phone number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerPhone = Regex.Replace (order.CustomerPhone, "[^0-9]", "");
 			if (Regex.IsMatch(order.CustomerMobile, @"^\d+$")) {
-				Program.LogWarning (this.name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
+				Program.LogWarning (this.Name, "Warning, the order mobile number had non-numeric characters, these will be stripped.");
 			}
 			order.CustomerMobile = Regex.Replace (order.CustomerMobile, "[^0-9]", "");
 			return true;
@@ -135,7 +135,7 @@ namespace UberDespatch
 				file.Delete();
 
 			// Send:
-			Program.Log (this.name, "Sending input to DPD...");
+			Program.Log (this.Name, "Sending input to DPD...");
 			string input = this.GetConfigValue ("template");
 
 			input = input.Replace ("{CustomerName}",  CleanInput (order, order.CustomerName.Replace (",", "")));
@@ -162,9 +162,9 @@ namespace UberDespatch
 			File.WriteAllText (inputPath, input);
 
 			// Wait For Responce:
-			Program.Log (this.name, "Waiting for DPD output...");
+			Program.Log (this.Name, "Waiting for DPD output...");
 			while (outputDir.GetFiles().Length < 1 && !this.CheckFile (inputPath + ".BAD")) {
-				if (order.Cancelled || order.Error || this.timedOut) {
+				if (order.Cancelled || order.Error || this.TimedOut) {
 					File.Delete (inputPath);
 					return;
 				}
@@ -190,7 +190,7 @@ namespace UberDespatch
 
 				// Error:
 				else {
-						Program.LogError (this.name, "DPD has not returned a tracking number, it returned this:");
+						Program.LogError (this.Name, "DPD has not returned a tracking number, it returned this:");
 						Program.LogException (string.Join ("\n", outputDetails));
 						order.Error = true;
 						return;
@@ -199,7 +199,7 @@ namespace UberDespatch
 
 				// Invalid:
 				else {
-					Program.LogError (this.name, "Invalid output file received from DPD.");
+					Program.LogError (this.Name, "Invalid output file received from DPD.");
 					order.Error = true;
 					return;
 				}
@@ -207,7 +207,7 @@ namespace UberDespatch
 
 			// Error File:
 			else if (File.Exists (inputPath + ".BAD")) {
-				Program.LogError (this.name, "Error received from DPD, the following values were not accepted:");
+				Program.LogError (this.Name, "Error received from DPD, the following values were not accepted:");
 				Program.LogException (File.ReadAllText (inputPath + ".BAD").Replace (",", ", "));
 				order.Error = true;
 				File.Delete (inputPath + ".BAD");
@@ -216,16 +216,16 @@ namespace UberDespatch
 
 			// No Output:
 			else {
-				Program.LogError (this.name, "No output file received from DPD.");
+				Program.LogError (this.Name, "No output file received from DPD.");
 				order.Error = true;
 				return;
 			}
 
 			// Tracking Number Validation:
 			if (string.IsNullOrEmpty (order.TrackingNumber))
-				Program.LogWarning (this.name, "No tracking number was returned.");
+				Program.LogWarning (this.Name, "No tracking number was returned.");
 			else
-				Program.LogSuccess (this.name, "Tracking number received: " + order.TrackingNumber);
+				Program.LogSuccess (this.Name, "Tracking number received: " + order.TrackingNumber);
 			order.Processed = true;
 		}
 
@@ -233,7 +233,7 @@ namespace UberDespatch
 		// ========== Get Icon ==========
 		// Returns an image to display in the main interface when sending an order to this carrier, if null, the default sending image is used instead.
 		public override Gdk.Pixbuf GetIcon() {
-			return this.icon;
+			return this.Icon;
 		}
 	}
 }

@@ -10,14 +10,15 @@ namespace UberDespatch
 {
 	public abstract class Carrier
 	{
-		public static Dictionary<string, Carrier> carriers = new Dictionary<string, Carrier> ();
-		public static string lastCarrierAdded;
+		public static Dictionary<string, Carrier> Carriers = new Dictionary<string, Carrier> ();
+		public static Dictionary<string, CarrierGroup> CarrierGroups = new Dictionary<string, CarrierGroup> ();
+		public static string LastCarrierAdded;
 
-		public string name = "Carrier";
-		public string description = "";
-		public Gdk.Pixbuf icon = null;
-		public long timeout = 60;
-		public bool timedOut = false; // Set to true on timeout.
+		public string Name = "Carrier";
+		public string Description = "";
+		public Gdk.Pixbuf Icon = null;
+		public long Timeout = 60;
+		public bool TimedOut = false; // Set to true on timeout.
 
 
 		// ========== Reload Carriers ==========
@@ -33,28 +34,32 @@ namespace UberDespatch
 		// ========== Load Carriers ==========
 		public static void LoadCarriers ()
 		{
-			carriers = new Dictionary<string, Carrier> ();
+			Carriers = new Dictionary<string, Carrier> ();
 
 			// TODO Carriers should be located via plugins.
 
 			// None:
 			Carrier carrierManual = new CarrierManual ();
-			carriers.Add (carrierManual.name, carrierManual);
-			lastCarrierAdded = carrierManual.name;
+			Carriers.Add (carrierManual.Name, carrierManual);
+			LastCarrierAdded = carrierManual.Name;
 
 			// RMDMO:
 			Carrier carrierRMDMO = new CarrierRMDMO ();
-			carriers.Add (carrierRMDMO.name, carrierRMDMO);
+			Carriers.Add (carrierRMDMO.Name, carrierRMDMO);
 
 			// DPD:
 			Carrier carrierDPD = new CarrierDPD ();
-			carriers.Add (carrierDPD.name, carrierDPD);
+			Carriers.Add (carrierDPD.Name, carrierDPD);
 
 			// Interlink:
 			Carrier carrierInterlink = new CarrierInterlink ();
-			carriers.Add (carrierInterlink.name, carrierInterlink);
+			Carriers.Add (carrierInterlink.Name, carrierInterlink);
 
-			// Remote - Amazon:
+			// POST Group:
+			CarrierGroup carrierPOST = new CarrierPOSTGroup ();
+			CarrierGroups.Add (carrierPOST.Name, carrierPOST);
+
+			/*/ Remote - Amazon:
 			string carrierHiveDesc = "This is a Remote powered carrier for Amazon Fulfilled/Prime. In the details box below you can add additional POST parameters, if required. The service and format entries in the rules can be sent over if additional info is needed.";
 			Carrier carrierHive = new CarrierHive("Amazon", carrierHiveDesc);
 			carriers.Add(carrierHive.name, carrierHive);
@@ -62,19 +67,37 @@ namespace UberDespatch
 			// Remote - DHL:
 			carrierHiveDesc = "This is a Remote powered carrier for DHL. In the details box below you can add additional POST parameters, if required. The service and format entries in the rules can be sent over if additional info is needed.";
 			carrierHive = new CarrierHive("DHL", carrierHiveDesc);
-			carriers.Add(carrierHive.name, carrierHive);
+			carriers.Add(carrierHive.name, carrierHive);*/
 
-			Program.LogSuccess ("Carriers", carriers.Count + " carriers loaded: " + GetCarrierNames ());
+			Program.LogSuccess ("Carriers", Carriers.Count + " carriers loaded: " + GetCarrierNames ());
 		}
 
 
 		// ========== Get Carrier ==========
+		/** Returns the first carrier found by the provided name, this will also search each carrier group, the first occurance will be returned. GroupName:CarrierName can be used to target carriers from specific groups. **/
 		public static Carrier GetCarrier (string carrierName = "")
 		{
 			if (carrierName == "")
-				return carriers [lastCarrierAdded];
-			if (carriers.ContainsKey (carrierName))
-				return carriers[carrierName];
+				return Carriers [LastCarrierAdded];
+			if (Carriers.ContainsKey (carrierName))
+				return Carriers[carrierName];
+			foreach (CarrierGroup carrierGroup in CarrierGroups.Values) {
+				Carrier childCarrier = carrierGroup.GetCarrier (carrierName);
+				if (childCarrier != null)
+					return childCarrier;
+			}
+			return null;
+		}
+
+
+		// ========== Get Carrier Group ==========
+		/** Returns the first carrier group by the provided name. **/
+		public static CarrierGroup GetCarrierGroup (string carrierGroupName = "")
+		{
+			if (carrierGroupName == "")
+				return CarrierGroups [LastCarrierAdded];
+			if (CarrierGroups.ContainsKey (carrierGroupName))
+				return CarrierGroups[carrierGroupName];
 			return null;
 		}
 
@@ -83,11 +106,18 @@ namespace UberDespatch
 		/** Returns a comma and space seperated list of all available carriers by case sensitive name. **/
 		public static string GetCarrierNames ()
 		{
-			if (carriers == null || carriers.Count == 0)
+			if (Carriers == null || Carriers.Count == 0)
 				return "No carriers available.";
 			string carrierNames = "";
-			foreach (Carrier carrier in carriers.Values)
-				carrierNames += ", " + carrier.name;
+			foreach (Carrier carrier in Carriers.Values)
+				carrierNames += ", " + carrier.Name;
+			foreach (CarrierGroup carrierGroup in CarrierGroups.Values) {
+				if (carrierGroup.Carriers.Count > 0) {
+					carrierNames += ", " + carrierGroup.Name + " Carriers: ";
+					foreach (Carrier carrier in carrierGroup.Carriers.Values)
+						carrierNames += ", " + carrier.Name;
+				}
+			}
 			return carrierNames.Substring (2);
 		}
 
@@ -127,10 +157,10 @@ namespace UberDespatch
 		// ========== Process Order ==========
 		// Sends an Order object to the carrier service for despatch, edits the order (adding a tracking number, etc) and then returns the order for the WMS to finish with.
 		public bool ProcessOrder(Order order) {
-			order.CarrierName = this.name;
+			order.CarrierName = this.Name;
 
 			// Send and Wait:
-			this.timedOut = false;
+			this.TimedOut = false;
 			Thread carrierThread = new Thread (new ThreadStart(delegate {
 				try {
 					this.SendToCarrier (order);
@@ -139,14 +169,14 @@ namespace UberDespatch
 					}
 				}
 				catch (Exception e) {
-					Program.LogError(this.name, "A runtime exception occured:");
+					Program.LogError(this.Name, "A runtime exception occured:");
 					Program.LogException (e);
 				}
 			}));
-			Program.Log (this.name, "Sending order...");
+			Program.Log (this.Name, "Sending order...");
 			carrierThread.Start ();
 			long waitTime = 0;
-			while ((this.timeout <= 0 || waitTime < this.timeout) && !order.Processed && !order.Cancelled && !order.Error) {
+			while ((this.Timeout <= 0 || waitTime < this.Timeout) && !order.Processed && !order.Cancelled && !order.Error) {
 				this.OnWait(waitTime);
 				waitTime++;
 				Thread.Sleep (1000);
@@ -156,18 +186,18 @@ namespace UberDespatch
 			if (!order.Processed) {
 				// Cancelled:
 				if (order.Cancelled) {
-					Program.LogAlert (this.name, "Processing cancelled, the order was not sent.");
+					Program.LogAlert (this.Name, "Processing cancelled, the order was not sent.");
 					Program.UpdateState ("order-skip");
 				}
 				// Error:
 				else if (order.Error) {
-					Program.LogError (this.name, "Processing encounted an error, the order was not sent.");
+					Program.LogError (this.Name, "Processing encounted an error, the order was not sent.");
 					Program.UpdateState ("order-fail");
 				}
 				// Timeout:
 				else {
-					this.timedOut = true;
-					Program.LogError (this.name, "Processing timed out, the order was not sent.");
+					this.TimedOut = true;
+					Program.LogError (this.Name, "Processing timed out, the order was not sent.");
 					Program.UpdateState ("order-fail");
 					order.Error = true;
 				}
@@ -175,7 +205,7 @@ namespace UberDespatch
 
 			// Processed:
 			else {
-				Program.LogSuccess (this.name, "Order successfully processed.");
+				Program.LogSuccess (this.Name, "Order successfully processed.");
 			}
 
 			return order.Processed;

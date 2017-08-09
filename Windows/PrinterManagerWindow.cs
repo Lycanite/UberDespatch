@@ -47,12 +47,17 @@ namespace UberDespatch
 				this.SelectedProfile = Program.printer.GetPrinterProfile("Default");
 			this.PrinterProfileSelectionCombo.Model = new ListStore(typeof(string), typeof(string));
 			this.PrinterProfileSelectionCombo.AppendText("Default");
+			int profileIndex = 0;
+			int index = 0;
 			foreach (string profileName in Program.printer.PrinterProfiles.Keys) {
 				if (profileName != "Default")
 					this.PrinterProfileSelectionCombo.AppendText(profileName);
+				if (profileName == this.SelectedProfile.Name)
+					profileIndex = index;
+				index++;
 			}
 			TreeIter iter;
-			this.PrinterProfileSelectionCombo.Model.IterNthChild(out iter, 0);
+			this.PrinterProfileSelectionCombo.Model.IterNthChild(out iter, profileIndex);
 			this.PrinterProfileSelectionCombo.SetActiveIter(iter);
 		}
 

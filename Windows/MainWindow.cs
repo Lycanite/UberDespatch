@@ -181,10 +181,10 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnCarriersActionActivated(object sender, EventArgs e)
 	{
-		if (Carrier.carriers.Count == 0) {
+		if (Carrier.Carriers.Count == 0) {
 			NoCarriersDialog noPluginsDialog = new NoCarriersDialog ();
 			noPluginsDialog.Show ();
-		} else if (Carrier.carriers.Count > 1) {
+		} else if (Carrier.Carriers.Count > 1) {
 			CarriersWindow carriersWindow = new CarriersWindow ();
 			carriersWindow.Show ();
 		} else { // Opens the window of the last carrier added, in this case it is the only carrier added.
@@ -564,7 +564,7 @@ public partial class MainWindow: Gtk.Window
 			this.OrderCategoryCarrier = this.OrderTreeStore.AppendValues("Carrier");
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Channel", order.Channel);
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Zone", order.Zone != null ? order.Zone.name : "");
-			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Name", order.Carrier != null ? order.Carrier.name : "");
+			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Name", order.Carrier != null ? order.Carrier.Name : "");
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Type", order.CarrierType);
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Service", order.Service);
 			this.OrderTreeStore.AppendValues(this.OrderCategoryCarrier, "Carrier Enhancement", order.Enhancement);

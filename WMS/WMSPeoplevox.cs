@@ -398,7 +398,7 @@ namespace UberDespatch
 			string input = this.GetConfigValue ("updateTemplate");
 			input = input.Replace ("{OrderNumber}", order.OrderNumber);
 			input = input.Replace ("{TrackingNumber}", order.TrackingNumber);
-			input = input.Replace ("{CarrierType}", order.Carrier.name);
+			input = input.Replace ("{CarrierType}", order.Carrier.Name);
 			if (this.config.debug) {
 				Program.Log(this.name, "Tracking Input: " + input);
 			}
