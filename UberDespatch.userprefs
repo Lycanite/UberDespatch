@@ -1,15 +1,8 @@
 ﻿<Properties StartupItem="UberDespatch.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Carrier/CarrierHiveWindow.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="16" Column="3" />
-      <File FileName="Order.cs" Line="1" Column="1" />
-      <File FileName="Carrier/Carrier.cs" Line="90" Column="29" />
-      <File FileName="Carrier/CarrierHive.cs" Line="100" Column="4" />
-      <File FileName="Carrier/CarrierHiveGroup.cs" Line="96" Column="16" />
-      <File FileName="Carrier/CarrierHiveWindow.cs" Line="39" Column="101" />
-      <File FileName="Utilities/Printer.cs" Line="51" Column="34" />
-      <File FileName="Windows/PrinterManagerWindow.cs" Line="46" Column="4" />
+      <File FileName="Program.cs" Line="29" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

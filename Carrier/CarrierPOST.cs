@@ -131,11 +131,11 @@ namespace UberDespatch
 			{
 				web.Headers["Content-Type"] = "application/x-www-form-urlencoded";
 				web.UploadStringCompleted += new UploadStringCompletedEventHandler(OnCarrierResponse);
-				web.UploadStringAsync(new Uri(this.GetConfigValue("hiveURL") + "/create"), "POST", this.GetPOSTData(order));
+				web.UploadStringAsync(new Uri(this.GetConfigValue("url") + "/create"), "POST", this.GetPOSTData(order));
 			}
 			catch (Exception e)
 			{
-				Program.LogWarning(this.Name, "Unable to connect to " + this.GetConfigValue("hiveURL") + "/create");
+				Program.LogWarning(this.Name, "Unable to connect to " + this.GetConfigValue("url") + "/create");
 				Program.LogException(e);
 				order.Error = true;
 				return;
@@ -270,7 +270,7 @@ namespace UberDespatch
 		// Returns the POST data to be sent to Hive, this takes an Order object which is to be converted into POST data.
 		public string GetPOSTData(Order order)
 		{
-			string postData = this.GetConfigValue ("hiveDetails").Trim ();
+			string postData = this.GetConfigValue ("additionalPOST").Trim ();
 			if (postData.Length > 0)
 				postData += "&";
 			postData += "orderId=" + order.OrderNumber;
@@ -280,17 +280,19 @@ namespace UberDespatch
 
 			postData += "&customerName=" + order.CustomerName;
 			postData += "&customerPhone=" + order.CustomerPhone;
+			postData += "&customerEmail=" + order.CustomerEmail;
 			postData += "&companyName=" + order.Company;
 
 			postData += "&countryCode=" + order.Country;
 			postData += "&countryName=" + order.CountryName;
+			postData += "&postCode=" + order.Postcode;
 			postData += "&street=" + order.Street;
 			postData += "&locality=" + order.Locality;
 			postData += "&city=" + order.City;
 			postData += "&region=" + order.Region;
-			postData += "&shippingService=" + order.Format;
 
 			postData += "&itemAmount=" + order.ItemAmount;
+			postData += "&weight=" + order.OrderWeight;
 			return postData;
 		}
 
