@@ -30,6 +30,7 @@ namespace UberDespatch
 			public string TrackingId;
 			public string Error;
 			public string ErrorObject;
+			public string XML;
 		}
 
 
@@ -171,6 +172,11 @@ namespace UberDespatch
 					Program.LogError(this.Name, "Hive has returned an error: " + responseJSON.Error, true, responseJSON.ErrorObject);
 					order.Error = true;
 					return;
+				}
+
+				// XML Output:
+				if (responseJSON.XML != null) {
+					Program.Log (this.Name, "XML Returned:\n" + responseJSON.XML);
 				}
 
 				// Tracking Number:

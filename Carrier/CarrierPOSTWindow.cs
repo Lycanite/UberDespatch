@@ -7,6 +7,7 @@ namespace UberDespatch
 	{
 		public CarrierGroup CarrierGroup;
 		public Carrier SelectedCarrier;
+		public bool printerProfilesLoaded = false;
 
 		// ========== Constructor ==========
 		public CarrierPOSTWindow (CarrierGroup carrierGroup) :
@@ -81,19 +82,23 @@ namespace UberDespatch
 
 			this.URLEntry.Text = this.SelectedCarrier.GetConfigValue ("url");
 
-			this.PrinterProfileSelectionCombo.AppendText("Default");
+			if (!this.printerProfilesLoaded) {
+				this.PrinterProfileSelectionCombo.AppendText ("Default");
+			}
 			int printerIndex = 0;
 			int index = 0;
 			foreach (string profileName in Program.printer.PrinterProfiles.Keys) {
-				index++;
-				if (profileName != "Default")
+				if (profileName != "Default" && !this.printerProfilesLoaded)
 					this.PrinterProfileSelectionCombo.AppendText(profileName);
 				if (profileName == this.SelectedCarrier.GetConfigValue ("printerProfile"))
 					printerIndex = index;
+				index++;
 			}
 			TreeIter iter;
-			this.PrinterProfileSelectionCombo.Model.IterNthChild(out iter, printerIndex); // TODO Not accurate.
+			if (!this.PrinterProfileSelectionCombo.Model.IterNthChild (out iter, printerIndex))
+				Program.LogError ("CarrierPOST", "Unable to get an iterator for printer profile selection. Index: " + printerIndex);
 			this.PrinterProfileSelectionCombo.SetActiveIter(iter);
+			this.printerProfilesLoaded = true;
 
 			this.AdditionalPOSTTextView.Buffer.Text = this.SelectedCarrier.GetConfigValue ("additionalPOST");
 		}

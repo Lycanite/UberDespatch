@@ -155,8 +155,14 @@ namespace UberDespatch
 			if (orderChecker.autoCheck)
 				mainWindow.SetAutoCheckButton(orderChecker.ToggleAutoCheck ());
 			UpdateState ("reload");
-			Carrier.ReloadCarriers ();
-			Rule.LoadRules ();
+			try {
+				Carrier.ReloadCarriers ();
+				Rule.LoadRules ();
+			}
+			catch (Exception e) {
+				LogError ("Main", "An error occured when reloading.");
+				LogException (e);
+			}
 			Log ("Main", "Reloaded.");
 			UpdateState ("idle");
 		}

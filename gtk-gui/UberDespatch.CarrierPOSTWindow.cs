@@ -95,7 +95,8 @@ namespace UberDespatch
 			this.CarrierDescriptionLabel = new global::Gtk.Label ();
 			this.CarrierDescriptionLabel.WidthRequest = 512;
 			this.CarrierDescriptionLabel.Name = "CarrierDescriptionLabel";
-			this.CarrierDescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Hive carriers can/will support various shipping services such as Amazon Fullfilled orders (Amazon Prime).");
+			this.CarrierDescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Hive carriers can/will support various shipping services such as Amazon Fullfille" +
+			"d orders (Amazon Prime).");
 			this.CarrierDescriptionLabel.UseMarkup = true;
 			this.CarrierDescriptionLabel.Wrap = true;
 			this.APILayout.Add (this.CarrierDescriptionLabel);

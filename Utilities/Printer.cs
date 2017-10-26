@@ -150,7 +150,7 @@ namespace UberDespatch
 						if(printerProfile.GetPrinterName() == "System Default")
 							process.StartInfo.Arguments = filePath;
 						else
-							process.StartInfo.Arguments = "-d \"" + printerProfile.GetPrinterName() + "\" " + filePath;
+							process.StartInfo.Arguments = "-d \"" + printerProfile.GetPrinterName() + "\" \"" + filePath + "\"";
 						process.StartInfo.UseShellExecute = false;
 						process.StartInfo.RedirectStandardOutput = true;
 						process.StartInfo.RedirectStandardError = true;
@@ -161,7 +161,7 @@ namespace UberDespatch
 					}
 				}
 				catch (Exception e) {
-					Program.LogError ("Printer", "An error occured when attempting to print.");
+					Program.LogError ("Printer", "An error occured when attempting to print PDF.");
 					Program.LogException(e);
 				}
 			});
@@ -172,26 +172,37 @@ namespace UberDespatch
 		public void PrintPNG(string filePath, string printerProfileName = "Default")
 		{
 			PrinterProfile printerProfile = this.GetPrinterProfile(printerProfileName);
-			Program.LogAlert("Printer", "Printing PNG label with printer: " + printerProfile.GetPrinterName() + "...");
-			Application.Invoke(delegate
-			{
-				try
+			printerProfileName = printerProfile.Name;
+			string printerName = printerProfile.GetPrinterName();
+			Program.LogAlert("Printer", "Printing PNG label with printer: " + printerName + "...");
+			Application.Invoke (delegate
 				{
-					PrintDocument printDoc = new PrintDocument();
-					printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
-					printDoc.PrintPage += new PrintPageEventHandler(delegate(object o, PrintPageEventArgs e) {
-						System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
-						Point p = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
-						e.Graphics.DrawImage(img, p);
-					});
-					printDoc.Print();
+					try
+					{
+						PrintDocument printDoc = new PrintDocument();
+						printDoc.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
+						printDoc.DefaultPageSettings.Landscape = false;
+						printDoc.PrintPage += (sender, args) => {
+							System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
+							//Point m = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
+							Rectangle m = args.MarginBounds;
+							if ((double)img.Width / (double)img.Height > (double)m.Width / (double)m.Height) {
+								m.Height = (int)((double)img.Height / (double)img.Width * (double)m.Width);
+							}
+							else {
+								m.Width = (int)((double)img.Width / (double)img.Height * (double)m.Height);
+							}
+							args.Graphics.DrawImage(img, m);
+						};
+						printDoc.Print();
+					}
+					catch (Exception e)
+					{
+						Program.LogError("Printer", "An error occured when attempting to print PNG. Profile: " + printerProfileName + " Printer Name: " + printerName + " File Path: " + filePath);
+						Program.LogException(e);
+					}
 				}
-				catch (Exception e)
-				{
-					Program.LogError("Printer", "An error occured when attempting to print.");
-					Program.LogException(e);
-				}
-			});
+			);
 		}
 	}
 }

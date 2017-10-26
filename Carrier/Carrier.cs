@@ -27,6 +27,8 @@ namespace UberDespatch
 			/*foreach(Carrier carrier in Carrier.carriers.Values) {
 				carrier.Unload ();
 			}*/
+			Carriers.Clear ();
+			CarrierGroups.Clear ();
 			LoadCarriers ();
 		}
 
@@ -34,10 +36,6 @@ namespace UberDespatch
 		// ========== Load Carriers ==========
 		public static void LoadCarriers ()
 		{
-			Carriers = new Dictionary<string, Carrier> ();
-
-			// TODO Carriers should be located via plugins.
-
 			// None:
 			Carrier carrierManual = new CarrierManual ();
 			Carriers.Add (carrierManual.Name, carrierManual);

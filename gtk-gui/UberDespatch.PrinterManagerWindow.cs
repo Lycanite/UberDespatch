@@ -162,7 +162,9 @@ namespace UberDespatch
 			w8.Fill = false;
 			// Container child PrinterProfileNameLayout.Gtk.Box+BoxChild
 			this.PrinterProfileNameEntry = new global::Gtk.Entry ();
-			this.PrinterProfileNameEntry.TooltipMarkup = "The URL leading to the remote rules, these should be provided in JSON format matching the same layout as the local rules. If no remote rules are avilable the local rules will be used instead.";
+			this.PrinterProfileNameEntry.TooltipMarkup = "The URL leading to the remote rules, these should be provided in JSON format matc" +
+			"hing the same layout as the local rules. If no remote rules are avilable the loc" +
+			"al rules will be used instead.";
 			this.PrinterProfileNameEntry.CanFocus = true;
 			this.PrinterProfileNameEntry.Name = "PrinterProfileNameEntry";
 			this.PrinterProfileNameEntry.IsEditable = true;
