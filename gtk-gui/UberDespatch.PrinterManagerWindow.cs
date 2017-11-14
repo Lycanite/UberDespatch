@@ -40,6 +40,12 @@ namespace UberDespatch
 		
 		private global::Gtk.ComboBox PrinterProfilePrinterCombo;
 		
+		private global::Gtk.HBox PrinterProfileScaleLayout;
+		
+		private global::Gtk.Label PrinterProfileScaleLabel;
+		
+		private global::Gtk.Entry PrinterProfileScaleEntry;
+		
 		private global::Gtk.Button PrinterProfileSaveButton;
 		
 		private global::Gtk.Label PrinterProfileDetailsLabel;
@@ -205,6 +211,39 @@ namespace UberDespatch
 			w13.Expand = false;
 			w13.Fill = false;
 			// Container child PrinterProfileDetailsLayout.Gtk.Box+BoxChild
+			this.PrinterProfileScaleLayout = new global::Gtk.HBox ();
+			this.PrinterProfileScaleLayout.Name = "PrinterProfileScaleLayout";
+			this.PrinterProfileScaleLayout.Spacing = 6;
+			// Container child PrinterProfileScaleLayout.Gtk.Box+BoxChild
+			this.PrinterProfileScaleLabel = new global::Gtk.Label ();
+			this.PrinterProfileScaleLabel.WidthRequest = 200;
+			this.PrinterProfileScaleLabel.Name = "PrinterProfileScaleLabel";
+			this.PrinterProfileScaleLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Image Scale");
+			this.PrinterProfileScaleLabel.Wrap = true;
+			this.PrinterProfileScaleLabel.SingleLineMode = true;
+			this.PrinterProfileScaleLayout.Add (this.PrinterProfileScaleLabel);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.PrinterProfileScaleLayout [this.PrinterProfileScaleLabel]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
+			// Container child PrinterProfileScaleLayout.Gtk.Box+BoxChild
+			this.PrinterProfileScaleEntry = new global::Gtk.Entry ();
+			this.PrinterProfileScaleEntry.TooltipMarkup = "The URL leading to the remote rules, these should be provided in JSON format matc" +
+			"hing the same layout as the local rules. If no remote rules are avilable the loc" +
+			"al rules will be used instead.";
+			this.PrinterProfileScaleEntry.CanFocus = true;
+			this.PrinterProfileScaleEntry.Name = "PrinterProfileScaleEntry";
+			this.PrinterProfileScaleEntry.IsEditable = true;
+			this.PrinterProfileScaleEntry.InvisibleChar = '•';
+			this.PrinterProfileScaleLayout.Add (this.PrinterProfileScaleEntry);
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.PrinterProfileScaleLayout [this.PrinterProfileScaleEntry]));
+			w15.Position = 1;
+			this.PrinterProfileDetailsLayout.Add (this.PrinterProfileScaleLayout);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.PrinterProfileDetailsLayout [this.PrinterProfileScaleLayout]));
+			w16.Position = 2;
+			w16.Expand = false;
+			w16.Fill = false;
+			// Container child PrinterProfileDetailsLayout.Gtk.Box+BoxChild
 			this.PrinterProfileSaveButton = new global::Gtk.Button ();
 			this.PrinterProfileSaveButton.WidthRequest = 150;
 			this.PrinterProfileSaveButton.HeightRequest = 40;
@@ -213,10 +252,10 @@ namespace UberDespatch
 			this.PrinterProfileSaveButton.UseUnderline = true;
 			this.PrinterProfileSaveButton.Label = global::Mono.Unix.Catalog.GetString ("Save Profile");
 			this.PrinterProfileDetailsLayout.Add (this.PrinterProfileSaveButton);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.PrinterProfileDetailsLayout [this.PrinterProfileSaveButton]));
-			w14.Position = 2;
-			w14.Expand = false;
-			w14.Fill = false;
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.PrinterProfileDetailsLayout [this.PrinterProfileSaveButton]));
+			w17.Position = 3;
+			w17.Expand = false;
+			w17.Fill = false;
 			this.PrinterProfileDetailsAlignment.Add (this.PrinterProfileDetailsLayout);
 			this.frame1.Add (this.PrinterProfileDetailsAlignment);
 			this.PrinterProfileDetailsLabel = new global::Gtk.Label ();
@@ -225,10 +264,10 @@ namespace UberDespatch
 			this.PrinterProfileDetailsLabel.UseMarkup = true;
 			this.frame1.LabelWidget = this.PrinterProfileDetailsLabel;
 			this.MainLayout.Add (this.frame1);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.frame1]));
-			w17.Position = 1;
-			w17.Expand = false;
-			w17.Fill = false;
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.frame1]));
+			w20.Position = 1;
+			w20.Expand = false;
+			w20.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
 			this.MainControlsLayout = new global::Gtk.HBox ();
 			this.MainControlsLayout.Name = "MainControlsLayout";
@@ -241,13 +280,13 @@ namespace UberDespatch
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.UseUnderline = true;
 			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString ("Cancel");
-			global::Gtk.Image w18 = new global::Gtk.Image ();
-			this.CancelButton.Image = w18;
+			global::Gtk.Image w21 = new global::Gtk.Image ();
+			this.CancelButton.Image = w21;
 			this.MainControlsLayout.Add (this.CancelButton);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.CancelButton]));
-			w19.Position = 1;
-			w19.Expand = false;
-			w19.Fill = false;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.CancelButton]));
+			w22.Position = 1;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
 			this.ConfirmButton = new global::Gtk.Button ();
 			this.ConfirmButton.WidthRequest = 150;
@@ -256,18 +295,18 @@ namespace UberDespatch
 			this.ConfirmButton.Name = "ConfirmButton";
 			this.ConfirmButton.UseUnderline = true;
 			this.ConfirmButton.Label = global::Mono.Unix.Catalog.GetString ("Ok");
-			global::Gtk.Image w20 = new global::Gtk.Image ();
-			this.ConfirmButton.Image = w20;
+			global::Gtk.Image w23 = new global::Gtk.Image ();
+			this.ConfirmButton.Image = w23;
 			this.MainControlsLayout.Add (this.ConfirmButton);
-			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.ConfirmButton]));
-			w21.Position = 2;
-			w21.Expand = false;
-			w21.Fill = false;
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.ConfirmButton]));
+			w24.Position = 2;
+			w24.Expand = false;
+			w24.Fill = false;
 			this.MainLayout.Add (this.MainControlsLayout);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.MainControlsLayout]));
-			w22.Position = 2;
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.MainControlsLayout]));
+			w25.Position = 2;
+			w25.Expand = false;
+			w25.Fill = false;
 			this.Add (this.MainLayout);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

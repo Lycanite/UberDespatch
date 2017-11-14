@@ -9,7 +9,7 @@ namespace UberDespatch
 {
 	class Program
 	{
-		public static string version = "1.12.0";
+		public static string version = "1.12.1";
 		public static string versionName = "Transcendent Ginkgo";
 		public static ConfigGlobal configGlobal;
 		public static string Language = "GB"; // TODO: Localise UberDespatch in the future.

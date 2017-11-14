@@ -152,7 +152,8 @@ namespace UberDespatch
 			w1.Fill = false;
 			// Container child DownloadsLayout.Gtk.Box+BoxChild
 			this.DownloadsFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Downloads Folder"), ((global::Gtk.FileChooserAction)(2)));
-			this.DownloadsFileChooser.TooltipMarkup = "The location were order files are saved to when an order is depatched. This is usually the user Downloads folder.";
+			this.DownloadsFileChooser.TooltipMarkup = "The location were order files are saved to when an order is depatched. This is us" +
+			"ually the user Downloads folder.";
 			this.DownloadsFileChooser.Name = "DownloadsFileChooser";
 			this.DownloadsLayout.Add (this.DownloadsFileChooser);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.DownloadsLayout [this.DownloadsFileChooser]));
@@ -180,7 +181,9 @@ namespace UberDespatch
 			w4.Fill = false;
 			// Container child ArchiveLayout.Gtk.Box+BoxChild
 			this.ArchiveFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Archive Folder"), ((global::Gtk.FileChooserAction)(2)));
-			this.ArchiveFileChooser.TooltipMarkup = "The location where processed orders should be saved to. Do not set this as the same location as the Downloads Folder or orders will be continuously processed over and over again!";
+			this.ArchiveFileChooser.TooltipMarkup = "The location where processed orders should be saved to. Do not set this as the sa" +
+			"me location as the Downloads Folder or orders will be continuously processed ove" +
+			"r and over again!";
 			this.ArchiveFileChooser.Name = "ArchiveFileChooser";
 			this.ArchiveLayout.Add (this.ArchiveFileChooser);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.ArchiveLayout [this.ArchiveFileChooser]));

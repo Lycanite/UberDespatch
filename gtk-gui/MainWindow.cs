@@ -125,13 +125,15 @@ public partial class MainWindow
 		this.CarriersAction = new global::Gtk.Action ("CarriersAction", global::Mono.Unix.Catalog.GetString ("Carriers"), global::Mono.Unix.Catalog.GetString ("Open the configuration menus for loaded carriers."), "plugin");
 		this.CarriersAction.ShortLabel = "Configure Carriers";
 		w1.Add (this.CarriersAction, null);
-		this.printAction = new global::Gtk.Action ("printAction", global::Mono.Unix.Catalog.GetString ("Printer Manager"), global::Mono.Unix.Catalog.GetString ("Opens the Printer Manager which can be used to setup printer profiles to corrospond to the printers set by rules this includes the default printing settings."), "gtk-print");
+		this.printAction = new global::Gtk.Action ("printAction", global::Mono.Unix.Catalog.GetString ("Printer Manager"), global::Mono.Unix.Catalog.GetString ("Opens the Printer Manager which can be used to setup printer profiles to corrospo" +
+		"nd to the printers set by rules this includes the default printing settings."), "gtk-print");
 		this.printAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Printer Manager");
 		w1.Add (this.printAction, null);
 		this.openAction = new global::Gtk.Action ("openAction", global::Mono.Unix.Catalog.GetString ("Open Archive Folder"), global::Mono.Unix.Catalog.GetString ("Open the order archive folder."), "gtk-open");
 		this.openAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Open Archive Folder");
 		w1.Add (this.openAction, null);
-		this.editAction = new global::Gtk.Action ("editAction", global::Mono.Unix.Catalog.GetString ("Rules"), global::Mono.Unix.Catalog.GetString ("Set the local paths or remote URLs for rule information, this includes zones, labels, alerts, etc."), "gtk-edit");
+		this.editAction = new global::Gtk.Action ("editAction", global::Mono.Unix.Catalog.GetString ("Rules"), global::Mono.Unix.Catalog.GetString ("Set the local paths or remote URLs for rule information, this includes zones, lab" +
+		"els, alerts, etc."), "gtk-edit");
 		this.editAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Rules");
 		w1.Add (this.editAction, null);
 		this.WMSAction = new global::Gtk.Action ("WMSAction", global::Mono.Unix.Catalog.GetString ("WMS"), global::Mono.Unix.Catalog.GetString ("Open the Warehouse Management System settings."), "plugin");
@@ -151,7 +153,7 @@ public partial class MainWindow
 		this.WindowLayout.Name = "WindowLayout";
 		this.WindowLayout.Spacing = 6;
 		// Container child WindowLayout.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='MainMenu'><menu name='FileAction' action='FileAction'><menuitem name='ReloadAction' action='ReloadAction'/><menuitem name='openAction' action='openAction'/><menuitem name='OpenOrderAction' action='OpenOrderAction'/><separator/><menuitem name='QuitAction1' action='QuitAction1'/></menu><menu name='SettingsAction' action='SettingsAction'><menuitem name='GeneralAction' action='GeneralAction'/><menuitem name='printAction' action='printAction'/><menuitem name='editAction' action='editAction'/><separator/><menuitem name='WMSAction' action='WMSAction'/><menuitem name='CarriersAction' action='CarriersAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString (@"<ui><menubar name='MainMenu'><menu name='FileAction' action='FileAction'><menuitem name='ReloadAction' action='ReloadAction'/><menuitem name='openAction' action='openAction'/><menuitem name='OpenOrderAction' action='OpenOrderAction'/><separator/><menuitem name='QuitAction1' action='QuitAction1'/></menu><menu name='SettingsAction' action='SettingsAction'><menuitem name='GeneralAction' action='GeneralAction'/><menuitem name='printAction' action='printAction'/><menuitem name='editAction' action='editAction'/><separator/><menuitem name='WMSAction' action='WMSAction'/><menuitem name='CarriersAction' action='CarriersAction'/></menu></menubar></ui>");
 		this.MainMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/MainMenu")));
 		this.MainMenu.Name = "MainMenu";
 		this.WindowLayout.Add (this.MainMenu);
@@ -267,7 +269,8 @@ public partial class MainWindow
 		this.OrderControlsLayout.Spacing = 6;
 		// Container child OrderControlsLayout.Gtk.Box+BoxChild
 		this.AutoCheckButton = new global::Gtk.ToggleButton ();
-		this.AutoCheckButton.TooltipMarkup = "When enabled, UberDespatch will automatically check for a new order every few seconds.";
+		this.AutoCheckButton.TooltipMarkup = "When enabled, UberDespatch will automatically check for a new order every few sec" +
+		"onds.";
 		this.AutoCheckButton.WidthRequest = 150;
 		this.AutoCheckButton.HeightRequest = 40;
 		this.AutoCheckButton.CanFocus = true;
@@ -321,7 +324,8 @@ public partial class MainWindow
 		w18.Position = 0;
 		// Container child AdvancedControlsLayout.Gtk.Box+BoxChild
 		this.RepeatOrderButton = new global::Gtk.Button ();
-		this.RepeatOrderButton.TooltipMarkup = "Repeats the last order that was successful, failed or skipped. This can be used with Inspection enabled to correct orders that have failed.";
+		this.RepeatOrderButton.TooltipMarkup = "Repeats the last order that was successful, failed or skipped. This can be used w" +
+		"ith Inspection enabled to correct orders that have failed.";
 		this.RepeatOrderButton.WidthRequest = 150;
 		this.RepeatOrderButton.HeightRequest = 40;
 		this.RepeatOrderButton.CanFocus = true;

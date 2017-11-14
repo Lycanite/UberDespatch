@@ -9,6 +9,7 @@ namespace UberDespatch
 		//public PrintQueue PrintQueue;
 		public int ImageOffsetX = 2;
 		public int ImageOffsetY = 2;
+		public double ImageScale = 2;
 
 
 		// ========== Config ==========
@@ -18,6 +19,7 @@ namespace UberDespatch
 			public string PrinterName = Printer.DefaultPrinterName;
 			public int ImageOffsetX = 2;
 			public int ImageOffsetY = 2;
+			public double ImageScale = 2;
 		}
 
 

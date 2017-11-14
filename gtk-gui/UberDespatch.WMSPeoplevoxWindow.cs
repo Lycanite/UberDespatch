@@ -263,7 +263,7 @@ namespace UberDespatch
 			this.TestLayout.Spacing = 6;
 			// Container child TestLayout.Gtk.Box+BoxChild
 			this.TestButton = new global::Gtk.Button ();
-			this.TestButton.TooltipMarkup = "Click to test UberDespatch's connection to the WMS API.";
+			this.TestButton.TooltipMarkup = "Click to test UberDespatch\'s connection to the WMS API.";
 			this.TestButton.WidthRequest = 150;
 			this.TestButton.HeightRequest = 40;
 			this.TestButton.CanFocus = true;

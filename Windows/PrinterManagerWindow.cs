@@ -35,6 +35,7 @@ namespace UberDespatch
 		{
 			this.SelectedProfile = Program.printer.GetPrinterProfile (profileName);
 			this.PrinterProfileNameEntry.Text = this.SelectedProfile.Name;
+			this.PrinterProfileScaleEntry.Text = this.SelectedProfile.ImageScale.ToString ();
 			this.PrinterProfileNameEntry.IsEditable = this.SelectedProfile.Name != "Default";
 			this.LoadPrinters ();
 		}
@@ -147,7 +148,11 @@ namespace UberDespatch
 				}
 
 				// Update Printer:
-				Program.Log("Printer Manager", "Setting " + this.SelectedProfile.Name + " Printer Name To: " + this.PrinterProfilePrinterCombo.ActiveText);
+				double imageScale = 2;
+				if (Double.TryParse (this.PrinterProfileScaleEntry.Text, out imageScale)) {
+					this.SelectedProfile.ImageScale = imageScale;
+				}
+				Program.Log("Printer Manager", "Setting " + this.SelectedProfile.Name + " Printer Name To: " + this.PrinterProfilePrinterCombo.ActiveText + " , Scale To: " + imageScale);
 				this.SelectedProfile.SetPrinterName (this.PrinterProfilePrinterCombo.ActiveText);
 				Program.printer.SaveConfig ();
 			}

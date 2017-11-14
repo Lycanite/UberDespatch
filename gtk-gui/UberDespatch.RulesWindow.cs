@@ -151,7 +151,8 @@ namespace UberDespatch
 			w2.Fill = false;
 			// Container child LocalRulesLayout.Gtk.Box+BoxChild
 			this.LocalRulesFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Rules File"), ((global::Gtk.FileChooserAction)(0)));
-			this.LocalRulesFileChooser.TooltipMarkup = "The location where the local rules are to be loaded and saved. These rules are ignored if remote rules are available.";
+			this.LocalRulesFileChooser.TooltipMarkup = "The location where the local rules are to be loaded and saved. These rules are ig" +
+			"nored if remote rules are available.";
 			this.LocalRulesFileChooser.Name = "LocalRulesFileChooser";
 			this.LocalRulesFileChooser.LocalOnly = false;
 			this.LocalRulesLayout.Add (this.LocalRulesFileChooser);
@@ -180,7 +181,9 @@ namespace UberDespatch
 			w5.Fill = false;
 			// Container child RemoteRulesLayout.Gtk.Box+BoxChild
 			this.RemoteRulesEntry = new global::Gtk.Entry ();
-			this.RemoteRulesEntry.TooltipMarkup = "The URL leading to the remote rules, these should be provided in JSON format matching the same layout as the local rules. If no remote rules are avilable the local rules will be used instead.";
+			this.RemoteRulesEntry.TooltipMarkup = "The URL leading to the remote rules, these should be provided in JSON format matc" +
+			"hing the same layout as the local rules. If no remote rules are avilable the loc" +
+			"al rules will be used instead.";
 			this.RemoteRulesEntry.CanFocus = true;
 			this.RemoteRulesEntry.Name = "RemoteRulesEntry";
 			this.RemoteRulesEntry.IsEditable = true;
@@ -235,7 +238,8 @@ namespace UberDespatch
 			w11.Fill = false;
 			// Container child LocalZonesLayout.Gtk.Box+BoxChild
 			this.LocalZonesFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Zones File"), ((global::Gtk.FileChooserAction)(0)));
-			this.LocalZonesFileChooser.TooltipMarkup = "The location where the local zones are to be loaded and saved. These zones are ignored if remote zones are available.";
+			this.LocalZonesFileChooser.TooltipMarkup = "The location where the local zones are to be loaded and saved. These zones are ig" +
+			"nored if remote zones are available.";
 			this.LocalZonesFileChooser.Name = "LocalZonesFileChooser";
 			this.LocalZonesFileChooser.LocalOnly = false;
 			this.LocalZonesLayout.Add (this.LocalZonesFileChooser);
@@ -264,7 +268,9 @@ namespace UberDespatch
 			w14.Fill = false;
 			// Container child RemoteZonesLayout.Gtk.Box+BoxChild
 			this.RemoteZonesEntry = new global::Gtk.Entry ();
-			this.RemoteZonesEntry.TooltipMarkup = "The URL leading to the remote zones, these should be provided in JSON format matching the same layout as the local zones. If no remote zones are avilable the local zones will be used instead.";
+			this.RemoteZonesEntry.TooltipMarkup = "The URL leading to the remote zones, these should be provided in JSON format matc" +
+			"hing the same layout as the local zones. If no remote zones are avilable the loc" +
+			"al zones will be used instead.";
 			this.RemoteZonesEntry.CanFocus = true;
 			this.RemoteZonesEntry.Name = "RemoteZonesEntry";
 			this.RemoteZonesEntry.IsEditable = true;
@@ -319,7 +325,8 @@ namespace UberDespatch
 			w20.Fill = false;
 			// Container child LocalLabelsLayout.Gtk.Box+BoxChild
 			this.LocalLabelsFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Labels File"), ((global::Gtk.FileChooserAction)(0)));
-			this.LocalLabelsFileChooser.TooltipMarkup = "The location where the local labels json is to be loaded and saved. These labels are ignored if remote labels are available.";
+			this.LocalLabelsFileChooser.TooltipMarkup = "The location where the local labels json is to be loaded and saved. These labels " +
+			"are ignored if remote labels are available.";
 			this.LocalLabelsFileChooser.Name = "LocalLabelsFileChooser";
 			this.LocalLabelsFileChooser.LocalOnly = false;
 			this.LocalLabelsLayout.Add (this.LocalLabelsFileChooser);
@@ -348,7 +355,9 @@ namespace UberDespatch
 			w23.Fill = false;
 			// Container child RemoteLabelsLayout.Gtk.Box+BoxChild
 			this.RemoteLabelsEntry = new global::Gtk.Entry ();
-			this.RemoteLabelsEntry.TooltipMarkup = "The URL leading to the remote labels, these should be provided in JSON format matching the same layout as the local labels. If no remote labels are avilable the local labels will be used instead.";
+			this.RemoteLabelsEntry.TooltipMarkup = "The URL leading to the remote labels, these should be provided in JSON format mat" +
+			"ching the same layout as the local labels. If no remote labels are avilable the " +
+			"local labels will be used instead.";
 			this.RemoteLabelsEntry.CanFocus = true;
 			this.RemoteLabelsEntry.Name = "RemoteLabelsEntry";
 			this.RemoteLabelsEntry.IsEditable = true;
@@ -379,7 +388,8 @@ namespace UberDespatch
 			w26.Fill = false;
 			// Container child LocalLabelsTemplateLayout.Gtk.Box+BoxChild
 			this.LocalLabelsTemplateFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Label Template Location"), ((global::Gtk.FileChooserAction)(2)));
-			this.LocalLabelsTemplateFileChooser.TooltipMarkup = "The location where the local label templates (html) can be found, labels.json with use a path reletive to this location unless a web url (http/https) is used.";
+			this.LocalLabelsTemplateFileChooser.TooltipMarkup = "The location where the local label templates (html) can be found, labels.json wit" +
+			"h use a path reletive to this location unless a web url (http/https) is used.";
 			this.LocalLabelsTemplateFileChooser.Name = "LocalLabelsTemplateFileChooser";
 			this.LocalLabelsTemplateFileChooser.LocalOnly = false;
 			this.LocalLabelsTemplateLayout.Add (this.LocalLabelsTemplateFileChooser);
@@ -432,7 +442,8 @@ namespace UberDespatch
 			w32.Fill = false;
 			// Container child LocalAlertsLayout.Gtk.Box+BoxChild
 			this.LocalAlertsFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Labels File"), ((global::Gtk.FileChooserAction)(0)));
-			this.LocalAlertsFileChooser.TooltipMarkup = "The location where the local labels json is to be loaded and saved. These labels are ignored if remote labels are available.";
+			this.LocalAlertsFileChooser.TooltipMarkup = "The location where the local labels json is to be loaded and saved. These labels " +
+			"are ignored if remote labels are available.";
 			this.LocalAlertsFileChooser.Name = "LocalAlertsFileChooser";
 			this.LocalAlertsFileChooser.LocalOnly = false;
 			this.LocalAlertsLayout.Add (this.LocalAlertsFileChooser);
@@ -461,7 +472,9 @@ namespace UberDespatch
 			w35.Fill = false;
 			// Container child RemoteAlertsLayout.Gtk.Box+BoxChild
 			this.RemoteAlertsEntry = new global::Gtk.Entry ();
-			this.RemoteAlertsEntry.TooltipMarkup = "The URL leading to the remote labels, these should be provided in JSON format matching the same layout as the local labels. If no remote labels are avilable the local labels will be used instead.";
+			this.RemoteAlertsEntry.TooltipMarkup = "The URL leading to the remote labels, these should be provided in JSON format mat" +
+			"ching the same layout as the local labels. If no remote labels are avilable the " +
+			"local labels will be used instead.";
 			this.RemoteAlertsEntry.CanFocus = true;
 			this.RemoteAlertsEntry.Name = "RemoteAlertsEntry";
 			this.RemoteAlertsEntry.IsEditable = true;

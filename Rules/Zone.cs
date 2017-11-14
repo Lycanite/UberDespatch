@@ -148,7 +148,7 @@ namespace UberDespatch
 				Program.Log("Zone", "The order postcode " + testPostcode + " is not a valid postcode.");
 				return false;
 			}
-			string outwardCode = testPostcode.Substring(0, testPostcode.Length - 3).Trim().ToUpper();
+			string outwardCode = testPostcode.Replace(" ", "").Substring(0, testPostcode.Length - 3).Trim().ToUpper();
 			foreach (string postcode in this.postcodes) {
 				if (outwardCode == postcode || postcode == "")
 					return true;

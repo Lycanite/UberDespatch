@@ -6,7 +6,7 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Release/UberDespatch.exe" internal="true" />
+    <widget-library name="../bin/Debug/UberDespatch.exe" internal="true" />
   </import>
   <icon-factory>
     <icon-set id="refresh">
@@ -3306,7 +3306,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="UberDespatch.PrinterManagerWindow" design-size="568 330">
+  <widget class="Gtk.Window" id="UberDespatch.PrinterManagerWindow" design-size="568 334">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Printer Manager</property>
     <property name="Icon">stock:gtk-print Menu</property>
@@ -3512,6 +3512,46 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                       </packing>
                     </child>
                     <child>
+                      <widget class="Gtk.HBox" id="PrinterProfileScaleLayout">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="PrinterProfileScaleLabel">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">200</property>
+                            <property name="LabelProp" translatable="yes">Image Scale</property>
+                            <property name="Wrap">True</property>
+                            <property name="SingleLineMode">True</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Entry" id="PrinterProfileScaleEntry">
+                            <property name="MemberName" />
+                            <property name="Tooltip" translatable="yes">The URL leading to the remote rules, these should be provided in JSON format matching the same layout as the local rules. If no remote rules are avilable the local rules will be used instead.</property>
+                            <property name="CanFocus">True</property>
+                            <property name="IsEditable">True</property>
+                            <property name="InvisibleChar">•</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
                       <widget class="Gtk.Button" id="PrinterProfileSaveButton">
                         <property name="MemberName" />
                         <property name="WidthRequest">150</property>
@@ -3523,7 +3563,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                         <signal name="Released" handler="OnPrinterProfileSaveReleased" />
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">3</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>

@@ -44,7 +44,8 @@ namespace UberDespatch
 			this.DescriptionLabel = new global::Gtk.Label ();
 			this.DescriptionLabel.Name = "DescriptionLabel";
 			this.DescriptionLabel.Xalign = 0F;
-			this.DescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("This order must be completed manually, please enter the despatch details below when complete.");
+			this.DescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("This order must be completed manually, please enter the despatch details below wh" +
+			"en complete.");
 			this.DescriptionLabel.Wrap = true;
 			this.MainLayout.Add (this.DescriptionLabel);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.DescriptionLabel]));

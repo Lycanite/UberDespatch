@@ -59,6 +59,7 @@ namespace UberDespatch
 				PrinterProfile printerProfile = new PrinterProfile(printerProfileConfig.ProfileName);
 				//printerProfile.SetPrintQueue (printerProfileConfig.PrinterName);
 				printerProfile.SetPrinterName(printerProfileConfig.PrinterName);
+				printerProfile.ImageScale = printerProfileConfig.ImageScale;
 				this.PrinterProfiles.Add (printerProfile.Name, printerProfile);
 			}
 
@@ -79,6 +80,7 @@ namespace UberDespatch
 			foreach (PrinterProfile printerProfile in this.PrinterProfiles.Values) {
 				PrinterProfile.ConfigPrinterProfile printerProfileConfig = new PrinterProfile.ConfigPrinterProfile();
 				printerProfileConfig.ProfileName = printerProfile.Name;
+				printerProfileConfig.ImageScale = printerProfile.ImageScale;
 				printerProfileConfig.PrinterName = printerProfile.GetPrinterName();
 				printerProfileConfigs.Add (printerProfileConfig);
 			}
@@ -183,14 +185,15 @@ namespace UberDespatch
 						printDoc.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
 						printDoc.DefaultPageSettings.Landscape = false;
 						printDoc.PrintPage += (sender, args) => {
+							double scale = printerProfile.ImageScale;
 							System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
 							//Point m = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
 							Rectangle m = args.MarginBounds;
 							if ((double)img.Width / (double)img.Height > (double)m.Width / (double)m.Height) {
-								m.Height = (int)((double)img.Height / (double)img.Width * (double)m.Width);
+								m.Height = (int)(((double)img.Height / (double)img.Width * (double)m.Width) * scale);
 							}
 							else {
-								m.Width = (int)((double)img.Width / (double)img.Height * (double)m.Height);
+								m.Width = (int)(((double)img.Width / (double)img.Height * (double)m.Height) * scale);
 							}
 							args.Graphics.DrawImage(img, m);
 						};

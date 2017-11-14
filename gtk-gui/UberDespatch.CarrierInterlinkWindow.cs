@@ -102,7 +102,8 @@ namespace UberDespatch
 			w2.Fill = false;
 			// Container child InputLayout.Gtk.Box+BoxChild
 			this.InputFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Downloads Folder"), ((global::Gtk.FileChooserAction)(2)));
-			this.InputFileChooser.TooltipMarkup = "The location were DPD csv input files are to be saved, this should match the settings on DPD.";
+			this.InputFileChooser.TooltipMarkup = "The location were DPD csv input files are to be saved, this should match the sett" +
+			"ings on DPD.";
 			this.InputFileChooser.Name = "InputFileChooser";
 			this.InputLayout.Add (this.InputFileChooser);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.InputLayout [this.InputFileChooser]));
@@ -140,7 +141,8 @@ namespace UberDespatch
 			w6.Fill = false;
 			// Container child OutputLayout.Gtk.Box+BoxChild
 			this.OutputFileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select Downloads Folder"), ((global::Gtk.FileChooserAction)(2)));
-			this.OutputFileChooser.TooltipMarkup = "The location were DPD csv output files are to be saved, this should match the settings on DPD.";
+			this.OutputFileChooser.TooltipMarkup = "The location were DPD csv output files are to be saved, this should match the set" +
+			"tings on DPD.";
 			this.OutputFileChooser.Name = "OutputFileChooser";
 			this.OutputLayout.Add (this.OutputFileChooser);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.OutputLayout [this.OutputFileChooser]));

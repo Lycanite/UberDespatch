@@ -41,7 +41,9 @@ namespace UberDespatch
 			// Container child MessageLayout.Gtk.Box+BoxChild
 			this.MessageLabel = new global::Gtk.Label ();
 			this.MessageLabel.Name = "MessageLabel";
-			this.MessageLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("There are currently no carriers loaded.\nPlease check that the Plugins Folder is set correctly in Settings > Options then reload the plugins via File > Reload Plugins.");
+			this.MessageLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("There are currently no carriers loaded.\nPlease check that the Plugins Folder is s" +
+			"et correctly in Settings > Options then reload the plugins via File > Reload Plu" +
+			"gins.");
 			this.MessageLabel.Wrap = true;
 			this.MessageLabel.Selectable = true;
 			this.MessageLayout.Add (this.MessageLabel);
