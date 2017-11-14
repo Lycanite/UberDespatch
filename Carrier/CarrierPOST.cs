@@ -186,11 +186,15 @@ namespace UberDespatch
 				byte[] label = null;
 				string fileType = "pdf";
 				try {
-					label = Decoder.Decompress(Convert.FromBase64String(responseJSON.LabelData));
+					label = Convert.FromBase64String(responseJSON.LabelData);
+					try {
+						label = Decoder.Decompress(label);
+					}
+					catch(Exception decompressEx) {}
 					fileType = responseJSON.LabelDataType.Split('/')[1];
 				}
 				catch (Exception e) {
-					Program.LogError (this.Name, "An error occured when trying to decompress the label.");
+					Program.LogError (this.Name, "An error occured when trying to read the label.");
 					Program.LogException (e);
 				}
 
