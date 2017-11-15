@@ -184,7 +184,12 @@ namespace UberDespatch
 						PrintDocument printDoc = new PrintDocument();
 						printDoc.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
 						printDoc.DefaultPageSettings.Landscape = false;
-						printDoc.PrintPage += (sender, args) => {
+						printDoc.PrintPage += new PrintPageEventHandler(delegate(object o, PrintPageEventArgs e) {
+							System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
+							Point p = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
+							e.Graphics.DrawImage(img, p);
+						});
+						/*printDoc.PrintPage += (sender, args) => {
 							double scale = printerProfile.ImageScale;
 							System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
 							//Point m = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
@@ -196,7 +201,7 @@ namespace UberDespatch
 								m.Width = (int)(((double)img.Width / (double)img.Height * (double)m.Height) * scale);
 							}
 							args.Graphics.DrawImage(img, m);
-						};
+						};*/
 						printDoc.Print();
 					}
 					catch (Exception e)
