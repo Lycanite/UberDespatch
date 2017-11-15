@@ -120,7 +120,7 @@ namespace UberDespatch
 		public bool OrderMatch (Order order) {
 			if (!this.CountryMatch (order.Country))
 				return false;
-			if (this.PostcodeMatch (order.Postcode) == this.blacklist)
+			if (!this.PostcodeMatch (order.Postcode))
 				return false;
 			return true;
 		}
@@ -152,7 +152,7 @@ namespace UberDespatch
 				return false;
 			}
 			string outwardCode = testPostcode.Substring(0, testPostcode.Length - 3).Trim().ToUpper();
-			//Program.Log ("Zone", "Testing postcode: " + testPostcode + " Outward code is: " + outwardCode);
+			//Program.Log ("Zone", this.name + " Testing postcode: " + testPostcode + " Outward code is: " + outwardCode);
 			foreach (string postcode in this.postcodes) {
 				if (outwardCode == postcode || postcode == "") {
 					return !this.blacklist;
