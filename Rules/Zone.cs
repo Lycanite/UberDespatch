@@ -140,21 +140,25 @@ namespace UberDespatch
 
 
 		// ========== Postcode Match ==========
-		/** Returns true if the provided postcode is allowed by this zone. Only the first 3 letters are ever checked. **/
+		/** Returns true if the provided postcode is allowed by this zone. Only the outward code is checked. **/
 		public bool PostcodeMatch (string testPostcode) {
-			if (this.postcodes == null || this.postcodes.Length == 0)
+			if (this.postcodes == null || this.postcodes.Length == 0 || this.zipcode) {
 				return !this.blacklist;
-			if (testPostcode.Length < 5) {
-				Program.Log("Zone", "The order postcode " + testPostcode + " is not a valid postcode.");
-				return false;
-			}
-			string outwardCode = testPostcode.Replace(" ", "").Substring(0, testPostcode.Length - 3).Trim().ToUpper();
-			foreach (string postcode in this.postcodes) {
-				if (outwardCode == postcode || postcode == "")
-					return true;
 			}
 			// TODO Check for zipcodes.
-			return false;
+			testPostcode = testPostcode.Replace (" ", "");
+			if (testPostcode.Length < 5) {
+				Program.Log("Zone", "The order postcode " + testPostcode + " is not a valid postcode as it isn't long enough or is a zipcode which is not yet supported.");
+				return false;
+			}
+			string outwardCode = testPostcode.Substring(0, testPostcode.Length - 3).Trim().ToUpper();
+			//Program.Log ("Zone", "Testing postcode: " + testPostcode + " Outward code is: " + outwardCode);
+			foreach (string postcode in this.postcodes) {
+				if (outwardCode == postcode || postcode == "") {
+					return !this.blacklist;
+				}
+			}
+			return this.blacklist;
 		}
 	}
 }

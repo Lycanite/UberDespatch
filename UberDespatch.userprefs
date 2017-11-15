@@ -2,11 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="Carrier/CarrierPOST.cs" Line="1" Column="1" />
-      <File FileName="OrderChecker.cs" Line="1" Column="1" />
-      <File FileName="Carrier/Carrier.cs" Line="1" Column="1" />
-      <File FileName="Utilities/Printer.cs" Line="141" Column="45" />
+      <File FileName="Program.cs" Line="12" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
