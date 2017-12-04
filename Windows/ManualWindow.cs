@@ -15,6 +15,7 @@ namespace UberDespatch
 		{
 			if (this.Order != null) {
 				this.Order.Cancelled = true;
+				Program.Log ("Order", "Manually cancelled order, no despatch details will be sent.");
 			}
 			this.Destroy();
 		}

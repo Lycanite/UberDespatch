@@ -246,12 +246,28 @@ namespace UberDespatch
 
 
 		// ========== Skip Order ==========
-		/** Skips the active order is there is one by setting it's cancelled boolean to true, this is most effective for orders on hold but if used quick enough, it can cancel orders before they are sent. **/
+		/** Sets the active order to manual where it can then be cancelled or provided with manual despatch information. **/
 		public void SkipOrder () {
+			if (this.activeOrder == null)
+				return;
+			this.activeOrder.Carrier = Carrier.GetCarrier ("Manual");
+			Thread repeatThread = new Thread (new ThreadStart(delegate {
+				this.ScheduleOrder (this.activeOrder);
+			}));
+			Program.Log ("Order", "Skipping order...");
+			repeatThread.Start ();
+			this.SendOrder ();
+		}
+
+
+		// ========== Cancel Order ==========
+		/** Cancels the despatch of the active order where no despatch information is sent. **/
+		public void CancelOrder () {
 			if (this.activeOrder == null)
 				return;
 			if(!this.activeOrder.Processed)
 				this.activeOrder.Cancelled = true;
+			Program.Log ("Order", "Cancelled order, no despatch details have been entered.");
 		}
 
 
@@ -262,6 +278,7 @@ namespace UberDespatch
 				Program.LogWarning("Order", "No orders have been ran since UberDespatch was started.");
 				return;
 			}
+			this.lastOrder.Carrier = null;
 			Thread repeatThread = new Thread (new ThreadStart(delegate {
 				this.ScheduleOrder (this.lastOrder);
 			}));
@@ -275,7 +292,9 @@ namespace UberDespatch
 		public void ScheduleOrder (Order order) {
 			this.orderScheduled = true;
 			if (this.activeOrder != null) {
-				Program.LogAlert ("Order", "An order is already active, this will be stopped (skipped but not archived so that it can run again) and the order before will be ran instead...");
+				if (order != this.activeOrder) {
+					Program.LogAlert ("Order", "An order is already active, this will be stopped (skipped but not archived so that it can run again) and the order before will be ran instead...");
+				}
 				this.activeOrder.DontArchive = true;
 				this.activeOrder.Cancelled = true;
 			}

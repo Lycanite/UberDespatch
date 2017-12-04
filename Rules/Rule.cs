@@ -311,6 +311,9 @@ namespace UberDespatch
 		// ========== Apply To Order ==========
 		/** Applies this rule to the provided order setting fields such as carrier or labels. **/
 		public void ApplyToOrder (Order order) {
+			if (order.Carrier != null) {
+				return;
+			}
 			order.Carrier = this.carrier;
 			order.Service = this.service;
 			order.Enhancement = this.enhancement;
