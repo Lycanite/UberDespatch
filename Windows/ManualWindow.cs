@@ -7,6 +7,8 @@ namespace UberDespatch
 
 		public ManualWindow(Order order) : base(Gtk.WindowType.Toplevel)
 		{
+			this.Modal = true;
+			this.Parent = Program.mainWindow;
 			this.Order = order;
 			this.Build();
 		}

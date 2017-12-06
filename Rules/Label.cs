@@ -20,6 +20,11 @@ namespace UberDespatch
 		public bool Shared = false; // If true, this label is generic (not order specific) and only needs one copy.
 		public string[] LabelNames; // Used for the Group type, contains a list of label names to use.
 
+		public string Copies = "1"; // How many copies of this label to print.
+		public string Zoom = "1"; // The Zoom to scale pdfs by, usually 1, 1.33 is good for labels.
+		public string Orientation = "Portrait"; // Can be Portrait or Landscape.
+		public string Options = ""; // Here additional wkhtmltopdf arguments can be passed.
+
 		public string PDF = ""; // The path to this label's PDF, used if this label should be cached.
 
 
@@ -32,6 +37,10 @@ namespace UberDespatch
 			public string url;
 			public bool shared = false;
 			public string[] labelNames;
+			public string copies = "1";
+			public string zoom = "1";
+			public string orientation = "Portrait";
+			public string options = "";
 		}
 
 
@@ -95,6 +104,10 @@ namespace UberDespatch
 					label.URL = labelJSON.url;
 					label.Shared = labelJSON.shared;
 					label.LabelNames = labelJSON.labelNames;
+					label.Copies = labelJSON.copies;
+					label.Zoom = labelJSON.zoom;
+					label.Orientation = labelJSON.orientation;
+					label.Options = labelJSON.options;
 					Labels.Add (label.Name, label);
 				}
 			} catch (Exception e) {
@@ -244,7 +257,7 @@ namespace UberDespatch
 				try {
 					if (File.Exists (filepath))
 						File.Delete (filepath);
-					Program.htmlConverter.ConvertToPDF(template, filepath);
+					Program.htmlConverter.ConvertToPDF(template, filepath, this.Copies, this.Zoom, this.Orientation, this.Options);
 				}
 				catch (Exception e) {
 					Program.LogError("Labels", this.Name + " failed to convert to PDF.");

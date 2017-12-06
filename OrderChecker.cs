@@ -251,6 +251,7 @@ namespace UberDespatch
 			if (this.activeOrder == null)
 				return;
 			this.activeOrder.Carrier = Carrier.GetCarrier ("Manual");
+			this.activeOrder.Edit = false;
 			Thread repeatThread = new Thread (new ThreadStart(delegate {
 				this.ScheduleOrder (this.activeOrder);
 			}));

@@ -5,6 +5,8 @@ namespace UberDespatch
 	{
 		public AlertDialog(string message)
 		{
+			this.Modal = true;
+			this.Parent = Program.mainWindow;
 			this.Build();
 			this.MessageLabel.Text = message;
 		}

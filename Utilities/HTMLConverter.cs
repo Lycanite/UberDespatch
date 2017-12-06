@@ -29,7 +29,7 @@ namespace UberDespatch
 		}
 
 
-		public void ConvertToPDF(string html, string outputPath) {
+		public void ConvertToPDF(string html, string outputPath, string copies = "1", string zoom = "1", string orientation = "Portrait", string options = "") {
 			PdfConvert.ConvertHtmlToPdf(
 				new PdfDocument
 				{
@@ -39,12 +39,16 @@ namespace UberDespatch
 					HeaderRight = "",
 					FooterCenter = "",
 					ExtraParams = new Dictionary<string, string> () {
-						{"quiet", ""},
 						{"disable-javascript", ""},
 						{"disable-smart-shrinking", ""},
 						{"images", ""},
-						{"zoom", "1.33"},
-						{"encoding", "'utf-8'"}
+						{"viewport-size", "800x600"},
+						{"dpi", "72"},
+						{"encoding", "'utf-8'"},
+						{"copies", copies},
+						{"zoom", zoom},
+						{"orientation", orientation},
+						{"quiet", " " + options}
 					}
 				}, new PdfConvertEnvironment
 				{
