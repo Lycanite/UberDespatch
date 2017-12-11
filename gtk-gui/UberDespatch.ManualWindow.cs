@@ -5,158 +5,159 @@ namespace UberDespatch
 	public partial class ManualWindow
 	{
 		private global::Gtk.VBox MainLayout;
-		
+
 		private global::Gtk.Label DescriptionLabel;
-		
+
 		private global::Gtk.HBox hbox2;
-		
+
 		private global::Gtk.Label CarrierNameLabel;
-		
+
 		private global::Gtk.Entry CarrierNameEntry;
-		
+
 		private global::Gtk.HBox hbox3;
-		
+
 		private global::Gtk.Label TrackingNumberLabel;
-		
+
 		private global::Gtk.Entry TrackingNumberEntry;
-		
+
 		private global::Gtk.HBox hbox1;
-		
+
 		private global::Gtk.Button CancelButton;
-		
+
 		private global::Gtk.Button ConfirmButton;
 
-		protected virtual void Build ()
+		protected virtual void Build()
 		{
-			global::Stetic.Gui.Initialize (this);
+			global::Stetic.Gui.Initialize(this);
 			// Widget UberDespatch.ManualWindow
 			this.Name = "UberDespatch.ManualWindow";
-			this.Title = global::Mono.Unix.Catalog.GetString ("Manual Despatch");
-			this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			this.Title = global::Mono.Unix.Catalog.GetString("Manual Despatch");
+			this.Icon = global::Stetic.IconLoader.LoadIcon(this, "gtk-edit", global::Gtk.IconSize.Menu);
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			this.BorderWidth = ((uint)(8));
 			this.DefaultWidth = 400;
 			// Container child UberDespatch.ManualWindow.Gtk.Container+ContainerChild
-			this.MainLayout = new global::Gtk.VBox ();
+			this.MainLayout = new global::Gtk.VBox();
 			this.MainLayout.Name = "MainLayout";
 			this.MainLayout.Spacing = 6;
 			// Container child MainLayout.Gtk.Box+BoxChild
-			this.DescriptionLabel = new global::Gtk.Label ();
+			this.DescriptionLabel = new global::Gtk.Label();
 			this.DescriptionLabel.Name = "DescriptionLabel";
 			this.DescriptionLabel.Xalign = 0F;
-			this.DescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("This order must be completed manually, please enter the despatch details below wh" +
-			"en complete.");
+			this.DescriptionLabel.LabelProp = global::Mono.Unix.Catalog.GetString("This order must be completed manually, please enter the despatch details below wh" +
+					"en complete.");
 			this.DescriptionLabel.Wrap = true;
-			this.MainLayout.Add (this.DescriptionLabel);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.DescriptionLabel]));
+			this.MainLayout.Add(this.DescriptionLabel);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.DescriptionLabel]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
-			this.hbox2 = new global::Gtk.HBox ();
+			this.hbox2 = new global::Gtk.HBox();
 			this.hbox2.Name = "hbox2";
 			this.hbox2.Spacing = 6;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.CarrierNameLabel = new global::Gtk.Label ();
+			this.CarrierNameLabel = new global::Gtk.Label();
 			this.CarrierNameLabel.WidthRequest = 100;
 			this.CarrierNameLabel.Name = "CarrierNameLabel";
 			this.CarrierNameLabel.Xalign = 0F;
-			this.CarrierNameLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Carrier Name");
-			this.hbox2.Add (this.CarrierNameLabel);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.CarrierNameLabel]));
+			this.CarrierNameLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Carrier Name");
+			this.hbox2.Add(this.CarrierNameLabel);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.CarrierNameLabel]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.CarrierNameEntry = new global::Gtk.Entry ();
+			this.CarrierNameEntry = new global::Gtk.Entry();
 			this.CarrierNameEntry.CanFocus = true;
 			this.CarrierNameEntry.Name = "CarrierNameEntry";
 			this.CarrierNameEntry.IsEditable = true;
 			this.CarrierNameEntry.InvisibleChar = '●';
-			this.hbox2.Add (this.CarrierNameEntry);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.CarrierNameEntry]));
+			this.hbox2.Add(this.CarrierNameEntry);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.CarrierNameEntry]));
 			w3.Position = 1;
-			this.MainLayout.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.hbox2]));
+			this.MainLayout.Add(this.hbox2);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.hbox2]));
 			w4.Position = 1;
 			w4.Expand = false;
 			w4.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
-			this.hbox3 = new global::Gtk.HBox ();
+			this.hbox3 = new global::Gtk.HBox();
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.TrackingNumberLabel = new global::Gtk.Label ();
+			this.TrackingNumberLabel = new global::Gtk.Label();
 			this.TrackingNumberLabel.WidthRequest = 100;
 			this.TrackingNumberLabel.Name = "TrackingNumberLabel";
 			this.TrackingNumberLabel.Xalign = 0F;
-			this.TrackingNumberLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Tracking Number");
-			this.hbox3.Add (this.TrackingNumberLabel);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.TrackingNumberLabel]));
+			this.TrackingNumberLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Tracking Number");
+			this.hbox3.Add(this.TrackingNumberLabel);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.TrackingNumberLabel]));
 			w5.Position = 0;
 			w5.Expand = false;
 			w5.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.TrackingNumberEntry = new global::Gtk.Entry ();
+			this.TrackingNumberEntry = new global::Gtk.Entry();
 			this.TrackingNumberEntry.CanFocus = true;
 			this.TrackingNumberEntry.Name = "TrackingNumberEntry";
 			this.TrackingNumberEntry.IsEditable = true;
 			this.TrackingNumberEntry.InvisibleChar = '●';
-			this.hbox3.Add (this.TrackingNumberEntry);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.TrackingNumberEntry]));
+			this.hbox3.Add(this.TrackingNumberEntry);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.TrackingNumberEntry]));
 			w6.Position = 1;
-			this.MainLayout.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.hbox3]));
+			this.MainLayout.Add(this.hbox3);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.hbox3]));
 			w7.Position = 2;
 			w7.Expand = false;
 			w7.Fill = false;
 			// Container child MainLayout.Gtk.Box+BoxChild
-			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1 = new global::Gtk.HBox();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.CancelButton = new global::Gtk.Button ();
+			this.CancelButton = new global::Gtk.Button();
 			this.CancelButton.WidthRequest = 150;
 			this.CancelButton.CanFocus = true;
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.UseUnderline = true;
-			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString ("Cancel");
-			global::Gtk.Image w8 = new global::Gtk.Image ();
-			w8.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString("Cancel");
+			global::Gtk.Image w8 = new global::Gtk.Image();
+			w8.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
 			this.CancelButton.Image = w8;
-			this.hbox1.Add (this.CancelButton);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.CancelButton]));
+			this.hbox1.Add(this.CancelButton);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.CancelButton]));
 			w9.Position = 1;
 			w9.Expand = false;
 			w9.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.ConfirmButton = new global::Gtk.Button ();
+			this.ConfirmButton = new global::Gtk.Button();
 			this.ConfirmButton.WidthRequest = 150;
 			this.ConfirmButton.CanFocus = true;
 			this.ConfirmButton.Name = "ConfirmButton";
 			this.ConfirmButton.UseUnderline = true;
-			this.ConfirmButton.Label = global::Mono.Unix.Catalog.GetString ("Complete");
-			global::Gtk.Image w10 = new global::Gtk.Image ();
-			w10.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			this.ConfirmButton.Label = global::Mono.Unix.Catalog.GetString("Complete");
+			global::Gtk.Image w10 = new global::Gtk.Image();
+			w10.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
 			this.ConfirmButton.Image = w10;
-			this.hbox1.Add (this.ConfirmButton);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ConfirmButton]));
+			this.hbox1.Add(this.ConfirmButton);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.ConfirmButton]));
 			w11.Position = 2;
 			w11.Expand = false;
 			w11.Fill = false;
-			this.MainLayout.Add (this.hbox1);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.hbox1]));
+			this.MainLayout.Add(this.hbox1);
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.hbox1]));
 			w12.Position = 3;
 			w12.Expand = false;
 			w12.Fill = false;
-			this.Add (this.MainLayout);
-			if ((this.Child != null)) {
-				this.Child.ShowAll ();
+			this.Add(this.MainLayout);
+			if ((this.Child != null))
+			{
+				this.Child.ShowAll();
 			}
 			this.DefaultHeight = 189;
-			this.Show ();
-			this.CancelButton.Released += new global::System.EventHandler (this.OnCancelButtonReleased);
-			this.ConfirmButton.Released += new global::System.EventHandler (this.OnConfirmButtonReleased);
+			this.Show();
+			this.CancelButton.Released += new global::System.EventHandler(this.OnCancelButtonReleased);
+			this.ConfirmButton.Released += new global::System.EventHandler(this.OnConfirmButtonReleased);
 		}
 	}
 }

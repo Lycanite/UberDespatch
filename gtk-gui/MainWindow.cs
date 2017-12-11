@@ -4,199 +4,199 @@
 public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
-	
+
 	private global::Gtk.Action FileAction;
-	
+
 	private global::Gtk.Action SettingsAction;
-	
+
 	private global::Gtk.Action QuitAction;
-	
+
 	private global::Gtk.Action ReloadPluginsAction;
-	
+
 	private global::Gtk.Action ReloadAction;
-	
+
 	private global::Gtk.Action QuitAction1;
-	
+
 	private global::Gtk.Action GeneralAction;
-	
+
 	private global::Gtk.Action CarriersAction;
-	
+
 	private global::Gtk.Action printAction;
-	
+
 	private global::Gtk.Action openAction;
-	
+
 	private global::Gtk.Action editAction;
-	
+
 	private global::Gtk.Action WMSAction;
-	
+
 	private global::Gtk.Action OpenOrderAction;
-	
+
 	private global::Gtk.VBox WindowLayout;
-	
+
 	private global::Gtk.MenuBar MainMenu;
-	
+
 	private global::Gtk.HBox MainLayout;
-	
+
 	private global::Gtk.VBox ActivityLayout;
-	
+
 	private global::Gtk.VBox DetailsLayout;
-	
+
 	private global::Gtk.VBox StatusLayout;
-	
+
 	private global::Gtk.HBox StatusIndicatorsLayout;
-	
+
 	private global::Gtk.VBox ProcessStatusLayout;
-	
+
 	private global::Gtk.Image ProcessStatusImage;
-	
+
 	private global::Gtk.Label ProcessStatusLabel;
-	
+
 	private global::Gtk.VBox APIStatusLayout;
-	
+
 	private global::Gtk.Image APIStatusImage;
-	
+
 	private global::Gtk.Label APIStatusLabel;
-	
+
 	private global::Gtk.ProgressBar StatusProgress;
-	
+
 	private global::Gtk.VBox ControlsLayout;
-	
+
 	private global::Gtk.HBox OrderControlsLayout;
-	
+
 	private global::Gtk.ToggleButton AutoCheckButton;
-	
+
 	private global::Gtk.ToggleButton AutoSendButton;
-	
+
 	private global::Gtk.HBox AdvancedControlsLayout;
-	
+
 	private global::Gtk.Button ManualCheckButton;
-	
+
 	private global::Gtk.Button RepeatOrderButton;
-	
+
 	private global::Gtk.HBox InspectControlsLayout;
-	
+
 	private global::Gtk.Button SkipOrderButton;
-	
+
 	private global::Gtk.Button SendOrderButton;
-	
+
 	private global::Gtk.ScrolledWindow LogScrolledWindow;
-	
+
 	private global::Gtk.TextView LogTextView;
-	
+
 	private global::Gtk.VBox OrderEditorLayout;
-	
+
 	private global::Gtk.HBox OrderHighlightLayout;
-	
+
 	private global::Gtk.Label OrderNumberLabel;
-	
+
 	private global::Gtk.Label OrderEmailLabel;
-	
+
 	private global::Gtk.ScrolledWindow OrderEditorScrolledWindow;
-	
+
 	private global::Gtk.TreeView OrderTableTreeview;
 
-	protected virtual void Build ()
+	protected virtual void Build()
 	{
-		global::Stetic.Gui.Initialize (this);
+		global::Stetic.Gui.Initialize(this);
 		// Widget MainWindow
-		this.UIManager = new global::Gtk.UIManager ();
-		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-		this.FileAction = new global::Gtk.Action ("FileAction", global::Mono.Unix.Catalog.GetString ("File"), null, null);
+		this.UIManager = new global::Gtk.UIManager();
+		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup("Default");
+		this.FileAction = new global::Gtk.Action("FileAction", global::Mono.Unix.Catalog.GetString("File"), null, null);
 		this.FileAction.ShortLabel = "File";
-		w1.Add (this.FileAction, null);
-		this.SettingsAction = new global::Gtk.Action ("SettingsAction", global::Mono.Unix.Catalog.GetString ("Settings"), null, null);
+		w1.Add(this.FileAction, null);
+		this.SettingsAction = new global::Gtk.Action("SettingsAction", global::Mono.Unix.Catalog.GetString("Settings"), null, null);
 		this.SettingsAction.ShortLabel = "Settings";
-		w1.Add (this.SettingsAction, null);
-		this.QuitAction = new global::Gtk.Action ("QuitAction", global::Mono.Unix.Catalog.GetString ("Quit"), null, null);
-		this.QuitAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Quit");
-		w1.Add (this.QuitAction, null);
-		this.ReloadPluginsAction = new global::Gtk.Action ("ReloadPluginsAction", global::Mono.Unix.Catalog.GetString ("Reload Plugins"), null, null);
-		this.ReloadPluginsAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Reload Plugins");
-		w1.Add (this.ReloadPluginsAction, null);
-		this.ReloadAction = new global::Gtk.Action ("ReloadAction", global::Mono.Unix.Catalog.GetString ("Reload"), global::Mono.Unix.Catalog.GetString ("Reloads all Carriers, Rules and Zones."), "refresh");
+		w1.Add(this.SettingsAction, null);
+		this.QuitAction = new global::Gtk.Action("QuitAction", global::Mono.Unix.Catalog.GetString("Quit"), null, null);
+		this.QuitAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Quit");
+		w1.Add(this.QuitAction, null);
+		this.ReloadPluginsAction = new global::Gtk.Action("ReloadPluginsAction", global::Mono.Unix.Catalog.GetString("Reload Plugins"), null, null);
+		this.ReloadPluginsAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Reload Plugins");
+		w1.Add(this.ReloadPluginsAction, null);
+		this.ReloadAction = new global::Gtk.Action("ReloadAction", global::Mono.Unix.Catalog.GetString("Reload"), global::Mono.Unix.Catalog.GetString("Reloads all Carriers, Rules and Zones."), "refresh");
 		this.ReloadAction.ShortLabel = "Reload Plugins";
-		w1.Add (this.ReloadAction, null);
-		this.QuitAction1 = new global::Gtk.Action ("QuitAction1", global::Mono.Unix.Catalog.GetString ("Quit"), global::Mono.Unix.Catalog.GetString ("Exit UberDespatch."), "quit");
+		w1.Add(this.ReloadAction, null);
+		this.QuitAction1 = new global::Gtk.Action("QuitAction1", global::Mono.Unix.Catalog.GetString("Quit"), global::Mono.Unix.Catalog.GetString("Exit UberDespatch."), "quit");
 		this.QuitAction1.ShortLabel = "Quit";
-		w1.Add (this.QuitAction1, null);
-		this.GeneralAction = new global::Gtk.Action ("GeneralAction", global::Mono.Unix.Catalog.GetString ("General"), global::Mono.Unix.Catalog.GetString ("Configure UberDespatch (folder paths, logging, etc)."), "settings");
+		w1.Add(this.QuitAction1, null);
+		this.GeneralAction = new global::Gtk.Action("GeneralAction", global::Mono.Unix.Catalog.GetString("General"), global::Mono.Unix.Catalog.GetString("Configure UberDespatch (folder paths, logging, etc)."), "settings");
 		this.GeneralAction.ShortLabel = "General";
-		w1.Add (this.GeneralAction, null);
-		this.CarriersAction = new global::Gtk.Action ("CarriersAction", global::Mono.Unix.Catalog.GetString ("Carriers"), global::Mono.Unix.Catalog.GetString ("Open the configuration menus for loaded carriers."), "plugin");
+		w1.Add(this.GeneralAction, null);
+		this.CarriersAction = new global::Gtk.Action("CarriersAction", global::Mono.Unix.Catalog.GetString("Carriers"), global::Mono.Unix.Catalog.GetString("Open the configuration menus for loaded carriers."), "plugin");
 		this.CarriersAction.ShortLabel = "Configure Carriers";
-		w1.Add (this.CarriersAction, null);
-		this.printAction = new global::Gtk.Action ("printAction", global::Mono.Unix.Catalog.GetString ("Printer Manager"), global::Mono.Unix.Catalog.GetString ("Opens the Printer Manager which can be used to setup printer profiles to corrospo" +
-		"nd to the printers set by rules this includes the default printing settings."), "gtk-print");
-		this.printAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Printer Manager");
-		w1.Add (this.printAction, null);
-		this.openAction = new global::Gtk.Action ("openAction", global::Mono.Unix.Catalog.GetString ("Open Archive Folder"), global::Mono.Unix.Catalog.GetString ("Open the order archive folder."), "gtk-open");
-		this.openAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Open Archive Folder");
-		w1.Add (this.openAction, null);
-		this.editAction = new global::Gtk.Action ("editAction", global::Mono.Unix.Catalog.GetString ("Rules"), global::Mono.Unix.Catalog.GetString ("Set the local paths or remote URLs for rule information, this includes zones, lab" +
-		"els, alerts, etc."), "gtk-edit");
-		this.editAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Rules");
-		w1.Add (this.editAction, null);
-		this.WMSAction = new global::Gtk.Action ("WMSAction", global::Mono.Unix.Catalog.GetString ("WMS"), global::Mono.Unix.Catalog.GetString ("Open the Warehouse Management System settings."), "plugin");
-		this.WMSAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Configure Warehouse Management System");
-		w1.Add (this.WMSAction, null);
-		this.OpenOrderAction = new global::Gtk.Action ("OpenOrderAction", global::Mono.Unix.Catalog.GetString ("Open Order"), global::Mono.Unix.Catalog.GetString ("Open an order from file such as an old archived order."), "gtk-open");
-		this.OpenOrderAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Open Order");
-		w1.Add (this.OpenOrderAction, null);
-		this.UIManager.InsertActionGroup (w1, 0);
-		this.AddAccelGroup (this.UIManager.AccelGroup);
+		w1.Add(this.CarriersAction, null);
+		this.printAction = new global::Gtk.Action("printAction", global::Mono.Unix.Catalog.GetString("Printer Manager"), global::Mono.Unix.Catalog.GetString("Opens the Printer Manager which can be used to setup printer profiles to corrospo" +
+					"nd to the printers set by rules this includes the default printing settings."), "gtk-print");
+		this.printAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Printer Manager");
+		w1.Add(this.printAction, null);
+		this.openAction = new global::Gtk.Action("openAction", global::Mono.Unix.Catalog.GetString("Open Archive Folder"), global::Mono.Unix.Catalog.GetString("Open the order archive folder."), "gtk-open");
+		this.openAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Open Archive Folder");
+		w1.Add(this.openAction, null);
+		this.editAction = new global::Gtk.Action("editAction", global::Mono.Unix.Catalog.GetString("Rules"), global::Mono.Unix.Catalog.GetString("Set the local paths or remote URLs for rule information, this includes zones, lab" +
+					"els, alerts, etc."), "gtk-edit");
+		this.editAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Rules");
+		w1.Add(this.editAction, null);
+		this.WMSAction = new global::Gtk.Action("WMSAction", global::Mono.Unix.Catalog.GetString("WMS"), global::Mono.Unix.Catalog.GetString("Open the Warehouse Management System settings."), "plugin");
+		this.WMSAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Configure Warehouse Management System");
+		w1.Add(this.WMSAction, null);
+		this.OpenOrderAction = new global::Gtk.Action("OpenOrderAction", global::Mono.Unix.Catalog.GetString("Open Order"), global::Mono.Unix.Catalog.GetString("Open an order from file such as an old archived order."), "gtk-open");
+		this.OpenOrderAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Open Order");
+		w1.Add(this.OpenOrderAction, null);
+		this.UIManager.InsertActionGroup(w1, 0);
+		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("UberDespatch");
-		this.Icon = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./icon.png"));
+		this.Title = global::Mono.Unix.Catalog.GetString("UberDespatch");
+		this.Icon = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./icon.png"));
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.WindowLayout = new global::Gtk.VBox ();
+		this.WindowLayout = new global::Gtk.VBox();
 		this.WindowLayout.Name = "WindowLayout";
 		this.WindowLayout.Spacing = 6;
 		// Container child WindowLayout.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString (@"<ui><menubar name='MainMenu'><menu name='FileAction' action='FileAction'><menuitem name='ReloadAction' action='ReloadAction'/><menuitem name='openAction' action='openAction'/><menuitem name='OpenOrderAction' action='OpenOrderAction'/><separator/><menuitem name='QuitAction1' action='QuitAction1'/></menu><menu name='SettingsAction' action='SettingsAction'><menuitem name='GeneralAction' action='GeneralAction'/><menuitem name='printAction' action='printAction'/><menuitem name='editAction' action='editAction'/><separator/><menuitem name='WMSAction' action='WMSAction'/><menuitem name='CarriersAction' action='CarriersAction'/></menu></menubar></ui>");
-		this.MainMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/MainMenu")));
+		this.UIManager.AddUiFromString(@"<ui><menubar name='MainMenu'><menu name='FileAction' action='FileAction'><menuitem name='ReloadAction' action='ReloadAction'/><menuitem name='openAction' action='openAction'/><menuitem name='OpenOrderAction' action='OpenOrderAction'/><separator/><menuitem name='QuitAction1' action='QuitAction1'/></menu><menu name='SettingsAction' action='SettingsAction'><menuitem name='GeneralAction' action='GeneralAction'/><menuitem name='printAction' action='printAction'/><menuitem name='editAction' action='editAction'/><separator/><menuitem name='WMSAction' action='WMSAction'/><menuitem name='CarriersAction' action='CarriersAction'/></menu></menubar></ui>");
+		this.MainMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/MainMenu")));
 		this.MainMenu.Name = "MainMenu";
-		this.WindowLayout.Add (this.MainMenu);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.WindowLayout [this.MainMenu]));
+		this.WindowLayout.Add(this.MainMenu);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.WindowLayout[this.MainMenu]));
 		w2.Position = 0;
 		w2.Expand = false;
 		w2.Fill = false;
 		// Container child WindowLayout.Gtk.Box+BoxChild
-		this.MainLayout = new global::Gtk.HBox ();
+		this.MainLayout = new global::Gtk.HBox();
 		this.MainLayout.Name = "MainLayout";
 		this.MainLayout.Spacing = 6;
 		// Container child MainLayout.Gtk.Box+BoxChild
-		this.ActivityLayout = new global::Gtk.VBox ();
+		this.ActivityLayout = new global::Gtk.VBox();
 		this.ActivityLayout.Name = "ActivityLayout";
 		this.ActivityLayout.Spacing = 6;
 		// Container child ActivityLayout.Gtk.Box+BoxChild
-		this.DetailsLayout = new global::Gtk.VBox ();
+		this.DetailsLayout = new global::Gtk.VBox();
 		this.DetailsLayout.Name = "DetailsLayout";
 		this.DetailsLayout.Spacing = 6;
 		// Container child DetailsLayout.Gtk.Box+BoxChild
-		this.StatusLayout = new global::Gtk.VBox ();
+		this.StatusLayout = new global::Gtk.VBox();
 		this.StatusLayout.Name = "StatusLayout";
 		this.StatusLayout.Spacing = 6;
 		// Container child StatusLayout.Gtk.Box+BoxChild
-		this.StatusIndicatorsLayout = new global::Gtk.HBox ();
+		this.StatusIndicatorsLayout = new global::Gtk.HBox();
 		this.StatusIndicatorsLayout.Name = "StatusIndicatorsLayout";
 		this.StatusIndicatorsLayout.Spacing = 6;
 		// Container child StatusIndicatorsLayout.Gtk.Box+BoxChild
-		this.ProcessStatusLayout = new global::Gtk.VBox ();
+		this.ProcessStatusLayout = new global::Gtk.VBox();
 		this.ProcessStatusLayout.Name = "ProcessStatusLayout";
 		this.ProcessStatusLayout.Spacing = 6;
 		// Container child ProcessStatusLayout.Gtk.Box+BoxChild
-		this.ProcessStatusImage = new global::Gtk.Image ();
+		this.ProcessStatusImage = new global::Gtk.Image();
 		this.ProcessStatusImage.TooltipMarkup = "Order process status.";
 		this.ProcessStatusImage.WidthRequest = 150;
 		this.ProcessStatusImage.HeightRequest = 50;
 		this.ProcessStatusImage.Name = "ProcessStatusImage";
-		this.ProcessStatusImage.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/execute.png"));
-		this.ProcessStatusLayout.Add (this.ProcessStatusImage);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.ProcessStatusLayout [this.ProcessStatusImage]));
+		this.ProcessStatusImage.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/execute.png"));
+		this.ProcessStatusLayout.Add(this.ProcessStatusImage);
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.ProcessStatusLayout[this.ProcessStatusImage]));
 		w3.Position = 0;
 		// Container child ProcessStatusLayout.Gtk.Box+BoxChild
-		this.ProcessStatusLabel = new global::Gtk.Label ();
+		this.ProcessStatusLabel = new global::Gtk.Label();
 		this.ProcessStatusLabel.TooltipMarkup = "Order process status.";
 		this.ProcessStatusLabel.WidthRequest = 150;
 		this.ProcessStatusLabel.Name = "ProcessStatusLabel";
@@ -204,28 +204,28 @@ public partial class MainWindow
 		this.ProcessStatusLabel.UseMarkup = true;
 		this.ProcessStatusLabel.Justify = ((global::Gtk.Justification)(2));
 		this.ProcessStatusLabel.SingleLineMode = true;
-		this.ProcessStatusLayout.Add (this.ProcessStatusLabel);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.ProcessStatusLayout [this.ProcessStatusLabel]));
+		this.ProcessStatusLayout.Add(this.ProcessStatusLabel);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.ProcessStatusLayout[this.ProcessStatusLabel]));
 		w4.Position = 1;
-		this.StatusIndicatorsLayout.Add (this.ProcessStatusLayout);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.StatusIndicatorsLayout [this.ProcessStatusLayout]));
+		this.StatusIndicatorsLayout.Add(this.ProcessStatusLayout);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.StatusIndicatorsLayout[this.ProcessStatusLayout]));
 		w5.Position = 0;
 		// Container child StatusIndicatorsLayout.Gtk.Box+BoxChild
-		this.APIStatusLayout = new global::Gtk.VBox ();
+		this.APIStatusLayout = new global::Gtk.VBox();
 		this.APIStatusLayout.Name = "APIStatusLayout";
 		this.APIStatusLayout.Spacing = 6;
 		// Container child APIStatusLayout.Gtk.Box+BoxChild
-		this.APIStatusImage = new global::Gtk.Image ();
+		this.APIStatusImage = new global::Gtk.Image();
 		this.APIStatusImage.TooltipMarkup = "PeopleVox API connection status.";
 		this.APIStatusImage.WidthRequest = 150;
 		this.APIStatusImage.HeightRequest = 50;
 		this.APIStatusImage.Name = "APIStatusImage";
-		this.APIStatusImage.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh.png"));
-		this.APIStatusLayout.Add (this.APIStatusImage);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.APIStatusLayout [this.APIStatusImage]));
+		this.APIStatusImage.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh.png"));
+		this.APIStatusLayout.Add(this.APIStatusImage);
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.APIStatusLayout[this.APIStatusImage]));
 		w6.Position = 0;
 		// Container child APIStatusLayout.Gtk.Box+BoxChild
-		this.APIStatusLabel = new global::Gtk.Label ();
+		this.APIStatusLabel = new global::Gtk.Label();
 		this.APIStatusLabel.TooltipMarkup = "PeopleVox API connection status.";
 		this.APIStatusLabel.WidthRequest = 150;
 		this.APIStatusLabel.Name = "APIStatusLabel";
@@ -233,58 +233,58 @@ public partial class MainWindow
 		this.APIStatusLabel.UseMarkup = true;
 		this.APIStatusLabel.Justify = ((global::Gtk.Justification)(2));
 		this.APIStatusLabel.SingleLineMode = true;
-		this.APIStatusLayout.Add (this.APIStatusLabel);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.APIStatusLayout [this.APIStatusLabel]));
+		this.APIStatusLayout.Add(this.APIStatusLabel);
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.APIStatusLayout[this.APIStatusLabel]));
 		w7.Position = 1;
-		this.StatusIndicatorsLayout.Add (this.APIStatusLayout);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.StatusIndicatorsLayout [this.APIStatusLayout]));
+		this.StatusIndicatorsLayout.Add(this.APIStatusLayout);
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.StatusIndicatorsLayout[this.APIStatusLayout]));
 		w8.Position = 1;
-		this.StatusLayout.Add (this.StatusIndicatorsLayout);
-		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.StatusLayout [this.StatusIndicatorsLayout]));
+		this.StatusLayout.Add(this.StatusIndicatorsLayout);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.StatusLayout[this.StatusIndicatorsLayout]));
 		w9.Position = 0;
 		w9.Expand = false;
 		w9.Fill = false;
 		// Container child StatusLayout.Gtk.Box+BoxChild
-		this.StatusProgress = new global::Gtk.ProgressBar ();
+		this.StatusProgress = new global::Gtk.ProgressBar();
 		this.StatusProgress.TooltipMarkup = "Current action progress.";
 		this.StatusProgress.HeightRequest = 1;
 		this.StatusProgress.Name = "StatusProgress";
-		this.StatusLayout.Add (this.StatusProgress);
-		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.StatusLayout [this.StatusProgress]));
+		this.StatusLayout.Add(this.StatusProgress);
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.StatusLayout[this.StatusProgress]));
 		w10.Position = 1;
 		w10.Expand = false;
 		w10.Fill = false;
-		this.DetailsLayout.Add (this.StatusLayout);
-		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.DetailsLayout [this.StatusLayout]));
+		this.DetailsLayout.Add(this.StatusLayout);
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.DetailsLayout[this.StatusLayout]));
 		w11.Position = 0;
 		w11.Expand = false;
 		w11.Fill = false;
 		// Container child DetailsLayout.Gtk.Box+BoxChild
-		this.ControlsLayout = new global::Gtk.VBox ();
+		this.ControlsLayout = new global::Gtk.VBox();
 		this.ControlsLayout.Name = "ControlsLayout";
 		this.ControlsLayout.Spacing = 6;
 		// Container child ControlsLayout.Gtk.Box+BoxChild
-		this.OrderControlsLayout = new global::Gtk.HBox ();
+		this.OrderControlsLayout = new global::Gtk.HBox();
 		this.OrderControlsLayout.Name = "OrderControlsLayout";
 		this.OrderControlsLayout.Spacing = 6;
 		// Container child OrderControlsLayout.Gtk.Box+BoxChild
-		this.AutoCheckButton = new global::Gtk.ToggleButton ();
+		this.AutoCheckButton = new global::Gtk.ToggleButton();
 		this.AutoCheckButton.TooltipMarkup = "When enabled, UberDespatch will automatically check for a new order every few sec" +
-		"onds.";
+			"onds.";
 		this.AutoCheckButton.WidthRequest = 150;
 		this.AutoCheckButton.HeightRequest = 40;
 		this.AutoCheckButton.CanFocus = true;
 		this.AutoCheckButton.Name = "AutoCheckButton";
 		this.AutoCheckButton.UseUnderline = true;
 		this.AutoCheckButton.Label = "Auto Check (Off)";
-		global::Gtk.Image w12 = new global::Gtk.Image ();
-		w12.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
+		global::Gtk.Image w12 = new global::Gtk.Image();
+		w12.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
 		this.AutoCheckButton.Image = w12;
-		this.OrderControlsLayout.Add (this.AutoCheckButton);
-		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.OrderControlsLayout [this.AutoCheckButton]));
+		this.OrderControlsLayout.Add(this.AutoCheckButton);
+		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.OrderControlsLayout[this.AutoCheckButton]));
 		w13.Position = 0;
 		// Container child OrderControlsLayout.Gtk.Box+BoxChild
-		this.AutoSendButton = new global::Gtk.ToggleButton ();
+		this.AutoSendButton = new global::Gtk.ToggleButton();
 		this.AutoSendButton.TooltipMarkup = "When enabled, ever order will be flagged for edit.";
 		this.AutoSendButton.WidthRequest = 150;
 		this.AutoSendButton.HeightRequest = 40;
@@ -292,23 +292,23 @@ public partial class MainWindow
 		this.AutoSendButton.Name = "AutoSendButton";
 		this.AutoSendButton.UseUnderline = true;
 		this.AutoSendButton.Label = "Auto Send (On)";
-		global::Gtk.Image w14 = new global::Gtk.Image ();
-		w14.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/edit-small.png"));
+		global::Gtk.Image w14 = new global::Gtk.Image();
+		w14.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/edit-small.png"));
 		this.AutoSendButton.Image = w14;
-		this.OrderControlsLayout.Add (this.AutoSendButton);
-		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.OrderControlsLayout [this.AutoSendButton]));
+		this.OrderControlsLayout.Add(this.AutoSendButton);
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.OrderControlsLayout[this.AutoSendButton]));
 		w15.Position = 1;
-		this.ControlsLayout.Add (this.OrderControlsLayout);
-		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout [this.OrderControlsLayout]));
+		this.ControlsLayout.Add(this.OrderControlsLayout);
+		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout[this.OrderControlsLayout]));
 		w16.Position = 0;
 		w16.Expand = false;
 		w16.Fill = false;
 		// Container child ControlsLayout.Gtk.Box+BoxChild
-		this.AdvancedControlsLayout = new global::Gtk.HBox ();
+		this.AdvancedControlsLayout = new global::Gtk.HBox();
 		this.AdvancedControlsLayout.Name = "AdvancedControlsLayout";
 		this.AdvancedControlsLayout.Spacing = 6;
 		// Container child AdvancedControlsLayout.Gtk.Box+BoxChild
-		this.ManualCheckButton = new global::Gtk.Button ();
+		this.ManualCheckButton = new global::Gtk.Button();
 		this.ManualCheckButton.TooltipMarkup = "Click to search for a new order right now.";
 		this.ManualCheckButton.WidthRequest = 150;
 		this.ManualCheckButton.HeightRequest = 40;
@@ -316,39 +316,39 @@ public partial class MainWindow
 		this.ManualCheckButton.Name = "ManualCheckButton";
 		this.ManualCheckButton.UseUnderline = true;
 		this.ManualCheckButton.Label = "Manual Check";
-		global::Gtk.Image w17 = new global::Gtk.Image ();
-		w17.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/find-small.png"));
+		global::Gtk.Image w17 = new global::Gtk.Image();
+		w17.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/find-small.png"));
 		this.ManualCheckButton.Image = w17;
-		this.AdvancedControlsLayout.Add (this.ManualCheckButton);
-		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.AdvancedControlsLayout [this.ManualCheckButton]));
+		this.AdvancedControlsLayout.Add(this.ManualCheckButton);
+		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.AdvancedControlsLayout[this.ManualCheckButton]));
 		w18.Position = 0;
 		// Container child AdvancedControlsLayout.Gtk.Box+BoxChild
-		this.RepeatOrderButton = new global::Gtk.Button ();
+		this.RepeatOrderButton = new global::Gtk.Button();
 		this.RepeatOrderButton.TooltipMarkup = "Repeats the last order that was successful, failed or skipped. This can be used w" +
-		"ith Inspection enabled to correct orders that have failed.";
+			"ith Inspection enabled to correct orders that have failed.";
 		this.RepeatOrderButton.WidthRequest = 150;
 		this.RepeatOrderButton.HeightRequest = 40;
 		this.RepeatOrderButton.CanFocus = true;
 		this.RepeatOrderButton.Name = "RepeatOrderButton";
 		this.RepeatOrderButton.UseUnderline = true;
 		this.RepeatOrderButton.Label = "Repeat Order";
-		global::Gtk.Image w19 = new global::Gtk.Image ();
-		w19.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png"));
+		global::Gtk.Image w19 = new global::Gtk.Image();
+		w19.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/refresh-small.png"));
 		this.RepeatOrderButton.Image = w19;
-		this.AdvancedControlsLayout.Add (this.RepeatOrderButton);
-		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.AdvancedControlsLayout [this.RepeatOrderButton]));
+		this.AdvancedControlsLayout.Add(this.RepeatOrderButton);
+		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.AdvancedControlsLayout[this.RepeatOrderButton]));
 		w20.Position = 1;
-		this.ControlsLayout.Add (this.AdvancedControlsLayout);
-		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout [this.AdvancedControlsLayout]));
+		this.ControlsLayout.Add(this.AdvancedControlsLayout);
+		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout[this.AdvancedControlsLayout]));
 		w21.Position = 1;
 		w21.Expand = false;
 		w21.Fill = false;
 		// Container child ControlsLayout.Gtk.Box+BoxChild
-		this.InspectControlsLayout = new global::Gtk.HBox ();
+		this.InspectControlsLayout = new global::Gtk.HBox();
 		this.InspectControlsLayout.Name = "InspectControlsLayout";
 		this.InspectControlsLayout.Spacing = 6;
 		// Container child InspectControlsLayout.Gtk.Box+BoxChild
-		this.SkipOrderButton = new global::Gtk.Button ();
+		this.SkipOrderButton = new global::Gtk.Button();
 		this.SkipOrderButton.TooltipMarkup = "Use to skip the current problematic order, the skipped order will be archived.";
 		this.SkipOrderButton.WidthRequest = 150;
 		this.SkipOrderButton.HeightRequest = 40;
@@ -356,14 +356,14 @@ public partial class MainWindow
 		this.SkipOrderButton.Name = "SkipOrderButton";
 		this.SkipOrderButton.UseUnderline = true;
 		this.SkipOrderButton.Label = "Skip Order";
-		global::Gtk.Image w22 = new global::Gtk.Image ();
-		w22.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/skip-small.png"));
+		global::Gtk.Image w22 = new global::Gtk.Image();
+		w22.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/skip-small.png"));
 		this.SkipOrderButton.Image = w22;
-		this.InspectControlsLayout.Add (this.SkipOrderButton);
-		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.InspectControlsLayout [this.SkipOrderButton]));
+		this.InspectControlsLayout.Add(this.SkipOrderButton);
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.InspectControlsLayout[this.SkipOrderButton]));
 		w23.Position = 0;
 		// Container child InspectControlsLayout.Gtk.Box+BoxChild
-		this.SendOrderButton = new global::Gtk.Button ();
+		this.SendOrderButton = new global::Gtk.Button();
 		this.SendOrderButton.TooltipMarkup = "Send the current order (only needed when editing orders).";
 		this.SendOrderButton.WidthRequest = 150;
 		this.SendOrderButton.HeightRequest = 40;
@@ -371,33 +371,33 @@ public partial class MainWindow
 		this.SendOrderButton.Name = "SendOrderButton";
 		this.SendOrderButton.UseUnderline = true;
 		this.SendOrderButton.Label = "Send Order";
-		global::Gtk.Image w24 = new global::Gtk.Image ();
-		w24.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/play-small.png"));
+		global::Gtk.Image w24 = new global::Gtk.Image();
+		w24.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/play-small.png"));
 		this.SendOrderButton.Image = w24;
-		this.InspectControlsLayout.Add (this.SendOrderButton);
-		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.InspectControlsLayout [this.SendOrderButton]));
+		this.InspectControlsLayout.Add(this.SendOrderButton);
+		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.InspectControlsLayout[this.SendOrderButton]));
 		w25.Position = 1;
-		this.ControlsLayout.Add (this.InspectControlsLayout);
-		global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout [this.InspectControlsLayout]));
+		this.ControlsLayout.Add(this.InspectControlsLayout);
+		global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.ControlsLayout[this.InspectControlsLayout]));
 		w26.Position = 2;
 		w26.Expand = false;
 		w26.Fill = false;
-		this.DetailsLayout.Add (this.ControlsLayout);
-		global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.DetailsLayout [this.ControlsLayout]));
+		this.DetailsLayout.Add(this.ControlsLayout);
+		global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.DetailsLayout[this.ControlsLayout]));
 		w27.Position = 1;
 		w27.Expand = false;
 		w27.Fill = false;
-		this.ActivityLayout.Add (this.DetailsLayout);
-		global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.ActivityLayout [this.DetailsLayout]));
+		this.ActivityLayout.Add(this.DetailsLayout);
+		global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.ActivityLayout[this.DetailsLayout]));
 		w28.Position = 0;
 		w28.Expand = false;
 		w28.Fill = false;
 		// Container child ActivityLayout.Gtk.Box+BoxChild
-		this.LogScrolledWindow = new global::Gtk.ScrolledWindow ();
+		this.LogScrolledWindow = new global::Gtk.ScrolledWindow();
 		this.LogScrolledWindow.Name = "LogScrolledWindow";
 		this.LogScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child LogScrolledWindow.Gtk.Container+ContainerChild
-		this.LogTextView = new global::Gtk.TextView ();
+		this.LogTextView = new global::Gtk.TextView();
 		this.LogTextView.WidthRequest = 500;
 		this.LogTextView.HeightRequest = 300;
 		this.LogTextView.CanFocus = true;
@@ -406,93 +406,94 @@ public partial class MainWindow
 		this.LogTextView.WrapMode = ((global::Gtk.WrapMode)(2));
 		this.LogTextView.LeftMargin = 4;
 		this.LogTextView.RightMargin = 4;
-		this.LogScrolledWindow.Add (this.LogTextView);
-		this.ActivityLayout.Add (this.LogScrolledWindow);
-		global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.ActivityLayout [this.LogScrolledWindow]));
+		this.LogScrolledWindow.Add(this.LogTextView);
+		this.ActivityLayout.Add(this.LogScrolledWindow);
+		global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.ActivityLayout[this.LogScrolledWindow]));
 		w30.Position = 1;
-		this.MainLayout.Add (this.ActivityLayout);
-		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.ActivityLayout]));
+		this.MainLayout.Add(this.ActivityLayout);
+		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.ActivityLayout]));
 		w31.Position = 0;
 		w31.Expand = false;
 		w31.Fill = false;
 		// Container child MainLayout.Gtk.Box+BoxChild
-		this.OrderEditorLayout = new global::Gtk.VBox ();
+		this.OrderEditorLayout = new global::Gtk.VBox();
 		this.OrderEditorLayout.Name = "OrderEditorLayout";
 		this.OrderEditorLayout.Spacing = 6;
 		// Container child OrderEditorLayout.Gtk.Box+BoxChild
-		this.OrderHighlightLayout = new global::Gtk.HBox ();
+		this.OrderHighlightLayout = new global::Gtk.HBox();
 		this.OrderHighlightLayout.Name = "OrderHighlightLayout";
 		this.OrderHighlightLayout.Spacing = 6;
 		// Container child OrderHighlightLayout.Gtk.Box+BoxChild
-		this.OrderNumberLabel = new global::Gtk.Label ();
+		this.OrderNumberLabel = new global::Gtk.Label();
 		this.OrderNumberLabel.TooltipMarkup = "PeopleVox API connection status.";
 		this.OrderNumberLabel.WidthRequest = 150;
 		this.OrderNumberLabel.Name = "OrderNumberLabel";
 		this.OrderNumberLabel.UseMarkup = true;
 		this.OrderNumberLabel.Justify = ((global::Gtk.Justification)(2));
 		this.OrderNumberLabel.SingleLineMode = true;
-		this.OrderHighlightLayout.Add (this.OrderNumberLabel);
-		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.OrderHighlightLayout [this.OrderNumberLabel]));
+		this.OrderHighlightLayout.Add(this.OrderNumberLabel);
+		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.OrderHighlightLayout[this.OrderNumberLabel]));
 		w32.Position = 0;
 		// Container child OrderHighlightLayout.Gtk.Box+BoxChild
-		this.OrderEmailLabel = new global::Gtk.Label ();
+		this.OrderEmailLabel = new global::Gtk.Label();
 		this.OrderEmailLabel.TooltipMarkup = "Order process status.";
 		this.OrderEmailLabel.WidthRequest = 150;
 		this.OrderEmailLabel.Name = "OrderEmailLabel";
 		this.OrderEmailLabel.UseMarkup = true;
 		this.OrderEmailLabel.Justify = ((global::Gtk.Justification)(2));
 		this.OrderEmailLabel.SingleLineMode = true;
-		this.OrderHighlightLayout.Add (this.OrderEmailLabel);
-		global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.OrderHighlightLayout [this.OrderEmailLabel]));
+		this.OrderHighlightLayout.Add(this.OrderEmailLabel);
+		global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.OrderHighlightLayout[this.OrderEmailLabel]));
 		w33.Position = 1;
-		this.OrderEditorLayout.Add (this.OrderHighlightLayout);
-		global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.OrderEditorLayout [this.OrderHighlightLayout]));
+		this.OrderEditorLayout.Add(this.OrderHighlightLayout);
+		global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.OrderEditorLayout[this.OrderHighlightLayout]));
 		w34.Position = 0;
 		w34.Expand = false;
 		w34.Fill = false;
 		// Container child OrderEditorLayout.Gtk.Box+BoxChild
-		this.OrderEditorScrolledWindow = new global::Gtk.ScrolledWindow ();
+		this.OrderEditorScrolledWindow = new global::Gtk.ScrolledWindow();
 		this.OrderEditorScrolledWindow.Name = "OrderEditorScrolledWindow";
 		this.OrderEditorScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child OrderEditorScrolledWindow.Gtk.Container+ContainerChild
-		this.OrderTableTreeview = new global::Gtk.TreeView ();
+		this.OrderTableTreeview = new global::Gtk.TreeView();
 		this.OrderTableTreeview.WidthRequest = 450;
 		this.OrderTableTreeview.CanFocus = true;
 		this.OrderTableTreeview.Name = "OrderTableTreeview";
 		this.OrderTableTreeview.HeadersVisible = false;
 		this.OrderTableTreeview.HoverSelection = true;
-		this.OrderEditorScrolledWindow.Add (this.OrderTableTreeview);
-		this.OrderEditorLayout.Add (this.OrderEditorScrolledWindow);
-		global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.OrderEditorLayout [this.OrderEditorScrolledWindow]));
+		this.OrderEditorScrolledWindow.Add(this.OrderTableTreeview);
+		this.OrderEditorLayout.Add(this.OrderEditorScrolledWindow);
+		global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.OrderEditorLayout[this.OrderEditorScrolledWindow]));
 		w36.Position = 1;
-		this.MainLayout.Add (this.OrderEditorLayout);
-		global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.MainLayout [this.OrderEditorLayout]));
+		this.MainLayout.Add(this.OrderEditorLayout);
+		global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.MainLayout[this.OrderEditorLayout]));
 		w37.Position = 1;
-		this.WindowLayout.Add (this.MainLayout);
-		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.WindowLayout [this.MainLayout]));
+		this.WindowLayout.Add(this.MainLayout);
+		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.WindowLayout[this.MainLayout]));
 		w38.Position = 1;
-		this.Add (this.WindowLayout);
-		if ((this.Child != null)) {
-			this.Child.ShowAll ();
+		this.Add(this.WindowLayout);
+		if ((this.Child != null))
+		{
+			this.Child.ShowAll();
 		}
 		this.DefaultWidth = 988;
 		this.DefaultHeight = 590;
-		this.Show ();
-		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
-		this.ReloadAction.Activated += new global::System.EventHandler (this.OnReloadActivated);
-		this.QuitAction1.Activated += new global::System.EventHandler (this.OnQuitActionActivated);
-		this.GeneralAction.Activated += new global::System.EventHandler (this.OnOptionsActionActivated);
-		this.CarriersAction.Activated += new global::System.EventHandler (this.OnCarriersActionActivated);
-		this.printAction.Activated += new global::System.EventHandler (this.OnPrinterActionActivated);
-		this.openAction.Activated += new global::System.EventHandler (this.OnOpenArchiveActivated);
-		this.editAction.Activated += new global::System.EventHandler (this.OnRulesActionActivated);
-		this.WMSAction.Activated += new global::System.EventHandler (this.OnWMSActionActivated);
-		this.OpenOrderAction.Activated += new global::System.EventHandler (this.OnOpenOrderActivated);
-		this.AutoCheckButton.Toggled += new global::System.EventHandler (this.OnAutoCheckButtonReleased);
-		this.AutoSendButton.Toggled += new global::System.EventHandler (this.OnAutoSendButtonReleased);
-		this.ManualCheckButton.Released += new global::System.EventHandler (this.OnManualCheckButtonReleased);
-		this.RepeatOrderButton.Released += new global::System.EventHandler (this.OnRepeatOrderButtonReleased);
-		this.SkipOrderButton.Released += new global::System.EventHandler (this.OnSkipOrderButtonReleased);
-		this.SendOrderButton.Released += new global::System.EventHandler (this.OnSendOrderButtonReleased);
+		this.Show();
+		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+		this.ReloadAction.Activated += new global::System.EventHandler(this.OnReloadActivated);
+		this.QuitAction1.Activated += new global::System.EventHandler(this.OnQuitActionActivated);
+		this.GeneralAction.Activated += new global::System.EventHandler(this.OnOptionsActionActivated);
+		this.CarriersAction.Activated += new global::System.EventHandler(this.OnCarriersActionActivated);
+		this.printAction.Activated += new global::System.EventHandler(this.OnPrinterActionActivated);
+		this.openAction.Activated += new global::System.EventHandler(this.OnOpenArchiveActivated);
+		this.editAction.Activated += new global::System.EventHandler(this.OnRulesActionActivated);
+		this.WMSAction.Activated += new global::System.EventHandler(this.OnWMSActionActivated);
+		this.OpenOrderAction.Activated += new global::System.EventHandler(this.OnOpenOrderActivated);
+		this.AutoCheckButton.Toggled += new global::System.EventHandler(this.OnAutoCheckButtonReleased);
+		this.AutoSendButton.Toggled += new global::System.EventHandler(this.OnAutoSendButtonReleased);
+		this.ManualCheckButton.Released += new global::System.EventHandler(this.OnManualCheckButtonReleased);
+		this.RepeatOrderButton.Released += new global::System.EventHandler(this.OnRepeatOrderButtonReleased);
+		this.SkipOrderButton.Released += new global::System.EventHandler(this.OnSkipOrderButtonReleased);
+		this.SendOrderButton.Released += new global::System.EventHandler(this.OnSendOrderButtonReleased);
 	}
 }

@@ -7,8 +7,8 @@ namespace UberDespatch
 		public string Name;
 		protected string PrinterName;
 		//public PrintQueue PrintQueue;
-		public int ImageOffsetX = 2;
-		public int ImageOffsetY = 2;
+		public int PageWidth = 0;
+		public int PageHeight = 0;
 		public double ImageScale = 2;
 
 
@@ -17,8 +17,8 @@ namespace UberDespatch
 		{
 			public string ProfileName = "Default";
 			public string PrinterName = Printer.DefaultPrinterName;
-			public int ImageOffsetX = 2;
-			public int ImageOffsetY = 2;
+			public int PageWidth = 0;
+			public int PageHeight = 0;
 			public double ImageScale = 2;
 		}
 

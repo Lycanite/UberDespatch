@@ -5,117 +5,118 @@ namespace UberDespatch
 	public partial class CarriersWindow
 	{
 		private global::Gtk.VBox CarrierLayout;
-		
+
 		private global::Gtk.Frame APIFrame;
-		
+
 		private global::Gtk.Alignment APIAlignment;
-		
+
 		private global::Gtk.VBox APILayout;
-		
+
 		private global::Gtk.ComboBox CarrierCombobox;
-		
+
 		private global::Gtk.Label CarrierLabel;
-		
+
 		private global::Gtk.HBox MainControlsLayout;
-		
+
 		private global::Gtk.Button CancelButton;
-		
+
 		private global::Gtk.Button ConfigureButton;
 
-		protected virtual void Build ()
+		protected virtual void Build()
 		{
-			global::Stetic.Gui.Initialize (this);
+			global::Stetic.Gui.Initialize(this);
 			// Widget UberDespatch.CarriersWindow
 			this.Name = "UberDespatch.CarriersWindow";
-			this.Title = global::Mono.Unix.Catalog.GetString ("Select A Carrier");
-			this.Icon = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/plugin.png"));
+			this.Title = global::Mono.Unix.Catalog.GetString("Select A Carrier");
+			this.Icon = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/plugin.png"));
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			this.BorderWidth = ((uint)(8));
 			// Container child UberDespatch.CarriersWindow.Gtk.Container+ContainerChild
-			this.CarrierLayout = new global::Gtk.VBox ();
+			this.CarrierLayout = new global::Gtk.VBox();
 			this.CarrierLayout.Name = "CarrierLayout";
 			this.CarrierLayout.Spacing = 6;
 			// Container child CarrierLayout.Gtk.Box+BoxChild
-			this.APIFrame = new global::Gtk.Frame ();
+			this.APIFrame = new global::Gtk.Frame();
 			this.APIFrame.Name = "APIFrame";
 			this.APIFrame.ShadowType = ((global::Gtk.ShadowType)(0));
 			this.APIFrame.BorderWidth = ((uint)(8));
 			// Container child APIFrame.Gtk.Container+ContainerChild
-			this.APIAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.APIAlignment = new global::Gtk.Alignment(0F, 0F, 1F, 1F);
 			this.APIAlignment.Name = "APIAlignment";
 			this.APIAlignment.LeftPadding = ((uint)(12));
 			// Container child APIAlignment.Gtk.Container+ContainerChild
-			this.APILayout = new global::Gtk.VBox ();
+			this.APILayout = new global::Gtk.VBox();
 			this.APILayout.Name = "APILayout";
 			this.APILayout.Spacing = 6;
 			// Container child APILayout.Gtk.Box+BoxChild
-			this.CarrierCombobox = global::Gtk.ComboBox.NewText ();
+			this.CarrierCombobox = global::Gtk.ComboBox.NewText();
 			this.CarrierCombobox.Name = "CarrierCombobox";
-			this.APILayout.Add (this.CarrierCombobox);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.APILayout [this.CarrierCombobox]));
+			this.APILayout.Add(this.CarrierCombobox);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.APILayout[this.CarrierCombobox]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
-			this.APIAlignment.Add (this.APILayout);
-			this.APIFrame.Add (this.APIAlignment);
-			this.CarrierLabel = new global::Gtk.Label ();
+			this.APIAlignment.Add(this.APILayout);
+			this.APIFrame.Add(this.APIAlignment);
+			this.CarrierLabel = new global::Gtk.Label();
 			this.CarrierLabel.Name = "CarrierLabel";
-			this.CarrierLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Select Carrier</b>");
+			this.CarrierLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Select Carrier</b>");
 			this.CarrierLabel.UseMarkup = true;
 			this.APIFrame.LabelWidget = this.CarrierLabel;
-			this.CarrierLayout.Add (this.APIFrame);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.CarrierLayout [this.APIFrame]));
+			this.CarrierLayout.Add(this.APIFrame);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.CarrierLayout[this.APIFrame]));
 			w4.Position = 0;
 			w4.Expand = false;
 			w4.Fill = false;
 			// Container child CarrierLayout.Gtk.Box+BoxChild
-			this.MainControlsLayout = new global::Gtk.HBox ();
+			this.MainControlsLayout = new global::Gtk.HBox();
 			this.MainControlsLayout.Name = "MainControlsLayout";
 			this.MainControlsLayout.Spacing = 6;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
-			this.CancelButton = new global::Gtk.Button ();
+			this.CancelButton = new global::Gtk.Button();
 			this.CancelButton.WidthRequest = 150;
 			this.CancelButton.CanFocus = true;
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.UseUnderline = true;
-			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString ("Cancel");
-			global::Gtk.Image w5 = new global::Gtk.Image ();
-			w5.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
+			this.CancelButton.Label = global::Mono.Unix.Catalog.GetString("Cancel");
+			global::Gtk.Image w5 = new global::Gtk.Image();
+			w5.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/no-small.png"));
 			this.CancelButton.Image = w5;
-			this.MainControlsLayout.Add (this.CancelButton);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.CancelButton]));
+			this.MainControlsLayout.Add(this.CancelButton);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.CancelButton]));
 			w6.Position = 0;
 			w6.Expand = false;
 			w6.Fill = false;
 			// Container child MainControlsLayout.Gtk.Box+BoxChild
-			this.ConfigureButton = new global::Gtk.Button ();
+			this.ConfigureButton = new global::Gtk.Button();
 			this.ConfigureButton.WidthRequest = 150;
 			this.ConfigureButton.CanFocus = true;
 			this.ConfigureButton.Name = "ConfigureButton";
 			this.ConfigureButton.UseUnderline = true;
-			this.ConfigureButton.Label = global::Mono.Unix.Catalog.GetString ("Configure");
-			global::Gtk.Image w7 = new global::Gtk.Image ();
-			w7.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/edit-small.png"));
+			this.ConfigureButton.Label = global::Mono.Unix.Catalog.GetString("Configure");
+			global::Gtk.Image w7 = new global::Gtk.Image();
+			w7.Pixbuf = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./Icons/png/edit-small.png"));
 			this.ConfigureButton.Image = w7;
-			this.MainControlsLayout.Add (this.ConfigureButton);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout [this.ConfigureButton]));
+			this.MainControlsLayout.Add(this.ConfigureButton);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.MainControlsLayout[this.ConfigureButton]));
 			w8.Position = 1;
 			w8.Expand = false;
 			w8.Fill = false;
-			this.CarrierLayout.Add (this.MainControlsLayout);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.CarrierLayout [this.MainControlsLayout]));
+			this.CarrierLayout.Add(this.MainControlsLayout);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.CarrierLayout[this.MainControlsLayout]));
 			w9.Position = 1;
 			w9.Expand = false;
 			w9.Fill = false;
-			this.Add (this.CarrierLayout);
-			if ((this.Child != null)) {
-				this.Child.ShowAll ();
+			this.Add(this.CarrierLayout);
+			if ((this.Child != null))
+			{
+				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 322;
 			this.DefaultHeight = 118;
-			this.Show ();
-			this.CancelButton.Released += new global::System.EventHandler (this.OnCancelButtonReleased);
-			this.ConfigureButton.Released += new global::System.EventHandler (this.OnConfigureButtonReleased);
+			this.Show();
+			this.CancelButton.Released += new global::System.EventHandler(this.OnCancelButtonReleased);
+			this.ConfigureButton.Released += new global::System.EventHandler(this.OnConfigureButtonReleased);
 		}
 	}
 }

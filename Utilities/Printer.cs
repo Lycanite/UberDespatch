@@ -60,6 +60,8 @@ namespace UberDespatch
 				//printerProfile.SetPrintQueue (printerProfileConfig.PrinterName);
 				printerProfile.SetPrinterName(printerProfileConfig.PrinterName);
 				printerProfile.ImageScale = printerProfileConfig.ImageScale;
+				printerProfile.PageWidth = printerProfileConfig.PageWidth;
+				printerProfile.PageHeight = printerProfileConfig.PageHeight;
 				this.PrinterProfiles.Add (printerProfile.Name, printerProfile);
 			}
 
@@ -81,6 +83,8 @@ namespace UberDespatch
 				PrinterProfile.ConfigPrinterProfile printerProfileConfig = new PrinterProfile.ConfigPrinterProfile();
 				printerProfileConfig.ProfileName = printerProfile.Name;
 				printerProfileConfig.ImageScale = printerProfile.ImageScale;
+				printerProfileConfig.PageWidth = printerProfile.PageWidth;
+				printerProfileConfig.PageHeight = printerProfile.PageHeight;
 				printerProfileConfig.PrinterName = printerProfile.GetPrinterName();
 				printerProfileConfigs.Add (printerProfileConfig);
 			}
@@ -142,7 +146,10 @@ namespace UberDespatch
 					if (System.Environment.OSVersion.ToString().ToLower().Contains("windows")) {
 						PdfDocument pdf = PdfDocument.Load(filePath);
 						PrintDocument printDoc = pdf.CreatePrintDocument();
-						printDoc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.Low;
+						if (printerProfile.PageWidth > 0 && printerProfile.PageHeight > 0) {
+							Program.Log("Printer", "Using custom paper size: " + printerProfile.PageWidth + "x" + printerProfile.PageHeight + " (100th of an inch).");
+							printDoc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Custom Size", printerProfile.PageWidth, printerProfile.PageHeight);
+						}
 						printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
 						printDoc.Print();
 						pdf.Dispose();
@@ -187,7 +194,7 @@ namespace UberDespatch
 						printDoc.DefaultPageSettings.Landscape = false;
 						printDoc.PrintPage += new PrintPageEventHandler(delegate(object o, PrintPageEventArgs e) {
 							System.Drawing.Image img = System.Drawing.Image.FromFile(filePath);
-							Point p = new Point(printerProfile.ImageOffsetX, printerProfile.ImageOffsetY);
+							Point p = new Point(2, 2);
 							e.Graphics.DrawImage(img, p);
 						});
 						/*printDoc.PrintPage += (sender, args) => {
