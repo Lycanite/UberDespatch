@@ -167,16 +167,16 @@ namespace UberDespatch
 					return;
 				}
 
+				// XML Output:
+				if (responseJSON.XML != null) {
+					Program.Log (this.Name, "XML Returned:\n" + responseJSON.XML);
+				}
+
 				// Error Check:
 				if (responseJSON.Error != null) {
 					Program.LogError(this.Name, "Hive has returned an error: " + responseJSON.Error, true, responseJSON.ErrorObject);
 					order.Error = true;
 					return;
-				}
-
-				// XML Output:
-				if (responseJSON.XML != null) {
-					Program.Log (this.Name, "XML Returned:\n" + responseJSON.XML);
 				}
 
 				// Tracking Number:

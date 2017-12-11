@@ -1,12 +1,9 @@
 ﻿<Properties StartupItem="UberDespatch.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Carrier/CarrierPOST.cs">
     <Files>
-      <File FileName="Program.cs" Line="12" Column="41" />
-      <File FileName="OrderChecker.cs" Line="269" Column="39" />
-      <File FileName="Carrier/CarrierManual.cs" Line="1" Column="1" />
-      <File FileName="Rules/Rule.cs" Line="315" Column="12" />
-      <File FileName="Windows/ManualWindow.cs" Line="25" Column="29" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="Carrier/CarrierPOST.cs" Line="173" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

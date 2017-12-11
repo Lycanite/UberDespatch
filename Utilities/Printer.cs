@@ -142,6 +142,7 @@ namespace UberDespatch
 					if (System.Environment.OSVersion.ToString().ToLower().Contains("windows")) {
 						PdfDocument pdf = PdfDocument.Load(filePath);
 						PrintDocument printDoc = pdf.CreatePrintDocument();
+						printDoc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.Low;
 						printDoc.PrinterSettings.PrinterName = printerProfile.GetPrinterName();
 						printDoc.Print();
 						pdf.Dispose();
