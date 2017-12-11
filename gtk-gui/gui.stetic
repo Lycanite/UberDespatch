@@ -6,7 +6,7 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Debug/UberDespatch.exe" internal="true" />
+    <widget-library name="../bin/Release/UberDespatch.exe" internal="true" />
   </import>
   <icon-factory>
     <icon-set id="refresh">
@@ -3306,7 +3306,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="UberDespatch.PrinterManagerWindow" design-size="568 423">
+  <widget class="Gtk.Window" id="UberDespatch.PrinterManagerWindow" design-size="574 423">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Printer Manager</property>
     <property name="Icon">stock:gtk-print Menu</property>
@@ -3559,7 +3559,7 @@ Please check that the Plugins Folder is set correctly in Settings &gt; Options t
                           <widget class="Gtk.Label" id="PrinterProfilePageSizeLabel">
                             <property name="MemberName" />
                             <property name="WidthRequest">200</property>
-                            <property name="LabelProp" translatable="yes">Page Size</property>
+                            <property name="LabelProp" translatable="yes">Page Size (100th of inch)</property>
                             <property name="Wrap">True</property>
                             <property name="SingleLineMode">True</property>
                           </widget>
