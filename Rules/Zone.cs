@@ -154,8 +154,17 @@ namespace UberDespatch
 			string outwardCode = testPostcode.Substring(0, testPostcode.Length - 3).Trim().ToUpper();
 			//Program.Log ("Zone", this.name + " Testing postcode: " + testPostcode + " Outward code is: " + outwardCode);
 			foreach (string postcode in this.postcodes) {
-				if (outwardCode == postcode || postcode == "") {
-					return !this.blacklist;
+				if (postcode.Contains ("*")) {
+					for (int i = 0; i <= 200; i++) {
+						if (outwardCode == postcode.Replace ('*', Convert.ToChar("" + i))) {
+							return !this.blacklist;
+						}
+					}
+				}
+				else {
+					if (outwardCode == postcode || postcode == "") {
+						return !this.blacklist;
+					}
 				}
 			}
 			return this.blacklist;

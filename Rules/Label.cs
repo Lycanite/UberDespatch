@@ -294,6 +294,7 @@ namespace UberDespatch
 			template = template.Replace ("{OrderDate}", order.OrderDate);
 			template = template.Replace ("{OrderWeight}", order.OrderWeight.ToString ());
 			template = template.Replace ("{OrderCost}", order.OrderCost.ToString());
+			template = template.Replace ("{OrderCostHalf}", (order.OrderCost / 2).ToString());
 			template = template.Replace ("{ShippingCost}", order.ShippingCost.ToString());
 			template = template.Replace ("{TaxAmount}", order.TaxAmount.ToString());
 			template = template.Replace ("{ItemAmount}", order.ItemAmount.ToString());
